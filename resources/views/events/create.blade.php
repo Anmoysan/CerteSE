@@ -103,7 +103,7 @@
                             <div class="form-group{{ $errors->has('duration') ? ' has-error' : '' }}">
                                 <label for="duration" class="col-md-4 control-label">Duracion evento</label>
                                 <div class="col-md-6">
-                                    <input id="duration" type="time" class="form-control" name="duration" value="{{ old('precio') }}" autofocus>
+                                    <input id="duration" type="time" class="form-control" name="duration" value="{{ old('duration') }}" autofocus>
 
                                     @if($errors->has('duration'))
                                         @foreach($errors->get('duration') as $message)
