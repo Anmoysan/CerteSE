@@ -1,0 +1,17 @@
+.img-princ {
+    height: 200px;
+    width: 200px;
+}
+
+#logo {
+    height: 40px;
+    width: 40px;
+}
+
+ul.navbar-nav {
+    padding: 10px;
+}
+
+ul.navbar-nav a {
+    padding-left: 40px;
+}
