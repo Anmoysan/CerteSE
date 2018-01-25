@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('image');
             $table->string('place');
             $table->string('subject');
-            $table->dateTime('date');
+            $table->date('date');
             $table->time('duration');
             $table->double('cost');
             $table->integer('agemin');
