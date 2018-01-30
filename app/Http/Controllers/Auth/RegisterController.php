@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -62,10 +62,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $avatar = $data['avatar'] != "" ? $data['avatar'] : 'https://picsum.photos/150/150/?random';
+
         return User::create([
             'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'avatar' => $data['avatar'],
+            'biography' => $data['biography'],
+            'subject' => $data['subject'],
+            'website' => $data['website'],
+            'mobile' => $data['mobile'],
+            'ban' => false,
+            'timeban' => 0,
         ]);
     }
 }

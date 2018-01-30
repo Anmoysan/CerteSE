@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Chusqer;
 use App\Event;
-use App\Http\Requests\CreateChusqerRequest;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
 
@@ -47,7 +45,7 @@ class EventsController extends Controller
         Event::create([
             'name' =>  $request->input('name'),
             'image' => $request->input('image'),
-            'place' => $request->input('place'),
+            'place' => $this->placeCalcule($request),
             'subject' => $request->input('subject'),
             'date' => $request->input('date'),
             'duration' => $request->input('duration'),
@@ -57,5 +55,11 @@ class EventsController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function placeCalcule(CreateEventRequest $request){
+        $latitud = $request->input('latitud');
+        $longitud = $request->input('longitud');
+        return $latitud . ",". $longitud;
     }
 }

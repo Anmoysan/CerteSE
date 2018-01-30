@@ -18,16 +18,17 @@ $factory->define(App\Event::class, function (Faker $faker) {
 
     $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
     $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
+    $timeyear = Carbon::createFromTimestamp($faker->dateTimeThisYear()->getTimestamp());
     $place = $faker->randomFloat(6, -85, 85).",".$faker->randomFloat(6, -180, 180);
 
     return [
         'name' => $faker->userName,
         'image'      => 'https://picsum.photos/150/150/?random',
         'place'      => $place,
-        'subject'     => $faker->realText(255),
-        'date' => Carbon::createFromTimestamp($faker->dateTimeThisYear()->getTimestamp()),
+        'subject'     => $faker->words,
+        'date' => $timeyear,
         'duration' => $faker->time('H:i'),
-        'cost'    => $faker->randomFloat(2,0,20),
+        'cost'    => $faker->randomFloat(2,0,50),
         'agemin' => $faker->numberBetween(0, 18),
         'organizer' => $faker->userName,
         'created_at' => ($time1 < $time2) ? $time1 : $time2,

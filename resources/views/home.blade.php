@@ -8,8 +8,8 @@
             </div>
         </div>
     </div>
-    @foreach($events->chunk(3) as $chunk)
-        <div class="row course-set courses__row producto">
+    @forelse($events->chunk(3) as $chunk)
+        <div class="row course-set courses__row event">
             @foreach($chunk as $event)
                 <div class="col-md-4">
                     <div class="ng">
@@ -19,7 +19,8 @@
                     </div>
 
                     <div>
-                        <img class="img-princ img-responsive img-fluid img-portfolio img-hover mb-3" src="{{ $event['image'] }}" alt="Foto del producto." />
+                        <img class="img-princ img-responsive img-fluid img-portfolio img-hover mb-3 imagenevent"
+                             src="{{ $event['image'] }}" alt="Foto del producto."/>
                     </div>
 
                     <div>
@@ -35,7 +36,9 @@
                 </div>
             @endforeach
         </div>
-    @endforeach
+    @empty
+        <h1>No hay eventos programados todavia</h1>
+    @endforelse
 
     <div class="text-center"></div>
 

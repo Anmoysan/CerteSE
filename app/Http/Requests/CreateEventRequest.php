@@ -26,12 +26,13 @@ class CreateEventRequest extends FormRequest
         return [
             'name' => 'required|string|max:30',
             'image' => 'required|string|max:255',
-            'place' => 'required|numeric',
+            'latitud' => 'required|numeric|min:-85|max:85',
+            'longitud' => 'required|numeric|min:-180|max:180',
             'subject' => 'required|string|max:100',
             'date' => 'required|date',
             'duration' => 'required',
-            'cost' => 'required|numeric',
-            'agemin' => 'required|numeric',
+            'cost' => 'required|numeric|min:0|max:50',
+            'agemin' => 'required|numeric|min:0|max:18',
             'organizer' => 'required|string|max:50',
         ];
     }

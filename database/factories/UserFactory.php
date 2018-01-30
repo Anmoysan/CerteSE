@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use \Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,32 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+
+    $name = $faker->name;
+    $lastname = $faker->lastName;
+    $username = str_replace(" ", ".", $name . "." . $lastname);
+    $usernamefinal = str_replace("..", ".", $username);
+    $mobile = $faker->numberBetween(1, 999) . " " . $faker->numberBetween(6, 9) . "" . $faker->numberBetween(00000000, 99999999);
+    $ban = $faker->boolean(50) == 0 ? false : true;
+    $timeban = $ban ? $faker->numberBetween(1, 30) : 0;
+    $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
+    $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+        'name' => $name,
+        'lastname' => $lastname,
+        'username' => $usernamefinal,
+        'email' => $faker->email,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',
+        'avatar' => 'https://picsum.photos/150/150/?random',
+        'biography'     => $faker->realText(255),
+        'subject'     => $faker->word,
+        'website'     => $faker->url,
+        'mobile'     => $mobile,
+        'ban'     => $ban,
+        'timeban' => $timeban,
         'remember_token' => str_random(10),
-        'image' => 'https://picsum.photos/150/150/?random',
+        'created_at' => ($time1 < $time2) ? $time1 : $time2,
+        'updated_at' => ($time1 > $time2) ? $time1 : $time2
     ];
 });

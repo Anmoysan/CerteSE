@@ -11,16 +11,16 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
-Route::get('/saludo', 'PagesController@saludo');
+Route::get('/', 'PagesController@home')->name('inicio');
 
-Route::get('/events/create', 'EventsController@create');
+Route::get('/events/create', 'EventsController@create')->middleware('auth');
 Route::get('/events/{event}', 'EventsController@show');
-Route::post('/events/create', 'EventsController@store');
+Route::post('/events/create', 'EventsController@store')->middleware('auth');
+
+Route::get('/profile', 'UserController@profile')->middleware('auth');
+Route::get('/user/{user}', 'UserController@index');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 /*Route::get('/', function () {
     return view('welcome');

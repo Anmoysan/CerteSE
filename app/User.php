@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'lastname', 'email', 'username', 'biography', 'subject', 'website', 'mobile', 'avatar', 'password', 'ban', 'timeban'
     ];
 
     /**
@@ -24,6 +24,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'ban', 'timeban'
     ];
+
+    /**
+     * Un usuario estará en varios eventos (events)
+     */
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

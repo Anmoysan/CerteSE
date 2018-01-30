@@ -15,3 +15,12 @@ ul.navbar-nav {
 ul.navbar-nav a {
     padding-left: 40px;
 }
+
+.event {
+    text-align: center;
+}
+
+.imagenevent {
+    display: block;
+    margin: auto;
+}

@@ -42,12 +42,12 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
-                                <label for="place" class="col-md-2 control-label">Latitud</label>
+                                <label for="latitud" class="col-md-2 control-label">Latitud</label>
                                 <div class="col-md-3">
-                                    <input id="place" type="text" class="form-control" name="place" value="{{ explode(",", old('place'))[0] }}" autofocus>
+                                    <input id="latitud" type="text" class="form-control" name="latitud" value="{{ explode(",", old('place'))[0] }}" autofocus>
 
-                                    @if($errors->has('place'))
-                                        @foreach($errors->get('place') as $message)
+                                    @if($errors->has('latitud'))
+                                        @foreach($errors->get('latitud') as $message)
                                             <div class="alert alert-danger" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -56,12 +56,12 @@
                                 </div>
                                 <div class="col-md-1 control-label"></div>
 
-                                <label for="place" class="col-md-2 control-label">Longitud</label>
+                                <label for="longitud" class="col-md-2 control-label">Longitud</label>
                                 <div class="col-md-3">
-                                    <input id="place" type="text" class="form-control" name="place" value="{{ explode(",", old('place'))[0] }}" autofocus>
+                                    <input id="longitud" type="text" class="form-control" name="longitud" value="{{ explode(",", old('place'))[0] }}" autofocus>
 
-                                    @if($errors->has('place'))
-                                        @foreach($errors->get('place') as $message)
+                                    @if($errors->has('longitud'))
+                                        @foreach($errors->get('longitud') as $message)
                                             <div class="alert alert-danger" role="alert">
                                                 {{ $message }}
                                             </div>
