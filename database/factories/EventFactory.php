@@ -19,13 +19,13 @@ $factory->define(App\Event::class, function (Faker $faker) {
     $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
     $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
     $timeyear = Carbon::createFromTimestamp($faker->dateTimeThisYear()->getTimestamp());
-    $place = $faker->randomFloat(6, -85, 85).",".$faker->randomFloat(6, -180, 180);
+    $place = $faker->randomFloat(6, -85, 85)."|".$faker->randomFloat(6, -180, 180);
 
     return [
         'name' => $faker->userName,
         'image'      => 'https://picsum.photos/150/150/?random',
         'place'      => $place,
-        'subject'     => $faker->words,
+        'subject'     => $faker->word,
         'date' => $timeyear,
         'duration' => $faker->time('H:i'),
         'cost'    => $faker->randomFloat(2,0,50),

@@ -60,6 +60,6 @@ class EventsController extends Controller
     public function placeCalcule(CreateEventRequest $request){
         $latitud = $request->input('latitud');
         $longitud = $request->input('longitud');
-        return $latitud . ",". $longitud;
+        return $latitud . "|". $longitud;
     }
 }

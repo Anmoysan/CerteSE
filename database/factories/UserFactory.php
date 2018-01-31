@@ -20,8 +20,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     $lastname = $faker->lastName;
     $username = str_replace(" ", ".", $name . "." . $lastname);
     $usernamefinal = str_replace("..", ".", $username);
-    $mobile = $faker->numberBetween(1, 999) . " " . $faker->numberBetween(6, 9) . "" . $faker->numberBetween(00000000, 99999999);
-    $ban = $faker->boolean(50) == 0 ? false : true;
+    $ban = $faker->boolean;
     $timeban = $ban ? $faker->numberBetween(1, 30) : 0;
     $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
     $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
@@ -36,7 +35,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'biography'     => $faker->realText(255),
         'subject'     => $faker->word,
         'website'     => $faker->url,
-        'mobile'     => $mobile,
+        'mobile'     => $faker->e164PhoneNumber,
         'ban'     => $ban,
         'timeban' => $timeban,
         'remember_token' => str_random(10),

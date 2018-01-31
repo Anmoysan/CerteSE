@@ -8,11 +8,11 @@
     width: 40px;
 }
 
-ul.navbar-nav {
+ul.navbar-nav, navbar-header {
     padding: 10px;
 }
 
-ul.navbar-nav a {
+ul.navbar-nav a, navbar-header {
     padding-left: 40px;
 }
 

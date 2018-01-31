@@ -28,10 +28,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * Un usuario estará en varios eventos (events)
+     * Un usuario estara en varios eventos (events)
      */
     public function events()
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Event::class)->latest();
     }
 }

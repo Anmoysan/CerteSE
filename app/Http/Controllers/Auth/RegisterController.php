@@ -48,9 +48,26 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'required|string|max:30',
+            'lastname' => 'required|string|max:60',
+            'username' => 'required|string|max:30|unique:users',
+            'email' => 'required|max:100|email',
+            'password' => 'max:100',
+            'mobileCountry' => 'required|numeric|max:3|confirmed',
+            'mobileNumber' => 'required|numeric|max:9',
+        ], [
+            'name.required' => 'El nombre es obligatorio.',
+            'name.string' => 'El nombre debe ser una cadena de caracteres',
+            'name.max' => 'El nombre debe tener 30 caracteres como máximo',
+            'name.unique' => 'El nombre de usuario ya existe.',
+            'email.required' => 'El email de usuario es obligatorio.',
+            'email.string' => 'El email debe ser una cadena de caracteres',
+            'email.max' => 'El email debe tener 255 caracteres como máximo',
+            'email.unique' => 'El email de usuario ya existe.',
+            'password.required' => 'El password de usuario es obligatorio.',
+            'password.string' => 'El password debe ser una cadena de caracteres',
+            'password.max' => 'El nombre debe tener 6 caracteres como máximo',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
     }
 
@@ -62,21 +79,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $avatar = $data['avatar'] != "" ? $data['avatar'] : 'https://picsum.photos/150/150/?random';
-
         return User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'avatar' => $data['avatar'],
-            'biography' => $data['biography'],
-            'subject' => $data['subject'],
-            'website' => $data['website'],
-            'mobile' => $data['mobile'],
+            'avatar' => "http://panamapoesia.com/image/SinFoto.png",
+            'mobile' => $this->mobileCalcule($data),
             'ban' => false,
             'timeban' => 0,
         ]);
+    }
+
+    public function mobileCalcule(array $data){
+        $mobileCountry = $data['mobileCountry'];
+        $mobileNumber = $data['mobileNumber'];
+        return "+" . $mobileCountry . " " . $mobileNumber;
     }
 }

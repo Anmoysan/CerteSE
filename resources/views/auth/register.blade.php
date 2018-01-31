@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Registro</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -89,71 +89,23 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
-                            <label for="avatar" class="col-md-4 control-label">Foto</label>
-
-                            <div class="col-md-6">
-                                <input id="avatar" type="text" class="form-control" name="avatar" value="{{ old('avatar') }}">
-
-                                @if ($errors->has('avatar'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('biography') ? ' has-error' : '' }}">
-                            <label for="biography" class="col-md-4 control-label">Biografia</label>
-
-                            <div class="col-md-6">
-                                <input id="biography" type="text" class="form-control" name="biography" value="{{ old('biography') }}">
-
-                                @if ($errors->has('biography'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('biography') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
-                            <label for="subject" class="col-md-4 control-label">Tema</label>
-
-                            <div class="col-md-6">
-                                <input id="subject" type="text" class="form-control" name="subject" value="{{ old('subject') }}" required autofocus>
-
-                                @if ($errors->has('subject'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('subject') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-                            <label for="website" class="col-md-4 control-label">Pagina web</label>
-
-                            <div class="col-md-6">
-                                <input id="website" type="text" class="form-control" name="website" value="{{ old('website') }}">
-
-                                @if ($errors->has('website'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('website') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
                             <label for="mobile" class="col-md-4 control-label">Movil</label>
 
-                            <div class="col-md-6">
-                                <input id="mobile" type="text" class="form-control" name="mobile" value="{{ old('mobile') }}" required autofocus>
-
-                                @if ($errors->has('mobile'))
+                            <div class="col-md-2">
+                                <input id="mobileCountry" type="text" class="form-control" name="mobileCountry" value="{{ old('mobileCountry') }}" required autofocus>
+                                @if ($errors->has('mobileCountry'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('mobile') }}</strong>
+                                        <strong>{{ $errors->first('mobileCountry') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="col-md-4">
+                                <input id="mobileNumber" type="text" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" required autofocus>
+                                @if ($errors->has('mobileNumber'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mobileNumber') }}</strong>
                                     </span>
                                 @endif
                             </div>
