@@ -17,8 +17,8 @@ Route::get('/events/create', 'EventsController@create')->middleware('auth');
 Route::get('/events/{event}', 'EventsController@show');
 Route::post('/events/create', 'EventsController@store')->middleware('auth');
 
-Route::get('/profile', 'UserController@profile')->middleware('auth');
-Route::get('/user/{user}', 'UserController@index');
+Route::get('/profile', 'UsersController@profile')->middleware('auth');
+Route::get('/user/{user}', 'UsersController@index')->name('user.index');
 
 Auth::routes();
 

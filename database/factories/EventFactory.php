@@ -22,7 +22,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
     $place = $faker->randomFloat(6, -85, 85)."|".$faker->randomFloat(6, -180, 180);
 
     return [
-        'name' => $faker->userName,
+        'name' => $faker->sentence($nbWords = 3, $variableNbWords = true) ,
         'image'      => 'https://picsum.photos/150/150/?random',
         'place'      => $place,
         'subject'     => $faker->word,

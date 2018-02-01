@@ -118,7 +118,7 @@
                             <div class="form-group{{ $errors->has('cost') ? ' has-error' : '' }}">
                                 <label for="cost" class="col-md-4 control-label">Precio entrada</label>
                                 <div class="col-md-6">
-                                    <input id="cost" type="number" min="0" max="20" class="form-control" name="cost" value="{{ old('cost') }}" autofocus>
+                                    <input id="cost" type="number" class="form-control" name="cost" value="{{ old('cost') }}" autofocus>
 
                                     @if($errors->has('cost'))
                                         @foreach($errors->get('cost') as $message)

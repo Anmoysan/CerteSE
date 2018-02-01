@@ -42,7 +42,11 @@ class EventsController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(CreateEventRequest $request){
+
+        $user = $request->user();
+
         Event::create([
+            'user_id'   => $user->id,
             'name' =>  $request->input('name'),
             'image' => $request->input('image'),
             'place' => $this->placeCalcule($request),

@@ -1,15 +1,32 @@
-<div class="row chusq">
-    <div class="col-md-12">
-        <p class="chusq-text">{{ $event->content }}</p>
-        <p>
-            @foreach($event->hashtags as $hashtag)
-                <a href="/hashtag/{{ $hashtag->id }}">
-                    <span class="label label-primary">#{{ $hashtag->slug }}</span>
-                </a>
-            @endforeach
-        </p>
-        <p><strong>Autor:</strong> <a href="/users/{{ $chusquer->user->id }}">{{ $chusquer->user->name }}</a></p>
-        <p><strong>Fecha:</strong> {{ \Carbon\Carbon::parse($chusquer->created_at)->format('d/m/Y') }}</p>
+<div class="col-md-4">
+    <div class="ng">
+        <h3>
+            {{ $event['name'] }}
+        </h3>
+    </div>
 
+    <div>
+        <img class="img-princ img-responsive img-fluid img-portfolio img-hover mb-3 imagenevent"
+             src="{{ $event['image'] }}" alt="Foto del evento."/>
+    </div>
+
+    <div>
+        <p>
+            <a href="/user/{{ $event->user->id }}">
+                {{ $event->user->username }}
+            </a>
+        </p>
+    </div>
+
+    <div>
+        <h4 class="price ng">
+            Precio: {{ $event['cost'] }} €
+        </h4>
+    </div>
+
+    <div>
+        <p class="ng">
+            Fecha: {{ $event['date'] }}
+        </p>
     </div>
 </div>

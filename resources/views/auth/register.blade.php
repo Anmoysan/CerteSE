@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -29,7 +29,7 @@
                             <label for="lastname" class="col-md-4 control-label">Apellidos</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required>
+                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}">
 
                                 @if ($errors->has('lastname'))
                                     <span class="help-block">
@@ -43,7 +43,7 @@
                             <label for="username" class="col-md-4 control-label">Nick</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}">
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -71,7 +71,7 @@
                             <label for="password" class="col-md-4 control-label">Contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -85,7 +85,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirmar Contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                             <label for="mobile" class="col-md-4 control-label">Movil</label>
 
                             <div class="col-md-2">
-                                <input id="mobileCountry" type="text" class="form-control" name="mobileCountry" value="{{ old('mobileCountry') }}" required autofocus>
+                                <input id="mobileCountry" type="text" class="form-control" name="mobileCountry" value="{{ old('mobileCountry') }}">
                                 @if ($errors->has('mobileCountry'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('mobileCountry') }}</strong>
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="mobileNumber" type="text" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}" required autofocus>
+                                <input id="mobileNumber" type="text" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}">
                                 @if ($errors->has('mobileNumber'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('mobileNumber') }}</strong>

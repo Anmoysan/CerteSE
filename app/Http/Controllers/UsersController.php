@@ -4,19 +4,21 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra los eventos creados por los usuarios
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index($name)
     {
+        $user = User::where('username',$name)->first();
         $events = $user->events()->latest()->paginate(9);
 
-        return view('users.index', [
+        return view('users.eventsUser', [
             'user'      => $user,
             'events' => $events,
         ]);
@@ -86,5 +88,20 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Muestra el perfil del usuario
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function profile()
+    {
+
+        $user = Auth::user();
+
+        return view('users.profile', [
+            'user' => $user,
+        ]);
     }
 }
