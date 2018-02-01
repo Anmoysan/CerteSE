@@ -18,7 +18,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
 
     $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
     $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
-    $timeyear = Carbon::createFromTimestamp($faker->dateTimeThisYear()->getTimestamp());
+    $timeyear = Carbon::createFromTimestamp($faker->dateTimeInInterval('-10 years', '+20 years')->getTimestamp());
     $place = $faker->randomFloat(6, -85, 85)."|".$faker->randomFloat(6, -180, 180);
 
     return [

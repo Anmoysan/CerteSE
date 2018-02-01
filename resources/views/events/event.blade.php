@@ -12,7 +12,7 @@
 
     <div>
         <p>
-            <a href="/user/{{ $event->user->id }}">
+            <a href="/user/{{ $event->user->username }}">
                 {{ $event->user->username }}
             </a>
         </p>
