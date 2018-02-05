@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-4 evento">
     <div class="ng">
         <h3>
             {{ $event['name'] }}
@@ -25,7 +25,7 @@
     </div>
 
     <div>
-        <p class="ng">
+        <p class="date ng">
             Fecha: {{ $event['date'] }}
         </p>
     </div>

@@ -17,7 +17,7 @@ ul.navbar-nav, navbar-header {
     padding: 10px;
 }
 
-ul.navbar-nav a {
+ul.navbar-nav a, a.navbar-brand {
     padding-left: 40px;
 }
 
@@ -31,6 +31,23 @@ ul.navbar-nav a {
 }
 
 .titulo {
+    color: green;
     border-bottom: solid;
     border-color: green;
+}
+
+.row {
+    padding: 30px;
+}
+
+.evento {
+    color: green;
+    text-shadow: -1px -1px 1px #000, 1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000;
+    font-size: 17px;
+}
+
+
+
+.contenido {
+
 }

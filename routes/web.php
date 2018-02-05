@@ -21,8 +21,3 @@ Route::get('/profile', 'UsersController@profile')->middleware('auth');
 Route::get('/user/{user}', 'UsersController@index')->name('user.username');
 
 Auth::routes();
-
-/*Route::get('/', function () {
-    return view('welcome');
-});
-*/
