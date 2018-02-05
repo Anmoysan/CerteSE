@@ -17,7 +17,7 @@
             <h1>No hay eventos programados todavia</h1>
         @endforelse
 
-        <div class="text-center">
+        <div class="pagination">
             {{ $events->links('pagination::bootstrap-4') }}
         </div>
 

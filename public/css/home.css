@@ -48,6 +48,6 @@ ul.navbar-nav a, a.navbar-brand {
 
 
 
-.contenido {
-
+.pagination {
+    justify-content: center;
 }
