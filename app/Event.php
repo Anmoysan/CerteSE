@@ -6,16 +6,46 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    // Con $fillable se indican explícitamente los campos de la tabla
-    // que se podrán modificar programáticamente.
-    //protected $fillable = ['content', 'author', 'image'];
 
-    // Con $guarded se indican explícitamente los campos de la tabla
-    // que NO se podrán modificar programáticamente.
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    /**
+     * Un evento puede tener varios usuarios (users)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Un evento puede tener varios comentarios (commentarys)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function commentarys()
+    {
+        return $this->hasMany(Commentary::class)->latest();
+    }
+
+    /**
+     * Un evento puede tener varios votos (votes)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function votes()
+    {
+        return $this->hasMany(Vote::class)->latest();
+    }
+
+    /**
+     * Un evento puede tener muchas reservas (reserves)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class)->latest();
     }
 }

@@ -24,6 +24,7 @@ class CreateEventsTable extends Migration
             $table->double('cost');
             $table->integer('agemin');
             $table->string('organizer');
+            $table->boolean('commentarys');
             $table->timestamps();
         });
     }

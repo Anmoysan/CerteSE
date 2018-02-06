@@ -41,12 +41,25 @@ ul.navbar-nav a, a.navbar-brand {
 }
 
 .evento {
-    color: green;
-    text-shadow: -1px -1px 1px #000, 1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000;
+    color: black;
     font-size: 17px;
 }
 
+nav, ul.navbar-nav, li.nav-item a {
+    background-image: url("../fondoNav.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
+li.nav-item a {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+body {
+    background-image: url("../fondo.jpg");
+    background-size: auto;
+}
 
 .pagination {
     justify-content: center;

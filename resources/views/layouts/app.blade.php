@@ -11,14 +11,14 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('Logo.png') }}" id="logo"/></a>
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand text-success" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
             @if( Auth::check())
-                <a class="navbar-brand" href="{{ url('/') }}/events/create">Crear Eventos</a>
+                <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear Eventos</a>
             @endif
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,17 +28,17 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     @if (Auth::guest())
-                        <li class="nav-brand"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
-                        <li class="nav-brand"><a href="{{ route('register') }}" class="nav-link">Registrar</a></li>
+                        <li class="nav-brand"><a href="{{ route('login') }}" class="nav-link text-success">Login</a></li>
+                        <li class="nav-brand"><a href="{{ route('register') }}" class="nav-link text-success">Registrar</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            <a href="#" class="nav-link dropdown-toggle text-success" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a href="{{ url('/') }}/profile" class="dropdown-item nav-brand">Perfil</a>
-                                <a href="{{ route('logout') }}" class="dropdown-item nav-brand"
+                                <a href="{{ url('/') }}/profile" class="dropdown-item nav-brand text-success">Perfil</a>
+                                <a href="{{ route('logout') }}" class="dropdown-item nav-brand text-success"
                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>

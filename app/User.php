@@ -29,9 +29,41 @@ class User extends Authenticatable
 
     /**
      * Un usuario estara en varios eventos (events)
+     *
+     * @return $this
      */
     public function events()
     {
         return $this->hasMany(Event::class)->orderBy('date', 'asc');
+    }
+
+    /**
+     * Un usuario puede tener varios comentarios (commentarys)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function commentarys()
+    {
+        return $this->hasMany(Commentary::class)->latest();
+    }
+
+    /**
+     * Un usuario puede tener varios votos (votes)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function votes()
+    {
+        return $this->hasMany(Vote::class)->latest();
+    }
+
+    /**
+     * Un usuario puede tener varias facturas (invoices)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class)->latest();
     }
 }

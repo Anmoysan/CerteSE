@@ -15,6 +15,7 @@ class CreateCommentarysTable extends Migration
     {
         Schema::create('commentarys', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('content');
             $table->timestamps();
         });
     }

@@ -31,6 +31,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'cost'    => $faker->randomFloat(2,0,50),
         'agemin' => $faker->numberBetween(0, 18),
         'organizer' => $faker->userName,
+        'commentarys' => $faker->boolean,
         'created_at' => ($time1 < $time2) ? $time1 : $time2,
         'updated_at' => ($time1 > $time2) ? $time1 : $time2
     ];
