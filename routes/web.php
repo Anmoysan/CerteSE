@@ -14,13 +14,12 @@
 Route::get('/', 'PagesController@home')->name('inicio');
 
 //Rutas de eventos
-Route::get('/events/places/{place}/create', 'EventsController@create')->middleware('auth');
+Route::get('/events/create', 'EventsController@create')->middleware('auth');
 Route::get('/events/{event}', 'EventsController@show');
-Route::post('/events/places/{place}/create', 'EventsController@store')->middleware('auth');
+Route::post('/events/create', 'EventsController@store')->middleware('auth');
 
 //Rutas de reservas
 Route::get('/events/{event}/reserves', 'ReservesController@index')->middleware('auth');
-Route::get('/events/{event}/places/{place}/reserves', 'ReservesController@placereserve')->middleware('auth');
 Route::get('/events/{event}/reserves/{reserve}', 'ReservesController@show')->middleware('auth');
 Route::get('/events/{event}/reserves/create', 'ReservesController@create')->middleware('auth');
 Route::post('/events/{event}/reserves/create', 'ReservesController@store')->middleware('auth');

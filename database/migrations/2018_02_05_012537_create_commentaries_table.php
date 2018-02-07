@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentarysTable extends Migration
+class CreateCommentariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCommentarysTable extends Migration
      */
     public function up()
     {
-        Schema::create('commentarys', function (Blueprint $table) {
+        Schema::create('commentaries', function (Blueprint $table) {
             $table->increments('id');
             $table->text('content');
             $table->timestamps();

@@ -13,7 +13,7 @@ class AddUserIdToCommentaryTable extends Migration
      */
     public function up()
     {
-        Schema::table('commentarys', function (Blueprint $table) {
+        Schema::table('commentaries', function (Blueprint $table) {
             $table->integer('user_id')->unsigned()->after('id');
             $table->foreign('user_id')->references('id')->on('users');
         });
@@ -26,8 +26,8 @@ class AddUserIdToCommentaryTable extends Migration
      */
     public function down()
     {
-        Schema::table('commentarys', function (Blueprint $table) {
-            $table->dropForeign('commentarys_user_id_foreign');
+        Schema::table('commentaries', function (Blueprint $table) {
+            $table->dropForeign('commentaries_user_id_foreign');
             $table->dropColumn('user_id');
         });
     }

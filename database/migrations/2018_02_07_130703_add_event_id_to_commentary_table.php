@@ -13,7 +13,7 @@ class AddEventIdToCommentaryTable extends Migration
      */
     public function up()
     {
-        Schema::table('commentarys', function (Blueprint $table) {
+        Schema::table('commentaries', function (Blueprint $table) {
             $table->integer('event_id')->unsigned()->after('id');
             $table->foreign('event_id')->references('id')->on('events');
         });
@@ -26,8 +26,8 @@ class AddEventIdToCommentaryTable extends Migration
      */
     public function down()
     {
-        Schema::table('commentarys', function (Blueprint $table) {
-            $table->dropForeign('commentarys_event_id_foreign');
+        Schema::table('commentaries', function (Blueprint $table) {
+            $table->dropForeign('commentaries_event_id_foreign');
             $table->dropColumn('event_id');
         });
     }

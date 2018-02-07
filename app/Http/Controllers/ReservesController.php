@@ -114,24 +114,4 @@ class ReservesController extends Controller
     {
         //
     }
-
-    /**
-     * Muestra las reservas que existen de un evento en un lugar
-     *
-     * @param Event $event
-     * @param Place $place
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function placereserve(Event $event, Place $place)
-    {
-        $event = Event::where('id', $event->id)->first();
-        $place = Place::where('id', $place->id)->first();
-        $reserve = Reserve::where('event_id', $event->id)->where('place_id', $place->id)->lastest();
-
-        return view('reserve.place', [
-            'event' => $event,
-            'place' => $place,
-            'reserve' => $reserve
-        ]);
-    }
 }

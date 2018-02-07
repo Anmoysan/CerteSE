@@ -20,7 +20,7 @@ $factory->define(App\Vote::class, function (Faker $faker) {
     $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
 
     return [
-        'agemin' => $faker->numberBetween(1, 5),
+        'vote' => $faker->numberBetween(1, 5),
         'created_at' => ($time1 < $time2) ? $time1 : $time2,
         'updated_at' => ($time1 > $time2) ? $time1 : $time2
     ];

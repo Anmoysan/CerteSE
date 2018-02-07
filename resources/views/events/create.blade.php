@@ -151,6 +151,23 @@
                                 @endif
                             </div>
 
+                            <div class="form-group{{ $errors->has('commentarys') ? ' has-error' : '' }}">
+                                <label class="mr-sm-2" for="commentarys">¿Quieres comentarios?</label>
+                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="commentarys">
+                                    <option selected value=true>Si</option>
+                                    <option value=false>No</option>
+                                </select>
+
+
+                            @if($errors->has('commentarys'))
+                                    @foreach($errors->get('commentarys') as $message)
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">
                                     Añadir evento

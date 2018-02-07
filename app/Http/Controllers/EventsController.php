@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Vote;
+use App\Place;
+use App\Commentary;
 use App\Event;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
@@ -17,8 +20,23 @@ class EventsController extends Controller
      */
     public function show(Event $event)
     {
+        $event = Event::where('id', $event->id)->first();
+        $place = Place::where('id', $event->place_id)->first();
+        $commentarys = $event->commentaries;
+        $votes = $event->votes;
+
+        $votesTotal = 0;
+
+        foreach ($votes as $vote) {
+            $votesTotal += $vote->vote;
+        }
+        $votesTotal /= $votes->count();
+
         return view('events.show', [
-            'event' => $event
+            'event' => $event,
+            'place' => $place,
+            'commentarys' => $commentarys,
+            'votesTotal' => $votesTotal
         ]);
     }
 

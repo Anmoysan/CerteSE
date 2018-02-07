@@ -111,12 +111,8 @@ class PlacesController extends Controller
     public function eventplace(Event $event)
     {
         $event = Event::where('id', $event->id)->first();
-        $place = Place::where('event_id', $event->id)->lastest();
 
-        return view('reserve.place', [
-            'event' => $event,
-            'place' => $place
-        ]);
+        return redirect("/events/$event->id");
     }
 
     /**
