@@ -18,7 +18,7 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->text('image');
             $table->text('description');
-            $table->string('place');
+            $table->string('coordinate');
             $table->timestamps();
         });
     }

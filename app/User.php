@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Invoice::class)->latest();
     }
+
+    /**
+     * Un usuario puede realizar varias reservas (reserve)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class)->latest();
+    }
 }

@@ -20,6 +20,16 @@ class Reserve extends Model
     }
 
     /**
+     * Una reserva es realizada por un usuario (user)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Una reserva tiene una factura (invoice)
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -27,15 +37,5 @@ class Reserve extends Model
     public function invoice()
     {
         return $this->belongsTo(Invoice::class);
-    }
-
-    /**
-     * Una reserva se realiza en un lugar (place)
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function place()
-    {
-        return $this->belongsTo(Place::class);
     }
 }

@@ -15,6 +15,7 @@ class CreateReservesTable extends Migration
     {
         Schema::create('reserves', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('place');
             $table->date('date');
             $table->double('cost');
             $table->integer('units');

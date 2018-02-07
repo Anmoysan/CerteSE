@@ -32,7 +32,7 @@ class CreateEventRequest extends FormRequest
             'date' => 'required|date',
             'duration' => 'required',
             'cost' => 'required|numeric|min:0|max:50',
-            'agemin' => 'required|numeric|min:0|max:18',
+            'agemin' => 'required|numeric|min:0|max:80',
             'organizer' => 'required|string|max:50',
         ];
     }

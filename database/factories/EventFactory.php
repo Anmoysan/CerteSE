@@ -29,7 +29,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'date' => $timeyear,
         'duration' => $faker->time('H:i'),
         'cost'    => $faker->randomFloat(2,0,50),
-        'agemin' => $faker->numberBetween(0, 18),
+        'agemin' => $faker->numberBetween(0, 80),
         'organizer' => $faker->userName,
         'commentarys' => $faker->boolean,
         'created_at' => ($time1 < $time2) ? $time1 : $time2,

@@ -48,4 +48,14 @@ class Event extends Model
     {
         return $this->hasMany(Reserve::class)->latest();
     }
+
+    /**
+     * Un evento se realiza en un lugar (place)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
+    }
 }

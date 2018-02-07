@@ -15,10 +15,10 @@ class EventsController extends Controller
      * @param Event $event
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Event $events)
+    public function show(Event $event)
     {
         return view('events.show', [
-            'events' => $events
+            'event' => $event
         ]);
     }
 
@@ -27,10 +27,12 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Place $place)
     {
-        return view('events.create', [
+        $place = Place::where('id', $place->id)->first();
 
+        return view('events.create', [
+            'place' => $place
         ]);
     }
 
@@ -41,12 +43,14 @@ class EventsController extends Controller
      * @param CreateEventRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(CreateEventRequest $request){
+    public function store(CreateEventRequest $request, Place $place){
 
         $user = $request->user();
+        $place = Place::where('id', $place->id)->first();
 
         Event::create([
             'user_id'   => $user->id,
+            'place_id'   => $place->id,
             'name' =>  $request->input('name'),
             'image' => $request->input('image'),
             'place' => $this->placeCalcule($request),
