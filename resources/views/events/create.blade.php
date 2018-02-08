@@ -40,31 +40,21 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
-                                <div class="input-group mb-2">
-                                    <label for="latitud" class="col-lg-6 control-label">Latitud</label>
-                                    <label for="longitud" class="col-lg-6 control-label">Longitud</label>
-                                </div>
-                                <div class="input-group mb-2">
-                                    <input id="latitud" type="text" class="form-control" name="latitud"
-                                           value="{{ explode(",", old('place'))[0] }}" autofocus>
-                                    @if($errors->has('latitud'))
-                                        @foreach($errors->get('latitud') as $message)
-                                            <div class="alert alert-danger" role="alert">
-                                                {{ $message }}
-                                            </div>
-                                        @endforeach
-                                    @endif
+                                <label for="place" class="col-md-4 control-label">Lugar</label>
+                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="place" id="place">
+                                    <option selected>Selecciona</option>
+                                    @foreach($places as $place)
+                                        <option value={{ $place['id'] }}>{{ $place['name'] }}</option>
+                                    @endforeach
+                                </select>
 
-                                    <input id="longitud" type="text" class="form-control" name="longitud"
-                                           value="{{ explode(",", old('place'))[0] }}" autofocus>
-                                    @if($errors->has('longitud'))
-                                        @foreach($errors->get('longitud') as $message)
-                                            <div class="alert alert-danger" role="alert">
-                                                {{ $message }}
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
+                                @if($errors->has('place'))
+                                    @foreach($errors->get('place') as $message)
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
 
                             <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
@@ -153,13 +143,13 @@
 
                             <div class="form-group{{ $errors->has('commentarys') ? ' has-error' : '' }}">
                                 <label class="mr-sm-2" for="commentarys">¿Quieres comentarios?</label>
-                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="commentarys">
-                                    <option selected value=true>Si</option>
-                                    <option value=false>No</option>
+                                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="commentarys" id="commentarys">
+                                    <option selected>Selecciona</option>
+                                    <option value=1>Si</option>
+                                    <option value=0>No</option>
                                 </select>
 
-
-                            @if($errors->has('commentarys'))
+                                @if($errors->has('commentarys'))
                                     @foreach($errors->get('commentarys') as $message)
                                         <div class="alert alert-danger" role="alert">
                                             {{ $message }}

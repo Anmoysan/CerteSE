@@ -1,13 +1,17 @@
 <div class="col-md-4 evento">
     <div class="ng">
         <h3>
-            {{ $event['name'] }}
+            <a href="/events/{{ $event['id'] }}">
+                {{ $event['name'] }}
+            </a>
         </h3>
     </div>
 
     <div>
-        <img class="img-princ img-responsive img-fluid img-portfolio img-hover mb-3 imagenevent"
+        <a class="event" href="/events/{{ $event['id'] }}">
+        <img class="img-princ imagenevent img-responsive img-fluid img-portfolio img-hover mb-3 imagenevent"
              src="{{ $event['image'] }}" alt="Foto del evento."/>
+        </a>
     </div>
 
     <div>

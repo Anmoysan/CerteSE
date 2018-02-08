@@ -18,7 +18,7 @@ $factory->define(App\Place::class, function (Faker $faker) {
 
     $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
     $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
-    $place = $faker->randomFloat(6, -85, 85)."|".$faker->randomFloat(6, -180, 180);
+    $place = $faker->randomFloat(6, -85, 85).", ".$faker->randomFloat(6, -180, 180);
 
     return [
         'name' => $faker->sentence($nbWords = 3, $variableNbWords = true) ,

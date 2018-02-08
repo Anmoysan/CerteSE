@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Vote;
 use App\Place;
-use App\Commentary;
 use App\Event;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
@@ -30,7 +28,12 @@ class EventsController extends Controller
         foreach ($votes as $vote) {
             $votesTotal += $vote->vote;
         }
-        $votesTotal /= $votes->count();
+
+        if ($votes->count() > 0) {
+            $votesTotal /= $votes->count();
+        } else {
+            $votesTotal = 0;
+        }
 
         return view('events.show', [
             'event' => $event,
@@ -45,12 +48,12 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Place $place)
+    public function create()
     {
-        $place = Place::where('id', $place->id)->first();
+        $places = Place::all();
 
         return view('events.create', [
-            'place' => $place
+            'places' => $places
         ]);
     }
 
@@ -61,31 +64,26 @@ class EventsController extends Controller
      * @param CreateEventRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(CreateEventRequest $request, Place $place){
+    public function store(CreateEventRequest $request){
 
         $user = $request->user();
-        $place = Place::where('id', $place->id)->first();
+        $place = Place::where('id', $request->input('place'))->first();
 
         Event::create([
             'user_id'   => $user->id,
             'place_id'   => $place->id,
             'name' =>  $request->input('name'),
             'image' => $request->input('image'),
-            'place' => $this->placeCalcule($request),
+            'place' => $place->name,
             'subject' => $request->input('subject'),
             'date' => $request->input('date'),
             'duration' => $request->input('duration'),
             'cost' => $request->input('cost'),
             'agemin' => $request->input('agemin'),
-            'organizer' => $request->input('organizer')
+            'organizer' => $request->input('organizer'),
+            'commentarys' => $request->input('commentarys')==1 ? true : false
         ]);
 
         return redirect('/');
-    }
-
-    public function placeCalcule(CreateEventRequest $request){
-        $latitud = $request->input('latitud');
-        $longitud = $request->input('longitud');
-        return $latitud . "|". $longitud;
     }
 }

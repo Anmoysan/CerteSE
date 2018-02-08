@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Comentario de {{ $event['name'] }}</h1>
+                @include('reserves.reserve')
             </div>
-            <div class="col-md-6">
-                @include('commentarys.commentary')
+            <div class="col-md-12">
+                @include('invoices.invoice')
             </div>
         </div>
     </div>

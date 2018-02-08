@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Place;
 use App\Reserve;
@@ -18,11 +20,11 @@ class ReservesController extends Controller
     public function index(Event $event)
     {
         $event = Event::where('id', $event->id)->first();
-        $reserve = Reserve::where('event_id', $event->id)->first();
+        $reserves = $event->reserves;
 
         return view('reserves.show', [
             'event' => $event,
-            'reserve' => $reserve
+            'reserves' => $reserves
         ]);
     }
 
@@ -34,9 +36,11 @@ class ReservesController extends Controller
     public function create(Event $event)
     {
         $event = Event::where('id', $event->id)->first();
+        $places = Place::all();
 
-        return view('reserve.create', [
-            'event' => $event
+        return view('reserves.create', [
+            'event' => $event,
+            'places' => $places
         ]);
     }
 
@@ -50,12 +54,12 @@ class ReservesController extends Controller
     {
         $user = Auth::user();
         $event = Event::where('id', $event->id)->first();
-        $place = Place::where('id', $event->place_id)->first();
+        $place = Place::where('id', $request->input('place'))->first();
 
         Reserve::create([
             'user_id'   => $user->id,
             'event_id'   => $event->id,
-            'place'   => $place->coordinate,
+            'place'   => $place->name,
             'date' => $request->input('date'),
             'cost' => $request->input('cost'),
             'units' => $request->input('units'),
@@ -73,11 +77,13 @@ class ReservesController extends Controller
     public function show(Event $event, Reserve $reserve)
     {
         $event = Event::where('id', $event->id)->first();
-        $reserve = Reserve::where('event_id', $event->id)->where('id', $reserve)->first();
+        $reserve = $event->reserves[$reserve->id];
+        $invoice = Invoice::where('reserve_id', $reserve->id)->first();
 
-        return view('reserves.show', [
+        return view('reserves.showreserve', [
             'event' => $event,
-            'reserve' => $reserve
+            'reserve' => $reserve,
+            'invoice' => $invoice
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Vote;
 use App\Http\Requests\CreateVoteRequest;
@@ -17,7 +18,7 @@ class VotesController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $votes = Vote::where('user_id', $user->id)->lastest();
+        $votes = $user->votes;
 
         return view('users.votes', [
             'user'      => $user,
@@ -68,11 +69,11 @@ class VotesController extends Controller
     public function show(Event $event)
     {
         $event = Event::where('id', $event->id)->first();
-        $votos = Vote::where('event_id', $event->id)->lastest();
+        $votes = $event->votes;
 
         return view('votes.show', [
             'event' => $event,
-            'votos' => $votos
+            'votes' => $votes
         ]);
     }
 

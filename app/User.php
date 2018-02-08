@@ -42,7 +42,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Query\Builder|static
      */
-    public function commentarys()
+    public function commentaries()
     {
         return $this->hasMany(Commentary::class)->latest();
     }

@@ -37,6 +37,7 @@ class PlacesController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Error al crear un nuevo lugar por la description
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -103,19 +104,6 @@ class PlacesController extends Controller
     }
 
     /**
-     * Muestra el lugar de un evento
-     *
-     * @param Event $event
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function eventplace(Event $event)
-    {
-        $event = Event::where('id', $event->id)->first();
-
-        return redirect("/events/$event->id");
-    }
-
-    /**
      * Transforma latitud y longitud en un solo campo
      *
      * @param CreatePlaceRequest $request
@@ -124,6 +112,6 @@ class PlacesController extends Controller
     public function placeCalcule(CreatePlaceRequest $request){
         $latitud = $request->input('latitud');
         $longitud = $request->input('longitud');
-        return $latitud . "|". $longitud;
+        return $latitud . ", ". $longitud;
     }
 }

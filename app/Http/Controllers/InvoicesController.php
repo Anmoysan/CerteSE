@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Invoice;
 use App\Reserve;
@@ -19,7 +20,7 @@ class InvoicesController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $invoices = Invoice::where('user_id', $user->id)->lastest();
+        $invoices = $user->invoices;
 
         return view('users.invoices', [
             'user'      => $user,
@@ -32,12 +33,23 @@ class InvoicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Reserve $reserve)
+    public function create(Event $event, Reserve $reserve)
     {
-        $reserve = Reserve::where('id', $reserve->id)->first();
+        $event = Event::where('id', $event->id)->first();
+        $reserves = $event->reserves;
+        $posicion = 0;
+
+        foreach ($reserves as $indice=>$reserv) {
+            if ($reserv->id == $reserve->id) {
+                $reserve = $reserv;
+                $posicion = $indice;
+            }
+        }
 
         return view('invoices.create', [
-            'reserve' => $reserve
+            'event' => $event,
+            'reserve' => $reserve,
+            'posicion' => $posicion
         ]);
     }
 
@@ -47,19 +59,19 @@ class InvoicesController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateInvoiceRequest $request, Reserve $reserve)
+    public function store(CreateInvoiceRequest $request, Event $event, Reserve $reserve)
     {
         $reserve = Reserve::where('id', $reserve->id)->first();
-        $user = User::where('id', $reserve->user_id)->first();
+        $user = Auth::user();
 
         Reserve::create([
-            'user_id'   => $reserve->user_id,
+            'user_id'   => $user->id,
             'reserve_id'   => $reserve->id,
-            'buyer' => $user->username,
+            'buyer' => $request->input('units'),
             'place' => $reserve->place,
-            'date' => $request->input('date'),
-            'cost' => $request->input('cost'),
-            'units' => $request->input('units'),
+            'date' => $reserve->date,
+            'cost' => $reserve->cost,
+            'units' => $reserve->units
         ]);
 
         return redirect("/events/$reserve->event_id/reserves/$reserve->id");
@@ -74,11 +86,17 @@ class InvoicesController extends Controller
     public function show(Invoice $invoice)
     {
         $user = Auth::user();
-        $invoice = Invoice::where('id', $invoice)->where('user_id', $user->id)->first();
+        $invoices = $user->invoices;
+
+        foreach ($invoices as $indice=>$invoic) {
+            if ($invoic->id == $invoice->id) {
+                $invoice = $invoic;
+            }
+        }
 
         return view('users.invoices', [
             'user'      => $user,
-            'invoice' => $invoice,
+            'invoice' => $invoice
         ]);
     }
 
@@ -114,23 +132,5 @@ class InvoicesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Muestra la factura de una reserva
-     *
-     * @param Reserve $reserve
-     * @param Invoice $invoice
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function eventinvoice(Reserve $reserve, Invoice $invoice)
-    {
-        $reserve = Reserve::where('id', $reserve->id)->first();
-        $invoice = Invoice::where('reserve_id', $reserve->id)->where('id', $invoice)->first();
-
-        return view('invoices.show', [
-            'reserve' => $reserve,
-            'invoice' => $invoice
-        ]);
     }
 }

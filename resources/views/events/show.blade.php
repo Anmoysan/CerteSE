@@ -33,7 +33,7 @@
                     <div class="row">
                         <h2>{{ $place['name'] }}</h2>
                         <img class="pagination" src="{{ $place['image'] }}">
-                        <p>Coordenadas: <strong>{{ $place['coordinate'] }}</strong></p>
+                        <div id="mapid"></div>
                     </div>
                 </div>
             </div>

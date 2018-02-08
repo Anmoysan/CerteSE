@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Commentary;
 use App\Http\Requests\CreateCommentaryRequest;
@@ -17,7 +18,7 @@ class CommentarysController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $commentarys = Commentary::where('user_id', $user->id)->lastest();
+        $commentarys = $user->commentaries;
 
         return view('users.commentarys', [
             'user'      => $user,
@@ -41,6 +42,7 @@ class CommentarysController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Error al crear un comentario por evento que es nulo
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -50,6 +52,7 @@ class CommentarysController extends Controller
         $user = $request->user();
         $event = Event::where('id', $event->id)->first();
 
+        dd($event);
         Commentary::create([
             'user_id'   => $user->id,
             'event_id'   => $event->id,
@@ -65,14 +68,23 @@ class CommentarysController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Event $event, Commentary $commentary)
     {
         $event = Event::where('id', $event->id)->first();
-        $commentarys = Commentary::where('event_id', $event->id)->lastest();
+        $commentarys = $event->commentaries;
+        $posicion = 0;
+
+        foreach ($commentarys as $indice=>$commentar) {
+            if ($commentar->id == $commentary->id) {
+                $commentary = $commentar;
+                $posicion = $indice;
+            }
+        }
 
         return view('commentarys.show', [
             'event' => $event,
-            'commentarys' => $commentarys
+            'commentary' => $commentary,
+            'posicion' => $posicion
         ]);
     }
 
@@ -119,29 +131,20 @@ class CommentarysController extends Controller
     public function usercommentary(Commentary $commentary)
     {
         $user = Auth::user();
-        $commentary = Commentary::where('id', $commentary)->where('user_id', $user->id);
+        $commentarys = $user->commentaries;
+        $posicion = 0;
+
+        foreach ($commentarys as $indice=>$commentar) {
+            if ($commentar->id == $commentary->id) {
+                $commentarys = $commentar;
+                $posicion = $indice;
+            }
+        }
 
         return view('users.commentarys', [
             'user'      => $user,
-            'commentary' => $commentary,
-        ]);
-    }
-
-    /**
-     * Muestra un comentario en especifico de un evento
-     *
-     * @param Event $event
-     * @param Commentary $commentary
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function eventcommentary(Event $event, Commentary $commentary)
-    {
-        $event = Event::where('id', $event->id)->first();
-        $commentarys = Commentary::where('event_id', $event->id)->where('id', $commentary)->lastest();
-
-        return view('commentarys.show', [
-            'event' => $event,
-            'commentarys' => $commentarys
+            'commentarys' => $commentarys,
+            'posicion' => $posicion
         ]);
     }
 }

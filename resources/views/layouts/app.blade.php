@@ -8,7 +8,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+          crossorigin=""/></head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -17,9 +18,10 @@
             <a class="navbar-brand text-success" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
-            @if( Auth::check())
+            @if( Auth::check() && App\Place::count() > 0)
                 <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear Eventos</a>
             @endif
+            <a class="navbar-brand text-success" href="{{ url('/') }}/places/create">Crear Lugar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,5 +64,6 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 </body>
 </html>
