@@ -8,8 +8,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-          crossorigin=""/></head>
+    <link rel="stylesheet" href="../../../node_modules/leaflet/dist/leaflet.css"
+          integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+          crossorigin=""/>
+</head>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet'/>
+<script src="../../../node_modules/leaflet/dist/leaflet.js"
+        integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -18,10 +24,12 @@
             <a class="navbar-brand text-success" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
-            @if( Auth::check() && App\Place::count() > 0)
-                <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear Eventos</a>
+            @if( Auth::check())
+                @if(App\Place::count() > 0)
+                    <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear Eventos</a>
+                @endif
+                <a class="navbar-brand text-success" href="{{ url('/') }}/places/create">Crear Lugar</a>
             @endif
-            <a class="navbar-brand text-success" href="{{ url('/') }}/places/create">Crear Lugar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,11 +38,14 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     @if (Auth::guest())
-                        <li class="nav-brand"><a href="{{ route('login') }}" class="nav-link text-success">Login</a></li>
-                        <li class="nav-brand"><a href="{{ route('register') }}" class="nav-link text-success">Registrar</a></li>
+                        <li class="nav-brand"><a href="{{ route('login') }}" class="nav-link text-success">Login</a>
+                        </li>
+                        <li class="nav-brand"><a href="{{ route('register') }}"
+                                                 class="nav-link text-success">Registrar</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle text-success" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            <a href="#" class="nav-link dropdown-toggle text-success" id="navbarDropdownMenuLink"
+                               data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
@@ -64,6 +75,8 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+        integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
 </body>
 </html>

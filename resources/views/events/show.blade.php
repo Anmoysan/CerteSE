@@ -55,3 +55,7 @@
         @endif
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/map.js') }}" defer></script>
+@endpush

@@ -68,3 +68,7 @@ body {
 .izq {
     text-align: left;
 }
+
+#mapid {
+    height: 180px;
+}
