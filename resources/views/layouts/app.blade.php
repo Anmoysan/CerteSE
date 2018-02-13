@@ -8,14 +8,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="../../../node_modules/leaflet/dist/leaflet.css"
-          integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-          crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
 </head>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet'/>
-<script src="../../../node_modules/leaflet/dist/leaflet.js"
-        integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-        crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -78,5 +74,7 @@
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
         integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
         crossorigin=""></script>
+<script src="{{ asset('js/map.js') }}" defer></script>
+@stack('scripts')
 </body>
 </html>

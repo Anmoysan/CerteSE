@@ -32,8 +32,7 @@
                     <h1>Lugar</h1>
                     <div class="row">
                         <h2>{{ $place['name'] }}</h2>
-                        <img class="pagination" src="{{ $place['image'] }}">
-                        <div id="mapid"></div>
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
@@ -57,5 +56,9 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/map.js') }}" defer></script>
+    <script >
+        $(function(){
+            maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');
+        })
+    </script>
 @endpush
