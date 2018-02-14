@@ -15,10 +15,12 @@ class UsersController extends Controller
      */
     public function index($name)
     {
-        $user = User::where('username',$name)->first();
-        $events = $user->events()->latest()->paginate(10);
+        $user = Auth::user();
+        $userSearch = User::where('username',$name)->first();
+        $events = $userSearch->events()->latest()->paginate(10);
 
         return view('users.eventsUser', [
+            'userSearch' => $userSearch,
             'user'      => $user,
             'events' => $events,
         ]);
@@ -102,6 +104,17 @@ class UsersController extends Controller
 
         return view('users.profile', [
             'user' => $user,
+        ]);
+    }
+
+    public function eventsUser()
+    {
+        $user = Auth::user();
+        $events = $user->events()->latest()->paginate(10);
+
+        return view('users.eventsUser', [
+            'user'      => $user,
+            'events' => $events,
         ]);
     }
 }

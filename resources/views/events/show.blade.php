@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="card col-md-8">
                 <div class="row">
                     <h1>{{ $event['name'] }}</h1>
                 </div>
@@ -21,25 +21,25 @@
                         <p>Precio: <strong>{{ $event['cost'] }}</strong></p>
                         <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
                     </div>
-                </div>
 
-                <div class="col-md-12">
-                    <div class="col-md-4">Votacion: {{ $votesTotal }}/5</div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">Votacion: {{ $votesTotal }}/5</div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="card col-md-4">
                 <div class="row pagination">
                     <h1>Lugar</h1>
                     <div class="row">
                         <h2>{{ $place['name'] }}</h2>
-                        <div id="map"></div>
+                        <div id="map" class="mapsmall"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         @if($event['commentarys'] == true || $event['commentarys'] == 1)
-            <div class="row">
+            <div class="row card">
                 <h2>Comentarios</h2>
                 @if($commentarys == null)
                     <p>No hay ningun comentario todavia</p>

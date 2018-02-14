@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', 'PagesController@home')->name('inicio');
+Route::get('/home', 'UsersController@eventsUser')->name('inicioLogin')->middleware('auth');
+Route::get('/', 'PagesController@home')->name('inicioNoLogin')->middleware('guest');
 
 //Rutas de eventos
+Route::get('/events/', 'EventsController@index');
 Route::get('/events/create', 'EventsController@create')->middleware('auth');
 Route::get('/events/{event}', 'EventsController@show');
 Route::post('/events/create', 'EventsController@store')->middleware('auth');

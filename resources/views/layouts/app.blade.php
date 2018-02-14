@@ -19,30 +19,39 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="navbar-brand"
-                       href="@if( Auth::check()) {{ url('/home') }} @else {{ url('/') }} @endif"><img
+                       href="{{ url('/') }}"><img
                                 src="{{ asset('Logo.png') }}" id="logo"/></a>
                 </li>
                 <li class="nav-item">
                     <a class="navbar-brand text-success"
-                       href="@if( Auth::check()) {{ url('/home') }} @else {{ url('/') }} @endif">
+                       href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </li>
+
+
                 @if( Auth::check())
-                    @if(App\Place::count() > 0)
-                        <li class="nav-item">
-                            <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear Eventos</a>
-                        </li>
-                    @endif
+                    <li class="nav-item dropdown">
+                        <a class="navbar-brand text-success dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Eventos</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-success" href="{{ url('/') }}/events/">Ver</a>
+                            @if(App\Place::count() > 0)
+                                <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear</a>
+                            @endif
+                        </div>
+                    </li>
                 @endif
+
                 <li class="nav-item dropdown">
                     <a class="navbar-brand text-success dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Lugares</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('/') }}/places/">Ver</a>
+                        <a class="dropdown-item text-success" href="{{ url('/') }}/places/">Ver</a>
                         @if( Auth::check())
-                            <a class="dropdown-item" href="{{ url('/') }}/places/create">Crear</a>
+                            <a class="dropdown-item text-success" href="{{ url('/') }}/places/create">Crear</a>
                         @endif
                     </div>
                 </li>
@@ -83,7 +92,6 @@
                     @endif
                 </ul>
             </div>
-
         </div>
     </nav>
     <div class="contenido">

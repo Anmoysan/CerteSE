@@ -48,8 +48,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:30',
-            'lastname' => 'required|string|max:60',
+            'name' => 'required|alpha|string|max:30',
+            'lastname' => 'required|alpha|string|max:60',
             'username' => 'required|string|max:30|unique:users',
             'email' => 'required|max:100|email',
             'password' => 'required|min:8|max:100|confirmed',
@@ -57,9 +57,11 @@ class RegisterController extends Controller
             'mobileNumber' => 'required|numeric|min:600000000|max:999999999',
         ], [
             'name.required' => 'El nombre es obligatorio.',
+            'name.alpha' => 'El nombre solo puede contener letras.',
             'name.string' => 'El nombre debe ser una cadena de caracteres',
             'name.max' => 'El nombre debe tener 30 caracteres como maximo',
             'lastname.required' => 'Los apellidos es obligatorio.',
+            'lastname.alpha' => 'Los apellidos solo puede contener letras.',
             'lastname.string' => 'Los apellidos deben ser una cadena de caracteres',
             'lastname.max' => 'Los apellidos tener tener 60 caracteres como maximo',
             'username.required' => 'El nick es obligatorio.',

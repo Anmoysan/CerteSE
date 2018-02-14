@@ -9,6 +9,21 @@ use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
+
+    /**
+     * Metodo que muestra todos los eventos
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(){
+
+        $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
+
+        return view('home', [
+            'events' => $events
+        ]);
+    }
+
     /**
      * Método que muestra la información de un mensaje. Utiliza Route Binding
      * para coneguir el Event facilitado por el parámetro.
