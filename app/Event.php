@@ -58,4 +58,28 @@ class Event extends Model
     {
         return $this->belongsTo(Place::class);
     }
+
+    /**
+     * Permite obtener la media de un evento
+     *
+     * @return int
+     */
+    public function votesMean()
+    {
+        $votes = $this->votes;
+
+        $votesTotal = 0;
+
+        foreach ($votes as $vote) {
+            $votesTotal += $vote->vote;
+        }
+
+        if ($votes->count() > 0) {
+            $votesTotal /= $votes->count();
+        } else {
+            $votesTotal = 0;
+        }
+
+        return $votesTotal;
+    }
 }

@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <h1 class="page-header titulo">Eventos</h1>
+                <h1 class="page-header titulo">Próximos eventos</h1>
             </div>
         </div>
-        @forelse($events->chunk(3) as $chunk)
-            <div class="row course-set courses__row event">
+        @forelse($events->chunk(2) as $chunk)
+            <div class="row course-set courses__row event d-flex justify-content-around">
                 @foreach($chunk as $event)
                     @include('events.event')
                 @endforeach

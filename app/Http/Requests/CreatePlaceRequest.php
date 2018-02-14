@@ -25,7 +25,7 @@ class CreatePlaceRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:60',
-            'image' => 'required|string|max:255',
+            'image' => 'required|image|string|max:255',
             'description' => 'required|string|min:10|max:255',
             'latitud' => 'required|numeric|min:-85|max:85',
             'longitud' => 'required|numeric|min:-180|max:180'
@@ -46,6 +46,7 @@ class CreatePlaceRequest extends FormRequest
             'name.max' => 'Has sobrepasado los 60 caracteres disponibles para el nombre',
             'name.string' => 'El nombre debe contener caracteres',
             'image.required' => 'Es necesario completar el campo imagen',
+            'image.image' => 'El campo imagen debe contener un archivo de tipo .jpg, jpeg, png, bmp, gif, o svg',
             'image.max' => 'Has sobrepasado los 255 caracteres disponibles para el imagen',
             'image.string' => 'La imagen debe contener caracteres',
             'description.required' => 'Es necesario completar el campo descripcion',

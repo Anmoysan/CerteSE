@@ -53,8 +53,8 @@ class RegisterController extends Controller
             'username' => 'required|string|max:30|unique:users',
             'email' => 'required|max:100|email',
             'password' => 'required|min:8|max:100|confirmed',
-            'mobileCountry' => 'required|string|min:1|max:3',
-            'mobileNumber' => 'required|string|min:9|max:9',
+            'mobileCountry' => 'required|numeric|min:1|max:999',
+            'mobileNumber' => 'required|numeric|min:600000000|max:999999999',
         ], [
             'name.required' => 'El nombre es obligatorio.',
             'name.string' => 'El nombre debe ser una cadena de caracteres',
@@ -75,13 +75,13 @@ class RegisterController extends Controller
             'password.min' => 'La contraseña debe tener 8 caracteres como minimo',
             'password.confirmed' => 'Las contraseñas no coinciden',
             'mobileCountry.required' => 'El codigo del pais es obligatorio.',
-            'mobileCountry.numeric' => 'El codigo del pais debe ser numeros',
-            'mobileCountry.max' => 'El codigo del pais debe tener 3 caracteres como maximo',
-            'mobileCountry.min' => 'El codigo del pais debe tener 1 caracteres como minimo',
+            'mobileCountry.numeric' => 'El codigo del pais debe contener solo numeros',
+            'mobileCountry.max' => 'El codigo del pais debe tener como numero maximo el 999',
+            'mobileCountry.min' => 'El codigo del pais debe tener como numero minimo el 1',
             'mobileNumber.required' => 'El movil es obligatorio.',
-            'mobileNumber.numeric' => 'El movil debe ser numeros',
-            'mobileNumber.max' => 'El movil debe tener 9 caracteres como maximo',
-            'mobileNumber.min' => 'El movil debe tener 9 caracteres como minimo',
+            'mobileNumber.numeric' => 'El movil debe contener solo numeros',
+            'mobileNumber.max' => 'El movil debe tener como numero maximo el 999999999',
+            'mobileNumber.min' => 'El movil debe tener como numero minimo el 600000000',
         ]);
     }
 

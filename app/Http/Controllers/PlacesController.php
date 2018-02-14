@@ -16,7 +16,7 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        $places = Place::orderBy('name', 'asc')->paginate(10);
+        $places = Place::orderBy('name', 'asc')->paginate(9);
 
         return view('places.index', [
             'places'      => $places
@@ -44,11 +44,11 @@ class PlacesController extends Controller
      */
     public function store(CreatePlaceRequest $request)
     {
-        Event::create([
+        Place::create([
             'name' =>  $request->input('name'),
             'image' => $request->input('image'),
             'description' => $request->input('description'),
-            'place' => $this->placeCalcule($request)
+            'coordinate' => $this->placeCalcule($request)
         ]);
 
         return redirect('/places');
@@ -112,6 +112,6 @@ class PlacesController extends Controller
     public function placeCalcule(CreatePlaceRequest $request){
         $latitud = $request->input('latitud');
         $longitud = $request->input('longitud');
-        return $latitud . ", ". $longitud;
+        return "$latitud, $longitud";
     }
 }

@@ -13,10 +13,6 @@
     width: 40px;
 }
 
-ul.navbar-nav, navbar-header {
-    padding: 10px;
-}
-
 ul.navbar-nav a, a.navbar-brand {
     padding-left: 40px;
 }
@@ -28,12 +24,13 @@ ul.navbar-nav a, a.navbar-brand {
 .imagenevent {
     display: block;
     margin: auto;
+    padding-bottom: 15px;
 }
 
 .titulo {
-    color: green;
+    color: white;
     border-bottom: solid;
-    border-color: green;
+    border-color: white;
 }
 
 .row {
@@ -46,19 +43,13 @@ ul.navbar-nav a, a.navbar-brand {
 }
 
 nav, ul.navbar-nav, li.nav-item a, .fondoNav {
-    background-image: url("../fondoNav.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-li.nav-item a {
-    padding-bottom: 10px;
-    padding-top: 10px;
+    background-color: white;
 }
 
 body {
     background-image: url("../fondo.jpg");
-    background-size: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .pagination {
@@ -74,3 +65,4 @@ body {
     height: 200px;
     box-shadow: 5px 5px 5px #888;
 }
+

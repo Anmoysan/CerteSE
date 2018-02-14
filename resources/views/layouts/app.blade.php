@@ -8,24 +8,46 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
 </head>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet'/>
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('Logo.png') }}" id="logo"/></a>
-            <a class="navbar-brand text-success" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            @if( Auth::check())
-                @if(App\Place::count() > 0)
-                    <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear Eventos</a>
+        <div class="container collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="navbar-brand"
+                       href="@if( Auth::check()) {{ url('/home') }} @else {{ url('/') }} @endif"><img
+                                src="{{ asset('Logo.png') }}" id="logo"/></a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand text-success"
+                       href="@if( Auth::check()) {{ url('/home') }} @else {{ url('/') }} @endif">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                </li>
+                @if( Auth::check())
+                    @if(App\Place::count() > 0)
+                        <li class="nav-item">
+                            <a class="navbar-brand text-success" href="{{ url('/') }}/events/create">Crear Eventos</a>
+                        </li>
+                    @endif
                 @endif
-                <a class="navbar-brand text-success" href="{{ url('/') }}/places/create">Crear Lugar</a>
-            @endif
+                <li class="nav-item dropdown">
+                    <a class="navbar-brand text-success dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Lugares</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/') }}/places/">Ver</a>
+                        @if( Auth::check())
+                            <a class="dropdown-item" href="{{ url('/') }}/places/create">Crear</a>
+                        @endif
+                    </div>
+                </li>
+                @yield('nav')
+            </ul>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

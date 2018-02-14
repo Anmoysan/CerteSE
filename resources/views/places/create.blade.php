@@ -61,6 +61,12 @@
                                 <div class="input-group mb-2">
                                     <input id="latitud" type="text" class="form-control" name="latitud"
                                            value="{{ explode(",", old('place'))[0] }}">
+
+                                    <input id="longitud" type="text" class="form-control" name="longitud"
+                                           value="{{ explode(",", old('place'))[0] }}">
+
+                                </div>
+                                <div>
                                     @if($errors->has('latitud'))
                                         @foreach($errors->get('latitud') as $message)
                                             <div class="alert alert-danger" role="alert">
@@ -69,8 +75,6 @@
                                         @endforeach
                                     @endif
 
-                                    <input id="longitud" type="text" class="form-control" name="longitud"
-                                           value="{{ explode(",", old('place'))[0] }}">
                                     @if($errors->has('longitud'))
                                         @foreach($errors->get('longitud') as $message)
                                             <div class="alert alert-danger" role="alert">

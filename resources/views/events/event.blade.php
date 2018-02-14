@@ -1,36 +1,24 @@
-<div class="col-md-4 evento">
-    <div class="ng">
-        <h3>
-            <a href="/events/{{ $event['id'] }}">
-                {{ $event['name'] }}
-            </a>
-        </h3>
+<div class="card col-md-5 evento">
+    <div class="card-block">
+        <h4 class="card-title"><a href="/events/{{ $event['id'] }}">{{ $event['name'] }}</a></h4>
+    </div><hr>
+
+    <div class="card-block">
+        <a href="/events/{{ $event['id'] }}"><img class="card-img-top img-princ imagenevent img-responsive" src="{{ $event['image'] }}" alt="Foto de {{ $event['name'] }}"></a>
     </div>
 
-    <div>
-        <a class="event" href="/events/{{ $event['id'] }}">
-        <img class="img-princ imagenevent img-responsive img-fluid img-portfolio img-hover mb-3 imagenevent"
-             src="{{ $event['image'] }}" alt="Foto del evento."/>
-        </a>
-    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Votacion: <strong>{{ $event->votesMean() }}</strong></li>
+        <li class="list-group-item">Precio: <strong>{{ $event['cost'] }}</strong></li>
+        <li class="list-group-item">Fecha: <strong>{{ $event['date'] }}</strong></li>
+    </ul>
 
-    <div>
-        <p>
-            <a href="/user/{{ $event->user->username }}">
-                {{ $event->user->username }}
-            </a>
-        </p>
-    </div>
-
-    <div>
-        <h4 class="price ng">
-            Precio: {{ $event['cost'] }} €
-        </h4>
-    </div>
-
-    <div>
-        <p class="date ng">
-            Fecha: {{ $event['date'] }}
-        </p>
-    </div>
+    @isset($user)
+        @if($user->id == $event->user_id)
+            <div class="card-block">
+                <a href="#" class="card-link">Editar</a>
+                <a href="#" class="card-link">Eliminar</a>
+            </div>
+        @endif
+    @endisset
 </div>

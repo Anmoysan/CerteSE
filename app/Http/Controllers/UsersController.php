@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function index($name)
     {
         $user = User::where('username',$name)->first();
-        $events = $user->events()->latest()->paginate(9);
+        $events = $user->events()->latest()->paginate(10);
 
         return view('users.eventsUser', [
             'user'      => $user,

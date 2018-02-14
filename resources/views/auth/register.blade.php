@@ -17,10 +17,12 @@
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
                                        autofocus>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                @if($errors->has('name'))
+                                    @foreach($errors->get('name') as $message)
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @endforeach
                                 @endif
                             </div>
 
@@ -30,10 +32,12 @@
                                 <input id="lastname" type="text" class="form-control" name="lastname"
                                        value="{{ old('lastname') }}">
 
-                                @if ($errors->has('lastname'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lastname') }}</strong>
-                                    </span>
+                                @if($errors->has('lastname'))
+                                    @foreach($errors->get('lastname') as $message)
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @endforeach
                                 @endif
                             </div>
 
@@ -43,10 +47,12 @@
                                 <input id="username" type="text" class="form-control" name="username"
                                        value="{{ old('username') }}">
 
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
+                                @if($errors->has('username'))
+                                    @foreach($errors->get('username') as $message)
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @endforeach
                                 @endif
                             </div>
 
@@ -56,11 +62,45 @@
                                 <input id="email" type="email" class="form-control" name="email"
                                        value="{{ old('email') }}">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                @if($errors->has('email'))
+                                    @foreach($errors->get('email') as $message)
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @endforeach
                                 @endif
+                            </div>
+
+                            <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
+                                <label for="mobile" class="col-lg-4 control-label">Movil</label>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="addon">+</span>
+                                    <input id="mobileCountry" type="text" class="form-control col-md-4 input-group"
+                                           name="mobileCountry"
+                                           value="{{ old('mobileCountry') }}" aria-describedby="basic-addon1">
+
+                                    <input id="mobileNumber" type="text" class="form-control col-md-8"
+                                           name="mobileNumber"
+                                           value="{{ old('mobileNumber') }}">
+                                </div>
+                                <div>
+                                    @if($errors->has('mobileCountry'))
+                                        @foreach($errors->get('mobileCountry') as $message)
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ $message }}
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+                                    @if($errors->has('mobileNumber'))
+                                        @foreach($errors->get('mobileNumber') as $message)
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ $message }}
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -68,10 +108,12 @@
 
                                 <input id="password" type="password" class="form-control" name="password">
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                @if($errors->has('password'))
+                                    @foreach($errors->get('password') as $message)
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @endforeach
                                 @endif
                             </div>
 
@@ -81,29 +123,6 @@
 
                                 <input id="password-confirm" type="password" class="form-control"
                                        name="password_confirmation">
-                            </div>
-
-                            <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                                <label for="mobile" class="col-lg-4 control-label">Movil</label>
-
-                                <div class="input-group mb-2">
-                                    <input id="mobileCountry" type="text" class="form-control col-md-4 input-group"
-                                           name="mobileCountry"
-                                           value="{{ old('mobileCountry') }}">
-                                    @if ($errors->has('mobileCountry'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('mobileCountry') }}</strong>
-                                    </span>
-                                    @endif
-                                    <input id="mobileNumber" type="text" class="form-control col-md-8"
-                                           name="mobileNumber"
-                                           value="{{ old('mobileNumber') }}">
-                                    @if ($errors->has('mobileNumber'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('mobileNumber') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
                             </div>
 
                             <div class="form-group row">

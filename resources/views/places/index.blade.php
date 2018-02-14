@@ -8,7 +8,7 @@
             </div>
         </div>
         @forelse($places->chunk(3) as $chunk)
-            <div class="row course-set courses__row event">
+            <div class="row course-set courses__row event d-flex justify-content-around">
                 @foreach($chunk as $place)
                     @include('places.place')
                 @endforeach
