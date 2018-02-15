@@ -27,7 +27,7 @@ class AddUserIdToEventTable extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->dropForeign('users_event_id_foreign');
+            $table->dropForeign('events_user_id_foreign');
             $table->dropColumn('user_id');
         });
     }

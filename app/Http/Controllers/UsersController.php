@@ -127,7 +127,7 @@ class UsersController extends Controller
 
             return View::make('events.listaevents', array('events' => $events))->render();
         } else {
-            return redirect('/home');
+            return redirect('/');
         }
     }
 }
