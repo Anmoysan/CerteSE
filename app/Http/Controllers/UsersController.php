@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class UsersController extends Controller
 {
@@ -116,5 +117,17 @@ class UsersController extends Controller
             'user'      => $user,
             'events' => $events,
         ]);
+    }
+
+    public function givePageMyEvents()
+    {
+        if (request()->ajax()) {
+            $user = Auth::user();
+            $events = $user->events()->latest()->paginate(10);
+
+            return View::make('events.listaevents', array('events' => $events))->render();
+        } else {
+            return redirect('/home');
+        }
     }
 }

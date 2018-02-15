@@ -1,4 +1,4 @@
-<div class="card col-md-5 evento">
+<div id="load" style="position: relative;" class="card col-md-5 evento">
     <div class="card-block">
         <h4 class="card-title"><a href="/events/{{ $event['id'] }}">{{ $event['name'] }}</a></h4>
     </div><hr>

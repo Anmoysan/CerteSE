@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
+    <div class="container card">
+        <div class="card-group row">
             <div class="col-md-4">
                 <img src="{{$user->avatar }}" id="avatar" alt="Foto del usuario">
             </div>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <br><br>
-        <div class="row">
+        <div class="card-group row">
             <div class="col-md-4">
                 <p>Nombre: <strong>{{$user->name }}</strong></p>
                 <p>Apellidos: <strong>{{$user->lastname }}</strong></p>
@@ -31,11 +31,11 @@
             </div>
         </div>
         <br>
-        <div class="row">
+        <div class="card-group row">
             <p>Biografia: <strong>{{$user->biography }}</strong></p>
         </div>
         <br>
-        <div class="row">
+        <div class="card-group row">
             <p>Web: <strong>{{$user->website }}</strong></p>
         </div>
     </div>
