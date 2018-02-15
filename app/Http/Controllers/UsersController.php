@@ -111,7 +111,7 @@ class UsersController extends Controller
     public function eventsUser()
     {
         $user = Auth::user();
-        $events = $user->events()->latest()->paginate(10);
+        $events = $user->events()->paginate(10);
 
         return view('users.eventsUser', [
             'user'      => $user,
@@ -123,7 +123,7 @@ class UsersController extends Controller
     {
         if (request()->ajax()) {
             $user = Auth::user();
-            $events = $user->events()->latest()->paginate(10);
+            $events = $user->events()->paginate(10);
 
             return View::make('events.listaevents', array('events' => $events))->render();
         } else {

@@ -32,6 +32,7 @@ class User extends Authenticatable
      *
      * @return $this
      */
+
     public function events()
     {
         return $this->hasMany(Event::class)->orderBy('date', 'asc')->latest();
