@@ -10,11 +10,9 @@
         <div id="listado" >
             @include('events.listaevents')
         </div>
-
     </div>
-
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/pagination.js') }}" defer></script>
+    <script src="{{ asset('js/paginationEvents.js') }}" defer></script>
 @endpush

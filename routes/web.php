@@ -14,7 +14,7 @@
 Route::get('/home', 'UsersController@eventsUser')->name('inicioLogin')->middleware('auth');
 Route::get('/', 'PagesController@home')->name('inicioNoLogin')->middleware('guest');
 Route::get('/giveEvents/', 'PagesController@givePageEvents');
-Route::get('/giveMyEvents/', 'UserController@givePageMyEvents');
+Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
 
 //Rutas de eventos
 Route::get('/events/', 'EventsController@index');

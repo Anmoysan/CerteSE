@@ -12,6 +12,7 @@ function giveDatesEvent(){
         }).catch(function (error) {
         console.log(error);
     });
+    window.scrollTo($("#logo").left,$("#logo").top);
 }
 
 function asociarEventoAsincrono(){
