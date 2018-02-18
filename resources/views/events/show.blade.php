@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="row col-md-12">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div>
                                 <h4>Media votacion</h4>
                                 <h2 class="bold padding-bottom-7">{{ $votesTotal }}
@@ -56,82 +56,32 @@
 
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <h4>Radio votacion</h4>
-                            <div class="pull-left">
-                                <div style="line-height:1;">
-                                    <div style="margin:5px 0;">5 estrellas<span class="glyphicon glyphicon-star"></span>
-                                    </div>
-                                </div>
-                                <div style="width:180px;">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
-                                             role="progressbar"
-                                             style="width: @if($event->votesCalculator(5)*100 != 0) {{ $event->votesCalculator(5)*100 }}% @else 2% @endif">
-                                        </div>
-                                        <div style="margin-left:10px;">{{ $event->votesCalculator(5)*100 }}%</div>
-                                    </div>
-                                </div>
+                            <div class="votos">
+                                <div>5 <img class="estrella" src="../estrellas.png"/></div>
+                                <div class="progress progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
+                                     style="width: @if($event->votesCalculator(5)*100 != 0) {{ $event->votesCalculator(5)*100 }}% @else 5% @endif">{{ $event->votesCalculator(5)*100 }}%</div>
                             </div>
-                            <div class="pull-left">
-                                <div style="line-height:1;">
-                                    <div style="margin:5px 0;">4 estrellas<span class="glyphicon glyphicon-star"></span>
-                                    </div>
-                                </div>
-                                <div style="width:180px;">
-                                    <div class="progress" style="margin:8px 0;">
-                                        <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated"
-                                             role="progressbar"
-                                             style="width: @if($event->votesCalculator(4)*100 != 0) {{ $event->votesCalculator(4)*100 }}% @else 2% @endif">
-                                        </div>
-                                    </div>
-                                    <div style="margin-left:10px;">{{ $event->votesCalculator(4)*100 }}%</div>
-                                </div>
+                            <div class="votos">
+                                <div>4 <img class="estrella" src="../estrellas.png"/></div>
+                                <div class="progress progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar"
+                                     style="width: @if($event->votesCalculator(4)*100 != 0) {{ $event->votesCalculator(4)*100 }}% @else 5% @endif">{{ $event->votesCalculator(4)*100 }}%</div>
                             </div>
-                            <div class="pull-left">
-                                <div style="line-height:1;">
-                                    <div style="margin:5px 0;">3 estrellas<span class="glyphicon glyphicon-star"></span>
-                                    </div>
-                                </div>
-                                <div style="width:180px;">
-                                    <div class="progress" style="margin:8px 0;">
-                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
-                                             role="progressbar"
-                                             style="width: @if($event->votesCalculator(3)*100 != 0) {{ $event->votesCalculator(3)*100 }}% @else 2% @endif">
-                                        </div>
-                                    </div>
-                                    <div style="margin-left:10px;">{{ $event->votesCalculator(3)*100 }}%</div>
-                                </div>
+                            <div class="votos">
+                                <div>3 <img class="estrella" src="../estrellas.png"/></div>
+                                <div class="progress progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar"
+                                     style="width: @if($event->votesCalculator(3)*100 != 0) {{ $event->votesCalculator(3)*100 }}% @else 5% @endif">{{ $event->votesCalculator(3)*100 }}%</div>
                             </div>
-                            <div class="pull-left">
-                                <div style="line-height:1;">
-                                    <div style="margin:5px 0;">2 estrellas<span class="glyphicon glyphicon-star"></span>
-                                    </div>
-                                </div>
-                                <div style="width:180px;">
-                                    <div class="progress" style="margin:8px 0;">
-                                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
-                                             role="progressbar"
-                                             style="width: @if($event->votesCalculator(2)*100 != 0) {{ $event->votesCalculator(2)*100 }}% @else 2% @endif">
-                                        </div>
-                                    </div>
-                                    <div style="margin-left:10px;">{{ $event->votesCalculator(2)*100 }}%</div>
-                                </div>
+                            <div class="votos">
+                                <div>2 <img class="estrella" src="../estrellas.png"/></div>
+                                <div class="progress progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
+                                     style="width: @if($event->votesCalculator(2)*100 != 0) {{ $event->votesCalculator(2)*100 }}% @else 5% @endif">{{ $event->votesCalculator(2)*100 }}%</div>
                             </div>
-                            <div class="pull-left">
-                                <div style="line-height:1;">
-                                    <div style="margin:5px 0;">1 estrellas<span class="glyphicon glyphicon-star"></span>
-                                    </div>
-                                </div>
-                                <div style="width:180px;">
-                                    <div class="progress" style="margin:8px 0;">
-                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
-                                             role="progressbar"
-                                             style="width: @if($event->votesCalculator(1)*100 != 0) {{ $event->votesCalculator(1)*100 }}% @else 2% @endif">
-                                        </div>
-                                    </div>
-                                    <div style="margin-left:10px;">{{ $event->votesCalculator(1)*100 }}%</div>
-                                </div>
+                            <div class="votos">
+                                <div>1 <img class="estrella" src="../estrellas.png"/></div>
+                                <div class="progress progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar"
+                                     style="width: @if($event->votesCalculator(1)*100 != 0) {{ $event->votesCalculator(1)*100 }}% @else 5% @endif">{{ $event->votesCalculator(1)*100 }}%</div>
                             </div>
                         </div>
                     </div>
