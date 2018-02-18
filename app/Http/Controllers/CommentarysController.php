@@ -47,19 +47,17 @@ class CommentarysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCommentaryRequest $request, Event $event)
+    public function store(CreateCommentaryRequest $request)
     {
         $user = $request->user();
-        $event = Event::where('id', $event->id)->first();
 
-        dd($event);
         Commentary::create([
             'user_id'   => $user->id,
-            'event_id'   => $event->id,
+            'event_id'   => $request->input('event_id'),
             'content' =>  $request->input('content'),
         ]);
 
-        return redirect("/events/$event->id");
+        return redirect("/events/".$request->input('event_id'));
     }
 
     /**

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Place;
 use App\Event;
 use App\Http\Requests\CreateEventRequest;
+use App\Vote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -33,6 +35,7 @@ class EventsController extends Controller
      */
     public function show(Event $event)
     {
+        $user = Auth::user();
         $event = Event::where('id', $event->id)->first();
         $place = Place::where('id', $event->place_id)->first();
         $commentarys = $event->commentaries;
@@ -40,6 +43,7 @@ class EventsController extends Controller
         $votesTotal = $event->votesMean();
 
         return view('events.show', [
+            'user' => $user,
             'event' => $event,
             'place' => $place,
             'commentarys' => $commentarys,

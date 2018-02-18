@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="row fondoNav text-success">
+    <div class="row fondoNav text-info">
             <div class="col-md-4">
                 <p>Lugar: <strong>{{ $reserve['place'] }}</strong></div>
 

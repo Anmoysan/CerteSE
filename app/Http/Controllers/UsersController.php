@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +17,11 @@ class UsersController extends Controller
      */
     public function index($name)
     {
-        $user = Auth::user();
-        $userSearch = User::where('username',$name)->first();
-        $events = $userSearch->events()->latest()->paginate(10);
+        $user = User::where('username',$name)->first();
+        $events = $user->events()->latest()->paginate(10);
 
         return view('users.eventsUser', [
-            'userSearch' => $userSearch,
+            'userSearch' => $user,
             'user'      => $user,
             'events' => $events,
         ]);
@@ -113,6 +113,8 @@ class UsersController extends Controller
         $user = Auth::user();
         $events = $user->events()->paginate(10);
 
+        //dd(Event::whereIn('id', $reserves)->paginate(10));
+
         return view('users.eventsUser', [
             'user'      => $user,
             'events' => $events,
@@ -124,6 +126,8 @@ class UsersController extends Controller
         if (request()->ajax()) {
             $user = Auth::user();
             $events = $user->events()->paginate(10);
+
+            //dd(Event::whereIn('id', $reserves)->paginate(10));
 
             return View::make('events.listaevents', array('events' => $events))->render();
         } else {

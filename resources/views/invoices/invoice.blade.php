@@ -1,4 +1,4 @@
-<div class="col-md-4 fondoNav text-success">
+<div class="col-md-4 fondoNav text-info">
     <div class="ng">
         <h3>
             Factura nº: {{ $invoice['id'] }}

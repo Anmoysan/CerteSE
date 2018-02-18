@@ -55,6 +55,6 @@ Route::get('/profile/commentarys/{commentary}', 'EventsController@usercommentary
 
 //Rutas de usuario
 Route::get('/profile', 'UsersController@profile')->middleware('auth');
-Route::get('/user/{user}', 'UsersController@index')->name('user.username');
+Route::get('/user/{user}', 'UsersController@index')->name('user.profile');
 
 Auth::routes();

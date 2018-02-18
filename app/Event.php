@@ -82,4 +82,25 @@ class Event extends Model
 
         return $votesTotal;
     }
+
+    public function votesCalculator($num)
+    {
+        $votes = $this->votes;
+
+        $votesTotal = 0;
+
+        foreach ($votes as $vote) {
+            if ($vote->vote == $num) {
+                $votesTotal += 1;
+            }
+        }
+
+        if ($votes->count() > 0) {
+            $votesTotal /= $votes->count();
+        } else {
+            $votesTotal = 0;
+        }
+
+        return $votesTotal;
+    }
 }

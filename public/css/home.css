@@ -72,3 +72,20 @@ body {
     box-shadow: 5px 5px 5px #888;
 }
 
+.perfil {
+    margin-top: 40px;
+}
+
+.estrella {
+    width: 20px;
+    height: 20px;
+}
+
+.votar:hover {
+    background-color: #cebb0a;
+}
+
+.imagecomment {
+    width: 50px;
+    height: 60px;
+}

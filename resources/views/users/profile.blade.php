@@ -1,19 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container card">
+    <div class="container perfil card">
         <div class="card-group row">
             <div class="col-md-4">
                 <img src="{{$user->avatar }}" id="avatar" alt="Foto del usuario">
             </div>
             <div class="col-lg-5">
                 <h1>{{$user->username }}</h1>
-            </div>
-            <div class="col-lg-3">
-                <h3>El usuario esta baneado: {{$user->ban==1 || $user->ban ? "Si" : "No" }}</h3>
-                @if($user->ban || $user->ban==1)
-                    <h3>Tiempo baneado: {{$user->timeban}}</h3>
-                @endif
             </div>
         </div>
         <br><br>
@@ -36,7 +30,7 @@
         </div>
         <br>
         <div class="card-group row">
-            <p>Web: <strong>{{$user->website }}</strong></p>
+            <p>Web: <strong><a href="{{$user->website }}">{{$user->website }}</a></strong></p>
         </div>
     </div>
 @endsection

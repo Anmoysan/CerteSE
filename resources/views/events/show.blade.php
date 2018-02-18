@@ -24,87 +24,114 @@
 
                     <div class="row col-md-12">
                         <div class="col-md-6">
-                            <div class="rating-block">
+                            <div>
                                 <h4>Media votacion</h4>
-                                <h2 class="bold padding-bottom-7">{{ $votesTotal }}<small>/ 5</small></h2>
-                                <!--<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>-->
+                                <h2 class="bold padding-bottom-7">{{ $votesTotal }}
+                                    <small>/ 5</small>
+                                </h2>
+
+                                @if( Auth::check())
+                                    <div>
+                                        <form action="{{ url('/') }}/events/{{ $event['id'] }}/votes/create"
+                                              method="post" class="form-horizontal">
+                                            <h4 class="row">Votar: </h4>
+                                            <button type="submit" href="" class="btn votar" aria-label="Left Align">
+                                                <img class="estrella" src="../estrellas.png"/>
+                                            </button>
+                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                                <img class="estrella" src="../estrellas.png"/>
+                                            </button>
+                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                                <img class="estrella" src="../estrellas.png"/>
+                                            </button>
+                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                                <img class="estrella" src="../estrellas.png"/>
+                                            </button>
+                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                                <img class="estrella" src="../estrellas.png"/>
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h4>Radio votacion</h4>
                             <div class="pull-left">
-                                <div class="pull-left" style="width:35px; line-height:1;">
-                                    <div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
-                                </div>
-                                <div class="pull-left" style="width:180px;">
-                                    <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
-                                        </div>
+                                <div style="line-height:1;">
+                                    <div style="margin:5px 0;">5 estrellas<span class="glyphicon glyphicon-star"></span>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">1</div>
+                                <div style="width:180px;">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
+                                             style="width: @if($event->votesCalculator(5)*100 != 0) {{ $event->votesCalculator(5)*100 }}% @else 2% @endif">
+                                        </div>
+                                        <div style="margin-left:10px;">{{ $event->votesCalculator(5)*100 }}%</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="pull-left">
-                                <div class="pull-left" style="width:35px; line-height:1;">
-                                    <div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
-                                </div>
-                                <div class="pull-left" style="width:180px;">
-                                    <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-                                        </div>
+                                <div style="line-height:1;">
+                                    <div style="margin:5px 0;">4 estrellas<span class="glyphicon glyphicon-star"></span>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">1</div>
+                                <div style="width:180px;">
+                                    <div class="progress" style="margin:8px 0;">
+                                        <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
+                                             style="width: @if($event->votesCalculator(4)*100 != 0) {{ $event->votesCalculator(4)*100 }}% @else 2% @endif">
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:10px;">{{ $event->votesCalculator(4)*100 }}%</div>
+                                </div>
                             </div>
                             <div class="pull-left">
-                                <div class="pull-left" style="width:35px; line-height:1;">
-                                    <div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
-                                </div>
-                                <div class="pull-left" style="width:180px;">
-                                    <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-                                        </div>
+                                <div style="line-height:1;">
+                                    <div style="margin:5px 0;">3 estrellas<span class="glyphicon glyphicon-star"></span>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">0</div>
+                                <div style="width:180px;">
+                                    <div class="progress" style="margin:8px 0;">
+                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
+                                             style="width: @if($event->votesCalculator(3)*100 != 0) {{ $event->votesCalculator(3)*100 }}% @else 2% @endif">
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:10px;">{{ $event->votesCalculator(3)*100 }}%</div>
+                                </div>
                             </div>
                             <div class="pull-left">
-                                <div class="pull-left" style="width:35px; line-height:1;">
-                                    <div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
-                                </div>
-                                <div class="pull-left" style="width:180px;">
-                                    <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-                                        </div>
+                                <div style="line-height:1;">
+                                    <div style="margin:5px 0;">2 estrellas<span class="glyphicon glyphicon-star"></span>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">0</div>
+                                <div style="width:180px;">
+                                    <div class="progress" style="margin:8px 0;">
+                                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
+                                             style="width: @if($event->votesCalculator(2)*100 != 0) {{ $event->votesCalculator(2)*100 }}% @else 2% @endif">
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:10px;">{{ $event->votesCalculator(2)*100 }}%</div>
+                                </div>
                             </div>
                             <div class="pull-left">
-                                <div class="pull-left" style="width:35px; line-height:1;">
-                                    <div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
-                                </div>
-                                <div class="pull-left" style="width:180px;">
-                                    <div class="progress" style="height:9px; margin:8px 0;">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-                                        </div>
+                                <div style="line-height:1;">
+                                    <div style="margin:5px 0;">1 estrellas<span class="glyphicon glyphicon-star"></span>
                                     </div>
                                 </div>
-                                <div class="pull-right" style="margin-left:10px;">0</div>
+                                <div style="width:180px;">
+                                    <div class="progress" style="margin:8px 0;">
+                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
+                                             style="width: @if($event->votesCalculator(1)*100 != 0) {{ $event->votesCalculator(1)*100 }}% @else 2% @endif">
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:10px;">{{ $event->votesCalculator(1)*100 }}%</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,12 +151,18 @@
         @if($event['commentarys'] == true || $event['commentarys'] == 1)
             <div class="row card">
                 <h2>Comentarios</h2>
+                <hr>
+                <div class="">
+                    @include('commentarys.newCommentary')
+                </div>
                 @if($commentarys == null)
                     <p>No hay ningun comentario todavia</p>
                 @else
                     @foreach($commentarys as $commentary)
                         <div class="col-md-12 course-set courses__row event">
-                            @include('commentarys.commentary')
+                            <div class="card">
+                                @include('commentarys.commentary')
+                            </div>
                         </div>
                     @endforeach
                 @endif
@@ -139,8 +172,8 @@
 @endsection
 
 @push('scripts')
-    <script >
-        $(function(){
+    <script>
+        $(function () {
             maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');
         })
     </script>

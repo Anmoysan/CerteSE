@@ -126,7 +126,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <button type="submit" class="btn btn-success">Registrar</button>
+                                <button type="submit" class="btn btn-info text-light">Registrar</button>
                             </div>
                         </form>
                     </div>

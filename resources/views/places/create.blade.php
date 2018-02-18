@@ -87,7 +87,8 @@
 
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" class="btn btn-info text-light
+">
                                     Añadir Lugar
                                 </button>
                             </div>
