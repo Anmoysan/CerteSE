@@ -32,22 +32,23 @@
 
                                 @if( Auth::check())
                                     <div>
-                                        <form action="{{ url('/') }}/events/{{ $event['id'] }}/votes/create"
-                                              method="post" class="form-horizontal">
+                                        <form action="{{ url('/') }}/events/{{ $event['id'] }}/votes/create" method="post">
+                                            <input id="event_id" type="hidden" name="event_id" value="{{ $event['id'] }}">
+                                            <input id="vote" type="hidden" name="vote" min="1" max="5">
                                             <h4 class="row">Votar: </h4>
-                                            <button type="submit" href="" class="btn votar" aria-label="Left Align">
+                                            <button type="submit" href="" id="estrella1" class="btn votar" aria-label="Left Align">
                                                 <img class="estrella" src="../estrellas.png"/>
                                             </button>
-                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                            <button type="submit" id="estrella2" class="btn votar" aria-label="Left Align">
                                                 <img class="estrella" src="../estrellas.png"/>
                                             </button>
-                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                            <button type="submit" id="estrella3" class="btn votar" aria-label="Left Align">
                                                 <img class="estrella" src="../estrellas.png"/>
                                             </button>
-                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                            <button type="submit" id="estrella4" class="btn votar" aria-label="Left Align">
                                                 <img class="estrella" src="../estrellas.png"/>
                                             </button>
-                                            <button type="submit" class="btn votar" aria-label="Left Align">
+                                            <button type="submit" id="estrella5" class="btn votar" aria-label="Left Align">
                                                 <img class="estrella" src="../estrellas.png"/>
                                             </button>
                                         </form>
@@ -122,6 +123,7 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('js/votes.js') }}" defer></script>
     <script>
         $(function () {
             maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');
