@@ -31,7 +31,7 @@
 
 
                 @if( Auth::check())
-                    <li class="nav-item dropdown">
+                    <li class="nav-brand dropdown">
                         <a class="navbar-brand text-info dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Eventos</a>
@@ -44,7 +44,7 @@
                     </li>
                 @endif
 
-                <li class="nav-item dropdown">
+                <li class="nav-brand dropdown">
                     <a class="navbar-brand text-info dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Lugares</a>

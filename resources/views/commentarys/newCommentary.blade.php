@@ -1,5 +1,5 @@
 @auth()
-    <form action="{{ $event['id'] }}/commentarys/create" method="post">
+    <form action="{{ $event['id'] }}/commentarys/create" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
             <input id="event_id" type="hidden" name="event_id" class="hidden" value="{{ $event['id'] }}">

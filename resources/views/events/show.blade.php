@@ -26,11 +26,11 @@
                         <div class="col-md-5">
                             <div>
                                 <h4>Media votacion</h4>
-                                <h2 class="bold padding-bottom-7">{{ $votesTotal }}
+                                <h2 class="bold padding-bottom-7">{{ number_format($votesTotal, 2, '.', '') }}
                                     <small>/ 5</small>
                                 </h2>
 
-                                @if( Auth::check())
+                                @if( Auth::check() )
                                     <div>
                                         <form action="{{ url('/') }}/events/{{ $event['id'] }}/votes/create" method="post">
                                             {{ csrf_field() }}
@@ -65,27 +65,27 @@
                             <div class="votos">
                                 <div>5 <img class="estrella" src="../estrellas.png"/></div>
                                 <div class="progress progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
-                                     style="width: @if($event->votesCalculator(5)*100 != 0) {{ $event->votesCalculator(5)*100 }}% @else 5% @endif">{{ $event->votesCalculator(5)*100 }}%</div>
+                                     style="width: @if($event->votesCalculator(5)*100 >= 5) {{ $event->votesCalculator(5)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(5)*100) }}%</div>
                             </div>
                             <div class="votos">
                                 <div>4 <img class="estrella" src="../estrellas.png"/></div>
                                 <div class="progress progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar"
-                                     style="width: @if($event->votesCalculator(4)*100 != 0) {{ $event->votesCalculator(4)*100 }}% @else 5% @endif">{{ $event->votesCalculator(4)*100 }}%</div>
+                                     style="width: @if($event->votesCalculator(4)*100 >= 5) {{ $event->votesCalculator(4)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(4)*100) }}%</div>
                             </div>
                             <div class="votos">
                                 <div>3 <img class="estrella" src="../estrellas.png"/></div>
                                 <div class="progress progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar"
-                                     style="width: @if($event->votesCalculator(3)*100 != 0) {{ $event->votesCalculator(3)*100 }}% @else 5% @endif">{{ $event->votesCalculator(3)*100 }}%</div>
+                                     style="width: @if($event->votesCalculator(3)*100 >= 5) {{ $event->votesCalculator(3)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(3)*100) }}%</div>
                             </div>
                             <div class="votos">
                                 <div>2 <img class="estrella" src="../estrellas.png"/></div>
                                 <div class="progress progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
-                                     style="width: @if($event->votesCalculator(2)*100 != 0) {{ $event->votesCalculator(2)*100 }}% @else 5% @endif">{{ $event->votesCalculator(2)*100 }}%</div>
+                                     style="width: @if($event->votesCalculator(2)*100 >= 5) {{ $event->votesCalculator(2)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(2)*100) }}%</div>
                             </div>
                             <div class="votos">
                                 <div>1 <img class="estrella" src="../estrellas.png"/></div>
                                 <div class="progress progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar"
-                                     style="width: @if($event->votesCalculator(1)*100 != 0) {{ $event->votesCalculator(1)*100 }}% @else 5% @endif">{{ $event->votesCalculator(1)*100 }}%</div>
+                                     style="width: @if($event->votesCalculator(1)*100 >= 5) {{ $event->votesCalculator(1)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(1)*100) }}%</div>
                             </div>
                         </div>
                     </div>
