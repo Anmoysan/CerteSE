@@ -10,7 +10,7 @@
     </div>
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Votacion: <strong>{{ $event->votesMean() }}</strong></li>
+        <li class="list-group-item">Votacion: <strong>{{ number_format($event->votesMean(), 2, '.', '') }} / 5</strong></li>
         <li class="list-group-item">Precio: <strong>{{ $event['cost'] }}</strong></li>
         <li class="list-group-item">Fecha: <strong>{{ $event['date'] }}</strong></li>
     </ul>

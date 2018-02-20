@@ -30,19 +30,18 @@
                 </li>
 
 
-                @if( Auth::check())
-                    <li class="nav-brand dropdown">
-                        <a class="navbar-brand text-info dropdown-toggle" href="#" role="button"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Eventos</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-info" href="{{ url('/') }}/events/">Ver</a>
-                            @if(App\Place::count() > 0)
-                                <a class="navbar-item text-info" href="{{ url('/') }}/events/create">Crear</a>
-                            @endif
-                        </div>
-                    </li>
-                @endif
+                <li class="nav-brand dropdown">
+                    <a class="navbar-brand text-info dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Eventos</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-info" href="{{ url('/') }}/events/">Ver</a>
+
+                        @if(Auth::check() && App\Place::count() > 0)
+                            <a class="navbar-item text-info" href="{{ url('/') }}/events/create">Crear</a>
+                        @endif
+                    </div>
+                </li>
 
                 <li class="nav-brand dropdown">
                     <a class="navbar-brand text-info dropdown-toggle" href="#" role="button"

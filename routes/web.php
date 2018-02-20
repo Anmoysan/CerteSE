@@ -58,3 +58,5 @@ Route::get('/profile', 'UsersController@profile')->middleware('auth');
 Route::get('/user/{user}', 'UsersController@index')->name('user.profile');
 
 Auth::routes();
+
+Route::get('/votar', 'PlacesController@index');

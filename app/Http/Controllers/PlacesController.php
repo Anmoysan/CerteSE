@@ -114,4 +114,14 @@ class PlacesController extends Controller
         $longitud = $request->input('longitud');
         return "$latitud, $longitud";
     }
+
+    public function votar(){
+        if (request()->ajax()) {
+            //Dar votaciones
+
+            return View::make('', array('events' => $events))->render();
+        } else {
+            return redirect('/');
+        }
+    }
 }

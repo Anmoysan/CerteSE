@@ -31,14 +31,14 @@
                                 </h2>
 
                                 @if( Auth::check() && !Auth::user()->isMyEvent($event) )
-                                    <div>
+                                    <div class="row">
                                         <form action="{{ url('/') }}/events/{{ $event['id'] }}/votes/create" method="post">
                                             {{ csrf_field() }}
-
                                             <input id="event_id" type="hidden" name="event_id" value="{{ $event['id'] }}">
                                             <input id="vote" type="hidden" name="vote" min="1" max="5">
 
-                                            <h4 class="row">Votar: </h4>
+                                            <h4 class="col-md-12">
+                                                @if(!Auth::user()->VoteEvent($event))Votar el evento @else Modificar el voto @endif: </h4>
                                             <button type="submit" href="" id="estrella1" class="btn votar" aria-label="Left Align">
                                                 <img class="estrella" src="../estrellas.png"/>
                                             </button>

@@ -1,21 +1,4 @@
 $(function() {
-    //Que cargue la funcion cuando se cargue la pagina
-    $("#boton1").click(
-        function() {
-            $("#ejemplo").hide(1000, function(){});
-            $("#ejemplo").fadeIn(1000, function(){});
-            $("#ejemplo").fadeOut(1000, function(){});
-            $("#boton1").animate({height:'300px', opacity:'0.4'}, "slow", function() {alert("hola1")});
-            $("#boton1").animate({width:'300px', opacity:'0.8'}, "slow", function() {alert("hola2")});
-            $("#boton1").animate({height:'100px', opacity:'0.4'}, "slow", function() {alert("hola3")});
-            $("#boton1").animate({width:'100px', opacity:'0.8'}, "slow", function() {alert("hola4")});
-        }
-    );
-
-    //$("#boton1").hide(1000, function(){});
-});
-
-$(function() {
     $("#estrella1").on({
         mouseenter: function() {
             $(this).css("background-color", "#cebb0a");
@@ -26,7 +9,9 @@ $(function() {
         },
 
         click: function() {
+            event.preventDefault();
             $("#vote").val(1);
+            giveDatesEvent();
         },
     });
 
@@ -42,6 +27,7 @@ $(function() {
         },
 
         click: function() {
+            event.preventDefault();
             $("#vote").val(2);
         },
     });
@@ -60,6 +46,7 @@ $(function() {
         },
 
         click: function() {
+            event.preventDefault();
             $("#vote").val(3);
         },
     });
@@ -80,6 +67,7 @@ $(function() {
         },
 
         click: function() {
+            event.preventDefault();
             $("#vote").val(4);
         },
     });
@@ -102,7 +90,21 @@ $(function() {
         },
 
         click: function() {
+            event.preventDefault();
+            votar(5);
             $("#vote").val(5);
         },
     });
 });
+
+
+function votar(valor){
+
+    $(event.target).addClass("active");
+    axios.get('/votar?valor='+valor)
+        .then(function(response){
+            $("#miEvento").html(response.data);
+        }).catch(function (error) {
+        console.log(error);
+    });
+}
