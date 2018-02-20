@@ -77,4 +77,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reserve::class)->latest();
     }
+
+
+    public function VoteEvent(Event $event)
+    {
+        return $this->votes->contains($event->id);
+    }
+
+    public function isMyEvent(Event $event)
+    {
+        return $this->id == $event->user_id;
+    }
 }
