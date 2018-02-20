@@ -81,7 +81,7 @@ class User extends Authenticatable
 
     public function VoteEvent(Event $event)
     {
-        return $this->votes->contains($event->id);
+        return $this->votes->contains('event_id', $event->id);
     }
 
     public function isMyEvent(Event $event)

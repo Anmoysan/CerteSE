@@ -56,8 +56,6 @@ class VotesController extends Controller
             'event_id'   => $event->id,
             'vote' =>  $request->input('vote'),
         ]);
-
-        return redirect("/events/$event->id");
     }
 
     /**
@@ -95,9 +93,16 @@ class VotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateVoteRequest $request, Event $event)
     {
-        //
+        $user = $request->user();
+        $event = Event::where('id', $event->id)->first();
+
+        $vote = Vote::where('user_id', $user->id)->where('event_id', $event->id)->first();
+        $vote->user_id = $user->id;
+        $vote->event_id = $event->id;
+        $vote->vote = $request->input('vote');
+        $vote->save();
     }
 
     /**
@@ -109,5 +114,17 @@ class VotesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createOrEdit(CreateVoteRequest $request, Event $event)
+    {
+
+        if (!Auth::user()->VoteEvent($event)) {
+            $this->store($request, $event);
+        } else {
+            $this->update($request, $event);
+        }
+
+        return redirect("/events/$event->id");
     }
 }

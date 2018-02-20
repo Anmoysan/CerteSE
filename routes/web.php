@@ -31,7 +31,7 @@ Route::post('/events/{event}/reserves/create', 'ReservesController@store')->midd
 //Rutas de votos
 Route::get('/events/{event}/votes/create', 'VotesController@create')->middleware('auth');
 Route::get('/events/{event}/votes', 'VotesController@show');
-Route::post('/events/{event}/votes/create', 'VotesController@store')->middleware('auth');
+Route::post('/events/{event}/votes/create', 'VotesController@createOrEdit')->middleware('auth');
 Route::get('/profile/votes', 'VotesController@index')->middleware('auth');
 
 //Rutas de facturas

@@ -30,7 +30,7 @@
                                     <small>/ 5</small>
                                 </h2>
 
-                                @if( Auth::check() && !Auth::user()->isMyEvent($event) && !Auth::user()->VoteEvent($event))
+                                @if( Auth::check() && !Auth::user()->isMyEvent($event) )
                                     <div>
                                         <form action="{{ url('/') }}/events/{{ $event['id'] }}/votes/create" method="post">
                                             {{ csrf_field() }}
