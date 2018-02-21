@@ -15,6 +15,7 @@ Route::get('/home', 'UsersController@eventsUser')->name('inicioLogin')->middlewa
 Route::get('/', 'PagesController@home')->name('inicioNoLogin')->middleware('guest');
 Route::get('/giveEvents/', 'PagesController@givePageEvents');
 Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
+Route::post('/votar', 'VotesController@votar');
 
 //Rutas de eventos
 Route::get('/events/', 'EventsController@index');
@@ -58,5 +59,3 @@ Route::get('/profile', 'UsersController@profile')->middleware('auth');
 Route::get('/user/{user}', 'UsersController@index')->name('user.profile');
 
 Auth::routes();
-
-Route::get('/votar', 'PlacesController@index');
