@@ -60,6 +60,16 @@ class Event extends Model
     }
 
     /**
+     * Un evento tiene varios temas (subject)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
+    /**
      * Permite obtener la media de un evento
      *
      * @return int

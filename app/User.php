@@ -88,4 +88,9 @@ class User extends Authenticatable
     {
         return $this->id == $event->user_id;
     }
+
+    public function ReserveEvent(Event $event)
+    {
+        return $this->reserves->contains('event_id', $event->id);
+    }
 }

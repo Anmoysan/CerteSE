@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" id="contenedor">
+    <div class="container">
         <div class="row">
             <div class="card col-md-12 col-xl-8">
                 <div class="row">
@@ -20,6 +20,7 @@
                     <div class="col-md-4">
                         <p>Precio: <strong>{{ $event['cost'] }}</strong></p>
                         <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
+                        <button id="reserva_Factura" class="btn btn-outline-info">@if(Auth::user()->ReserveEvent($event))Descargar Factura @else Reservar @endif</button>
                     </div>
 
                     <div class="row col-md-12">

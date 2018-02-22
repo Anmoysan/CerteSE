@@ -13,15 +13,19 @@ class DatabaseSeeder extends Seeder
     {
         $users = factory(App\User::class, 20)->create();
         $places = factory(App\Place::class, 20)->create();
+        $subjects = factory(App\Subject::class, 20)->create();
 
-        $users->each(function (App\User $user) use ($users, $places) {
+        $users->each(function (App\User $user) use ($users, $places, $subjects) {
             $place = App\Place::where('id', rand(1,20))->first();
             $events = factory(App\Event::class, 20)->create([
                 'user_id' => $user->id,
                 'place_id' => $place->id
             ]);
 
-            $events->each(function (App\Event $event) use ($user, $events) {
+            $events->each(function (App\Event $event) use ($user, $events, $subjects) {
+                $events->subjects()->sync(
+                    $subjects->random(mt_rand(1,5))
+                );
                 $reserves = factory(App\Reserve::class, 20)->create([
                     'user_id' => $user->id,
                     'event_id' => $event->id
