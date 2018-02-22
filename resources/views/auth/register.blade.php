@@ -71,38 +71,6 @@
                                 @endif
                             </div>
 
-                            <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                                <label for="mobile" class="col-lg-4 control-label">Movil</label>
-
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="addon">+</span>
-                                    <input id="mobileCountry" type="text" class="form-control col-md-4 input-group"
-                                           name="mobileCountry"
-                                           value="{{ old('mobileCountry') }}" aria-describedby="basic-addon1">
-
-                                    <input id="mobileNumber" type="text" class="form-control col-md-8"
-                                           name="mobileNumber"
-                                           value="{{ old('mobileNumber') }}">
-                                </div>
-                                <div>
-                                    @if($errors->has('mobileCountry'))
-                                        @foreach($errors->get('mobileCountry') as $message)
-                                            <div class="alert alert-danger" role="alert">
-                                                {{ $message }}
-                                            </div>
-                                        @endforeach
-                                    @endif
-
-                                    @if($errors->has('mobileNumber'))
-                                        @foreach($errors->get('mobileNumber') as $message)
-                                            <div class="alert alert-danger" role="alert">
-                                                {{ $message }}
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </div>
-
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="col-md-4 control-label">Contraseña</label>
 

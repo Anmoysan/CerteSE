@@ -50,22 +50,31 @@ class ReservesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateReserveRequest $request, Event $event)
+    public function store(CreateReserveRequest $request)
     {
         $user = Auth::user();
-        $event = Event::where('id', $event->id)->first();
-        $place = Place::where('id', $request->input('place'))->first();
-
+        $event_id = $request->input('event_id');
+        dd($event_id);
         Reserve::create([
             'user_id'   => $user->id,
-            'event_id'   => $event->id,
-            'place'   => $place->name,
+            'event_id'   => $event_id,
+            'place'   => $request->input('place'),
             'date' => $request->input('date'),
             'cost' => $request->input('cost'),
             'units' => $request->input('units'),
         ]);
 
-        return redirect("/events/$event->id/reserves");
+        Invoice::create([
+            'user_id'   => $user->id,
+            'event_id'   => $event_id,
+            'buyer' => $user->username,
+            'place'   => $request->input('place'),
+            'date' => $request->input('date'),
+            'cost' => $request->input('cost'),
+            'units' => $request->input('units'),
+        ]);
+
+        return redirect("/events/$event_id/");
     }
 
     /**

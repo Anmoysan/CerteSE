@@ -53,8 +53,6 @@ class RegisterController extends Controller
             'username' => 'required|string|max:30|unique:users',
             'email' => 'required|max:100|email',
             'password' => 'required|min:8|max:100|confirmed',
-            'mobileCountry' => 'required|numeric|min:1|max:999',
-            'mobileNumber' => 'required|numeric|min:600000000|max:999999999',
         ], [
             'name.required' => 'El nombre es obligatorio.',
             'name.alpha' => 'El nombre solo puede contener letras.',
@@ -76,14 +74,6 @@ class RegisterController extends Controller
             'password.max' => 'La contraseña debe tener 100 caracteres como maximo',
             'password.min' => 'La contraseña debe tener 8 caracteres como minimo',
             'password.confirmed' => 'Las contraseñas no coinciden',
-            'mobileCountry.required' => 'El codigo del pais es obligatorio.',
-            'mobileCountry.numeric' => 'El codigo del pais debe contener solo numeros',
-            'mobileCountry.max' => 'El codigo del pais debe tener como numero maximo el 999',
-            'mobileCountry.min' => 'El codigo del pais debe tener como numero minimo el 1',
-            'mobileNumber.required' => 'El movil es obligatorio.',
-            'mobileNumber.numeric' => 'El movil debe contener solo numeros',
-            'mobileNumber.max' => 'El movil debe tener como numero maximo el 999999999',
-            'mobileNumber.min' => 'El movil debe tener como numero minimo el 600000000',
         ]);
     }
 
@@ -102,15 +92,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'avatar' => "http://panamapoesia.com/image/SinFoto.png",
-            'mobile' => $this->mobileCalcule($data),
             'ban' => false,
             'timeban' => 0,
         ]);
-    }
-
-    public function mobileCalcule(array $data){
-        $mobileCountry = $data['mobileCountry'];
-        $mobileNumber = $data['mobileNumber'];
-        return "+" . $mobileCountry . " " . $mobileNumber;
     }
 }

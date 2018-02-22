@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('biography')->nullable();
             $table->string('subject')->nullable();
             $table->string('website')->nullable();
-            $table->string('mobile');
+            $table->string('mobile')->nullable();
             $table->boolean('ban');
             $table->integer('timeban');
             $table->rememberToken();

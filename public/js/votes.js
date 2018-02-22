@@ -94,7 +94,7 @@ $(function () {
 
         click: function () {
             event.preventDefault();
-            $("#vote").val(5)
+            $("#vote").val(5);
             votar(5, $("#event_id").val());
         },
     });
