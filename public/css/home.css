@@ -101,6 +101,24 @@ body {
 
 
 
+.scrollHorizontal {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.scrollHorizontal .row{
+    display:block;
+}
+
+.scrollHorizontal .eventoScroll {
+    display: inline-block;
+    float: none;
+    padding: 15px;
+}
+
+
+
 
 .md-input {
     position: relative;

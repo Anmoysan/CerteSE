@@ -39,7 +39,7 @@
                         <a class="dropdown-item text-info" href="{{ url('/') }}/events/">Ver</a>
 
                         @if(Auth::check() && App\Place::count() > 0)
-                            <a class="navbar-item text-info" href="{{ url('/') }}/events/create">Crear</a>
+                            <a class="dropdown-item text-info" href="{{ url('/') }}/events/create">Crear</a>
                         @endif
                     </div>
                 </li>

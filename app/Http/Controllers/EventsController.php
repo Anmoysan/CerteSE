@@ -22,7 +22,7 @@ class EventsController extends Controller
 
         $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
 
-        return view('home', [
+        return view('events.allevents', [
             'events' => $events
         ]);
     }

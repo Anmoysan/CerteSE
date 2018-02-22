@@ -21,7 +21,7 @@
                         <input id="costEvent" type="hidden" class="form-control" name="cost" value="{{ $event['cost'] }}" readonly>
                         <p>Precio: <strong>{{ $event['cost'] }}</strong></p>
                         <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
-                        <button @if(Auth::user()->ReserveEvent($event)) id="reserva_Factura" @else id="abrirReserva" @endif class="btn btn-outline-info">@if(Auth::user()->ReserveEvent($event)) Descargar Factura @else Reservar @endif</button>
+                        @if(Auth::check())<button @if(Auth::user()->ReserveEvent($event)) id="reserva_Factura" @else id="abrirReserva" @endif class="btn btn-outline-info">@if(Auth::user()->ReserveEvent($event)) Descargar Factura @else Reservar @endif</button>@endif
                         <div class="iziModal">
                             <div id="reserva" class="row justify-content-md-center mt-5">
                                 <div class="col-md-12">
