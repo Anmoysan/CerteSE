@@ -8,6 +8,7 @@ use App\Http\Requests\CreateEventRequest;
 use App\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class EventsController extends Controller
 {
@@ -93,5 +94,15 @@ class EventsController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function givePageEvents(){
+        if (request()->ajax()){
+            $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
+
+            return View::make('events.listaevents', array('events' => $events))->render();
+        }else{
+            return redirect('/');
+        }
     }
 }

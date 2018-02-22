@@ -13,6 +13,7 @@ $(function () {
 
 
     $("#abrirReserva").on('click', function () {
+        event.preventDefault();
         $("#reserva").iziModal('open');
         $("#mapLugar").hide(1000, function(){});
     });

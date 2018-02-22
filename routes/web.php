@@ -13,7 +13,7 @@
 
 Route::get('/home', 'UsersController@eventsUser')->name('inicioLogin')->middleware('auth');
 Route::get('/', 'PagesController@home')->name('inicioNoLogin')->middleware('guest');
-Route::get('/giveEvents/', 'PagesController@givePageEvents');
+Route::get('/giveEvents/', 'EventsController@givePageEvents');
 Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
 Route::post('/votar', 'VotesController@votar');
 
