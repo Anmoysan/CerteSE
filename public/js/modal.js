@@ -29,6 +29,7 @@ $(function () {
         }
     });
 
+
     $("#createReserve").on({
         click: function () {
             reservar($("#event_id").val());
