@@ -150,7 +150,7 @@ class ReservesController extends Controller
                 'votesTotal' => $votesTotal
             ])->render();
         } else {
-            return redirect('/');
+                return redirect('/');
         }
     }
 }
