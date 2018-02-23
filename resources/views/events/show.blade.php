@@ -62,7 +62,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-info text-light">
+                                                    <button id="createReserve" type="submit" class="btn btn-info text-light">
                                                         Añadir Reserva
                                                     </button>
                                                 </div>
