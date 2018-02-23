@@ -50,10 +50,10 @@ class ReservesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateReserveRequest $request)
+    public function store(CreateReserveRequest $request, Event $event)
     {
         $user = Auth::user();
-        $event_id = $request->input('event_id');
+        $event_id = Event::where('id', $event->id)->first();
         dd($event_id);
         Reserve::create([
             'user_id'   => $user->id,
@@ -128,5 +128,29 @@ class ReservesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function votar(CreateReserveRequest $request)
+    {
+        if (request()->ajax()) {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $event_id = $data['event_id'];
+            $event = Event::where('id', $event_id)->first();
+            $place = Place::where('id', $event->place_id)->first();
+            $commentarys = $event->commentaries;
+
+            $this->store($request, $event);
+
+            $votesTotal = $event->votesMean();
+
+            return View::make('events.show', [
+                'event' => $event,
+                'place' => $place,
+                'commentarys' => $commentarys,
+                'votesTotal' => $votesTotal
+            ])->render();
+        } else {
+            return redirect('/');
+        }
     }
 }

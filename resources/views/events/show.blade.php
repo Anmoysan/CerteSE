@@ -62,7 +62,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-info text-light">
+                                                    <button id="createReserve" type="submit" class="btn btn-info text-light">
                                                         Añadir Reserva
                                                     </button>
                                                 </div>
@@ -202,7 +202,7 @@
 
 @push('scripts')
     <script src="{{ asset('js/votes.js') }}" defer></script>
-    <script src="{{ asset('js/modal.js') }}" defer></script>
+    <script src="{{ asset('js/reserve.js) }}" defer></script>
     <script>
         $(function () {
             maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');

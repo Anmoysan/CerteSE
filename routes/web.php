@@ -16,6 +16,7 @@ Route::get('/', 'PagesController@home')->name('inicioNoLogin')->middleware('gues
 Route::get('/giveEvents/', 'EventsController@givePageEvents');
 Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
 Route::post('/votar', 'VotesController@votar');
+Route::post('/reservar', 'ReservesController@reservar');
 
 //Rutas de eventos
 Route::get('/events/', 'EventsController@index');

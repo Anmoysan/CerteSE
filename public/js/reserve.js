@@ -28,6 +28,21 @@ $(function () {
         }
     });
 
-    //$("#cost").val($("#units").val());
-
+    $("#createReserve").on({
+        click: function () {
+            reservar( $("#event_id").val());
+        }
+    });
 });
+
+
+function reservar(evento) {
+
+    $(event.target).addClass("active");
+    axios.post('/votar',{ event_id: evento
+    }).then(function (response) {
+        $("#contenedor").html(response.data);
+    }).catch(function (error) {
+        console.log(error);
+    });
+}

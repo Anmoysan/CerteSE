@@ -40,7 +40,6 @@ class EventsController extends Controller
         $event = Event::where('id', $event->id)->first();
         $place = Place::where('id', $event->place_id)->first();
         $commentarys = $event->commentaries;
-
         $votesTotal = $event->votesMean();
 
         return view('events.show', [
