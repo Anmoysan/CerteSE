@@ -73,7 +73,7 @@
 
                             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                                 <label for="date" class="col-md-4 control-label">Fecha evento</label>
-                                <input id="date" type="date" class="form-control" name="date"
+                                <input id="date" type="text" class="form-control" name="date"
                                        value="{{ old('date') }}" autofocus>
 
                                 @if($errors->has('date'))
@@ -87,7 +87,7 @@
 
                             <div class="form-group{{ $errors->has('duration') ? ' has-error' : '' }}">
                                 <label for="duration" class="col-md-4 control-label">Duracion evento</label>
-                                <input id="duration" type="time" class="form-control" name="duration"
+                                <input id="duration" type="text" class="form-control" name="duration"
                                        value="{{ old('duration') }}" autofocus>
 
                                 @if($errors->has('duration'))
@@ -170,3 +170,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/datetime.js') }}" defer></script>
+@endpush

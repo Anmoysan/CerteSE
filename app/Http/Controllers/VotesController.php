@@ -138,7 +138,6 @@ class VotesController extends Controller
             $vote = $data['vote'];
             $event = Event::where('id', $event_id)->first();
             $place = Place::where('id', $event->place_id)->first();
-
             $commentarys = $event->commentaries;
 
 

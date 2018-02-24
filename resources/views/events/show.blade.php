@@ -203,6 +203,7 @@
 @push('scripts')
     <script src="{{ asset('js/votes.js') }}" defer></script>
     <script src="{{ asset('js/modal.js') }}" defer></script>
+    <script src="{{ asset('js/cargaShow.js') }}" defer></script>
     <script>
         $(function () {
             maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');

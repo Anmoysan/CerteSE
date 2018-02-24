@@ -10,6 +10,7 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
     <link href="{{ asset('css/iziModal.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/timepicker.css') }}">
 </head>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet'/>
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
@@ -110,6 +111,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js'></script>
 <script src="{{ asset('js/map.js') }}" defer></script>
 <script src="{{ asset('js/iziModal.js') }}"></script>
+<script src="{{ asset('js/timepicker.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @stack('scripts')
 </body>
 </html>
