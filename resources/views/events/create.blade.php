@@ -87,7 +87,7 @@
 
                             <div class="form-group{{ $errors->has('duration') ? ' has-error' : '' }}">
                                 <label for="duration" class="col-md-4 control-label">Duracion evento</label>
-                                <input id="duration" type="text" class="form-control" name="duration"
+                                <input id="duration" type="time" class="form-control" name="duration"
                                        value="{{ old('duration') }}" autofocus>
 
                                 @if($errors->has('duration'))
@@ -172,5 +172,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/datetime.js') }}" defer></script>
+    <script src="{{ asset('js/datetime.js') }}"></script>
+    <script src="i18n/datepicker-fr.js"></script>
 @endpush
