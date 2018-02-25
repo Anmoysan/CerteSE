@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateReserveAjaxRequest;
 use App\Invoice;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Place;
 use App\Reserve;
-use App\Http\Requests\CreateReserveRequest;
+use App\Http\Requests\CreateReserveFormAjaxRequest;
 use Illuminate\Http\Request;
 
 class ReservesController extends Controller
@@ -50,31 +51,33 @@ class ReservesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateReserveRequest $request, Event $event)
+    public function store(CreateReserveAjaxRequest $request, Event $event)
     {
         $user = Auth::user();
-        $event_id = Event::where('id', $event->id)->first();
-        dd($event_id);
+        $event = Event::where('id', $event->id)->first();
         Reserve::create([
             'user_id'   => $user->id,
-            'event_id'   => $event_id,
+            'event_id'   => $event->id,
             'place'   => $request->input('place'),
-            'date' => $request->input('date'),
-            'cost' => $request->input('cost'),
-            'units' => $request->input('units'),
+            'date' => $request->input('fecha'),
+            'cost' => (double)$request->input('cost'),
+            'units' => (int)$request->input('unidad'),
         ]);
+
+
+        $reserve = Reserve::where('user_id', $user->id)->where('event_id', $event->id)->first();
 
         Invoice::create([
             'user_id'   => $user->id,
-            'event_id'   => $event_id,
+            'reserve_id'   => $event->id,
             'buyer' => $user->username,
             'place'   => $request->input('place'),
-            'date' => $request->input('date'),
+            'date' => $request->input('fecha'),
             'cost' => $request->input('cost'),
-            'units' => $request->input('units'),
+            'units' => $request->input('unidad'),
         ]);
 
-        return redirect("/events/$event_id/");
+        return redirect("/events/$event->id/");
     }
 
     /**
@@ -130,27 +133,8 @@ class ReservesController extends Controller
         //
     }
 
-    public function votar(CreateReserveRequest $request)
-    {
-        if (request()->ajax()) {
-            $data = json_decode(file_get_contents("php://input"), true);
-            $event_id = $data['event_id'];
-            $event = Event::where('id', $event_id)->first();
-            $place = Place::where('id', $event->place_id)->first();
-            $commentarys = $event->commentaries;
-
-            $this->store($request, $event);
-
-            $votesTotal = $event->votesMean();
-
-            return View::make('events.show', [
-                'event' => $event,
-                'place' => $place,
-                'commentarys' => $commentarys,
-                'votesTotal' => $votesTotal
-            ])->render();
-        } else {
-                return redirect('/');
-        }
+    protected function validacionAjax(CreateReserveFormAjaxRequest $request){
+        //Obtenermos todos los valores y devolvemos un array vacio
+        return array();
     }
 }

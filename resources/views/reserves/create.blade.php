@@ -78,3 +78,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/validacionReserve.js') }}"></script>
+@endpush

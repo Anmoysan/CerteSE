@@ -138,8 +138,6 @@ class VotesController extends Controller
             $vote = $data['vote'];
             $event = Event::where('id', $event_id)->first();
             $place = Place::where('id', $event->place_id)->first();
-            $commentarys = $event->commentaries;
-
 
             if (!Auth::user()->VoteEvent($event)) {
                 $this->store($request, $event);
@@ -147,6 +145,7 @@ class VotesController extends Controller
                 $this->update($request, $event);
             }
 
+            $commentarys = $event->commentaries;
             $votesTotal = $event->votesMean();
 
             return View::make('events.show', [

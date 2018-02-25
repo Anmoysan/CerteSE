@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Commentary;
+use App\Place;
 use App\Http\Requests\CreateCommentaryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class CommentarysController extends Controller
 {
@@ -47,13 +49,14 @@ class CommentarysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCommentaryRequest $request)
+    public function store(CreateCommentaryRequest $request, Event $event)
     {
         $user = $request->user();
+        $event = Event::where('id', $event->id)->first();
 
         Commentary::create([
             'user_id'   => $user->id,
-            'event_id'   => $request->input('event_id'),
+            'event_id'   => $event->id,
             'content' =>  $request->input('content'),
         ]);
 
@@ -144,5 +147,30 @@ class CommentarysController extends Controller
             'commentarys' => $commentarys,
             'posicion' => $posicion
         ]);
+    }
+
+    public function comentar(CreateCommentaryRequest $request)
+    {
+        if (request()->ajax()) {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $event_id = $data['event_id'];
+            $content = $data['content'];
+            $event = Event::where('id', $event_id)->first();
+            $place = Place::where('id', $event->place_id)->first();
+
+            $this->store($request, $event, $content);
+
+            $votesTotal = $event->votesMean();
+            $commentarys = $event->commentaries;
+
+            return View::make('events.show', [
+                'event' => $event,
+                'place' => $place,
+                'commentarys' => $commentarys,
+                'votesTotal' => $votesTotal
+            ])->render();
+        } else {
+            return redirect('/');
+        }
     }
 }

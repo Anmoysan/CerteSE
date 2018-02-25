@@ -31,7 +31,7 @@
 
                                     <div class="card-body">
                                         <form action="{{ url('/') }}/events/{{ $event['id'] }}/reserves/create"
-                                              method="post">
+                                              method="post" enctype="multipart/form-data" id="formReserve">
                                             {{ csrf_field() }}
 
                                             <input id="event_id" type="hidden" name="event_id"
@@ -44,14 +44,14 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="date" class="col-md-4 control-label">Fecha evento</label>
-                                                <input class="form-control" name="date" id="date"
+                                                <label for="fecha" class="col-md-4 control-label">Fecha evento</label>
+                                                <input class="form-control" name="fecha" id="fecha"
                                                        value="{{ $event['date'] }}" readonly>
                                             </div>
 
                                             <div class="form-group{{ $errors->has('units') ? ' has-error' : '' }}">
-                                                <label for="units" class="col-md-4 control-label">Unidades</label>
-                                                <input id="units" type="number" class="form-control" name="units"
+                                                <label for="unidad" class="col-md-4 control-label">Unidades</label>
+                                                <input id="unidad" type="text" class="form-control" name="unidad"
                                                        value="{{ old('units') }}">
                                                 @if($errors->has('units'))
                                                     @foreach($errors->get('units') as $message)
@@ -208,6 +208,7 @@
 
 @push('scripts')
     <script src="{{ asset('js/cargaShow.js') }}" defer></script>
+    <script src="{{ asset('js/validacionReserve.js') }}"></script>
     <script>
         $(function () {
             maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');
