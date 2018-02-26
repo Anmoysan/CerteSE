@@ -99,6 +99,15 @@ body {
     width: 100%;
 }
 
+.parallax {
+    background-image: url("../registro.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 400px;
+}
+
 
 
 .scrollHorizontal {

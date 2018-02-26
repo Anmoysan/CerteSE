@@ -63,7 +63,9 @@
             </div>
         </div>
         <hr>
-
-
+        <div class="col-md-12 parallax text-white text-center content">
+            <h2>Registrate para tener un mayor uso de la web</h2>
+            <a class="nav-link bg-white col-md-2 text-info text-center" href="/register"><strong>Registrarse</strong></a>
+        </div>
     </div>
 @endsection
