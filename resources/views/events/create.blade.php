@@ -173,5 +173,4 @@
 
 @push('scripts')
     <script src="{{ asset('js/datetime.js') }}"></script>
-    <script src="i18n/datepicker-fr.js"></script>
 @endpush
