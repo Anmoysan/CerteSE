@@ -73,7 +73,7 @@
 
                             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                                 <label for="date" class="col-md-4 control-label">Fecha evento</label>
-                                <input id="date" type="date" class="form-control" name="date"
+                                <input id="date" type="text" class="form-control" name="date"
                                        value="{{ old('date') }}" autofocus>
 
                                 @if($errors->has('date'))
@@ -170,3 +170,8 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/datetime.js') }}"></script>
+    <script src="i18n/datepicker-fr.js"></script>
+@endpush

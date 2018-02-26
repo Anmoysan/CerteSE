@@ -15,7 +15,6 @@ class CreateReserveRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,12 +24,11 @@ class CreateReserveRequest extends FormRequest
     {
         return [
             'place' => 'required|numeric|min:1',
-            'date' => 'required|date',
+            'fecha' => 'required|date',
             'cost' => 'required|numeric|min:0|max:50',
-            'units' => 'required|numeric|min:1|max:100',
+            'unidad' => 'required|numeric|min:1|max:100',
         ];
     }
-
     /**
      * Definición de los mensajes de validación.
      *
@@ -44,16 +42,16 @@ class CreateReserveRequest extends FormRequest
             'place.required' => 'Es necesario completar el campo lugar',
             'place.numeric' => 'El lugar debe contener numeros',
             'place.min' => 'El valor minimo es 1 para lugar',
-            'date.required' => 'Es necesario completar el campo fecha',
-            'date.string' => 'La fecha deben ser datos',
+            'fecha.required' => 'Es necesario completar el campo fecha',
+            'fecha.string' => 'La fecha deben ser datos',
             'cost.required' => 'Es necesario completar el campo precio',
             'cost.numeric' => 'El precio debe contener numeros',
             'cost.min' => 'El valor minimo es 0 para precio',
             'cost.max' => 'El valor maximo es 50 para precio',
-            'units.required' => 'Es necesario completar el campo unidad',
-            'units.numeric' => 'La unidad debe contener numeros',
-            'units.min' => 'El valor minimo es 1 para unidad',
-            'units.max' => 'El valor maximo es 100 para unidad'
+            'unidad.required' => 'Es necesario completar el campo unidad',
+            'unidad.numeric' => 'La unidad debe contener numeros',
+            'unidad.min' => 'El valor minimo es 1 para unidad',
+            'unidad.max' => 'El valor maximo es 100 para unidad'
         ];
     }
 }

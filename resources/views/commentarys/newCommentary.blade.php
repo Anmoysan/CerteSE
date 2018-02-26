@@ -2,7 +2,7 @@
     <form action="{{ $event['id'] }}/commentarys/create" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
-            <input id="event_id" type="hidden" name="event_id" class="hidden" value="{{ $event['id'] }}">
+            <input id="event_id" type="hidden" name="event_id" value="{{ $event['id'] }}">
             <div class="md-input">
                 <input id="content" name="content" class="md-form-control" required="" type="text">
                 <span class="highlight"></span>

@@ -6,6 +6,7 @@ use App\Place;
 use App\Event;
 use App\Http\Requests\CreateEventRequest;
 use App\Vote;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -42,7 +43,7 @@ class EventsController extends Controller
         $commentarys = $event->commentaries;
         $votesTotal = $event->votesMean();
 
-        return view('events.show', [
+        return view('events.cargeshow', [
             'user' => $user,
             'event' => $event,
             'place' => $place,
@@ -76,6 +77,8 @@ class EventsController extends Controller
 
         $user = $request->user();
         $place = Place::where('id', $request->input('place'))->first();
+        $date = new DateTime($request->input('date'));
+        $date->format('d-m-Y');
 
         Event::create([
             'user_id'   => $user->id,
@@ -84,7 +87,7 @@ class EventsController extends Controller
             'image' => $request->input('image'),
             'place' => $place->name,
             'subject' => $request->input('subject'),
-            'date' => $request->input('date'),
+            'date' => $date,
             'duration' => $request->input('duration'),
             'cost' => $request->input('cost'),
             'agemin' => $request->input('agemin'),
