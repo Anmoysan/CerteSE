@@ -1,4 +1,13 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/iziModal.css": "/css/iziModal.css",
+    "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/iziModal.js": "/js/iziModal.js",
+    "/js/paginationMyEvents.js": "/js/paginationMyEvents.js",
+    "/js/paginationEvents.js": "/js/paginationEvents.js",
+    "/js/map.js": "/js/map.js",
+    "/js/loading.js": "/js/loading.js",
+    "/js/datetime.js": "/js/datetime.js",
+    "/js/cargaShow.js": "/js/cargaShow.js"
 }
