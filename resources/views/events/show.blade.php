@@ -131,7 +131,7 @@
                         <h4>Radio votacion</h4>
                         <div class="votos">
                             <div>5 <img class="estrella" src="../estrellas.png"/></div>
-                            <div class="progress progress-bar bg-success progress-bar-striped progress-bar-animated"
+                            <div id="progress5" class="progress progress-bar bg-success progress-bar-striped progress-bar-animated"
                                  role="progressbar"
                                  style="width: @if($event->votesCalculator(5)*100 >= 5) {{ $event->votesCalculator(5)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(5)*100) }}
                                 %
@@ -139,7 +139,7 @@
                         </div>
                         <div class="votos">
                             <div>4 <img class="estrella" src="../estrellas.png"/></div>
-                            <div class="progress progress-bar bg-primary progress-bar-striped progress-bar-animated"
+                            <div id="progress4" class="progress progress-bar bg-primary progress-bar-striped progress-bar-animated"
                                  role="progressbar"
                                  style="width: @if($event->votesCalculator(4)*100 >= 5) {{ $event->votesCalculator(4)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(4)*100) }}
                                 %
@@ -147,7 +147,7 @@
                         </div>
                         <div class="votos">
                             <div>3 <img class="estrella" src="../estrellas.png"/></div>
-                            <div class="progress progress-bar bg-info progress-bar-striped progress-bar-animated"
+                            <div id="progress3" class="progress progress-bar bg-info progress-bar-striped progress-bar-animated"
                                  role="progressbar"
                                  style="width: @if($event->votesCalculator(3)*100 >= 5) {{ $event->votesCalculator(3)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(3)*100) }}
                                 %
@@ -155,7 +155,7 @@
                         </div>
                         <div class="votos">
                             <div>2 <img class="estrella" src="../estrellas.png"/></div>
-                            <div class="progress progress-bar bg-warning progress-bar-striped progress-bar-animated"
+                            <div id="progress2" class="progress progress-bar bg-warning progress-bar-striped progress-bar-animated"
                                  role="progressbar"
                                  style="width: @if($event->votesCalculator(2)*100 >= 5) {{ $event->votesCalculator(2)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(2)*100) }}
                                 %
@@ -163,7 +163,7 @@
                         </div>
                         <div class="votos">
                             <div>1 <img class="estrella" src="../estrellas.png"/></div>
-                            <div class="progress progress-bar bg-danger progress-bar-striped progress-bar-animated"
+                            <div id="progress1" class="progress progress-bar bg-danger progress-bar-striped progress-bar-animated"
                                  role="progressbar"
                                  style="width: @if($event->votesCalculator(1)*100 >= 5) {{ $event->votesCalculator(1)*100 }}% @else 5% @endif">{{ intval($event->votesCalculator(1)*100) }}
                                 %
@@ -207,7 +207,7 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('js/cargaShow.js') }}" defer></script>
+    <script src="{{ asset('js/cargaShow.js') }}"></script>
     <script src="{{ asset('js/validacionReserve.js') }}"></script>
     <script>
         $(function () {
