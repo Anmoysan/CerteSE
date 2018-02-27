@@ -47,9 +47,8 @@ nav, ul.navbar-nav, li.nav-item a, .fondoNav {
 }
 
 body {
-    background-image: url("../fondo.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: #00b7ea;
+    background: linear-gradient(to bottom, #00b7ea 0%,#51c7e8 99%);
 }
 
 .pagination {

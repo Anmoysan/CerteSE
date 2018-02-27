@@ -177,8 +177,8 @@
             <div class="row pagination">
                 <h1>Lugar</h1>
                 <div id="mapLugar" class="row">
-                    <h2>{{ $place['name'] }}</h2>
-                    <div id="map" class="mapsmall"></div>
+                    <h2 class="col-md-4">{{ $place['name'] }}</h2>
+                    <div id="map" class="mapsmall col-md-8"></div>
                 </div>
             </div>
         </div>
@@ -208,7 +208,6 @@
 
 @push('scripts')
     <script src="{{ asset('js/cargaShow.js') }}"></script>
-    <script src="{{ asset('js/validacionReserve.js') }}"></script>
     <script>
         $(function () {
             maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');
