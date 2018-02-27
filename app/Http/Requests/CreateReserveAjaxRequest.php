@@ -77,7 +77,7 @@ class CreateReserveAjaxRequest extends FormRequest
     }
 
     protected function validateCost(){
-        return 'required|numeric|min:0|max:50';
+        return 'required|numeric';
     }
 
     protected function errorCost(){
@@ -85,8 +85,6 @@ class CreateReserveAjaxRequest extends FormRequest
 
         $error["cost.required"] = 'Es necesario completar el campo precio';
         $error["cost.numeric"] = 'El precio debe contener numeros';
-        $error["cost.min"] = 'El valor minimo es 0 para precio';
-        $error["cost.max"] = 'El valor maximo es 50 para precio';
 
         return $errors;
     }

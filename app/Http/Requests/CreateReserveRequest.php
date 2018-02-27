@@ -23,9 +23,9 @@ class CreateReserveRequest extends FormRequest
     public function rules()
     {
         return [
-            'place' => 'required|numeric|min:1',
+            'place' => 'required|string',
             'fecha' => 'required|date',
-            'cost' => 'required|numeric|min:0|max:50',
+            'cost' => 'required|numeric',
             'unidad' => 'required|numeric|min:1|max:100',
         ];
     }
@@ -40,14 +40,11 @@ class CreateReserveRequest extends FormRequest
         // en el método rules de esta clase.
         return [
             'place.required' => 'Es necesario completar el campo lugar',
-            'place.numeric' => 'El lugar debe contener numeros',
-            'place.min' => 'El valor minimo es 1 para lugar',
+            'place.string' => 'El lugar debe contener datos',
             'fecha.required' => 'Es necesario completar el campo fecha',
             'fecha.string' => 'La fecha deben ser datos',
             'cost.required' => 'Es necesario completar el campo precio',
             'cost.numeric' => 'El precio debe contener numeros',
-            'cost.min' => 'El valor minimo es 0 para precio',
-            'cost.max' => 'El valor maximo es 50 para precio',
             'unidad.required' => 'Es necesario completar el campo unidad',
             'unidad.numeric' => 'La unidad debe contener numeros',
             'unidad.min' => 'El valor minimo es 1 para unidad',

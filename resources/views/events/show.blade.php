@@ -127,7 +127,7 @@
 
                         </div>
                     </div>
-                    <div class="col-xl-7 col-md-12">
+                    <div class="col-xl-7 col-sm-8 col-md-12">
                         <h4>Radio votacion</h4>
                         <div class="votos">
                             <div>5 <img class="estrella" src="../estrellas.png"/></div>
@@ -177,8 +177,8 @@
             <div class="row pagination">
                 <h1>Lugar</h1>
                 <div id="mapLugar" class="row">
-                    <h2 class="col-md-4">{{ $place['name'] }}</h2>
-                    <div id="map" class="mapsmall col-md-8"></div>
+                    <h2 class="col-md-4 col-xl-12">{{ $place['name'] }}</h2>
+                    <div id="map" class="mapsmall col-md-8 col-xl-12"></div>
                 </div>
             </div>
         </div>
