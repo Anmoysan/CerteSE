@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             ]);
 
             $events->each(function (App\Event $event) use ($user, $events, $subjects) {
-                $events->subjects()->sync(
-                    $subjects->random(mt_rand(1,5))
+                $event->subjects()->sync(
+                    $subjects->random(mt_rand(2, 8))
                 );
                 $reserves = factory(App\Reserve::class, 20)->create([
                     'user_id' => $user->id,

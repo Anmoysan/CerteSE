@@ -1,8 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
+use \Carbon\Carbon;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(App\Subject::class, function (Faker $faker) {
 
     $tag = str_random(10);
     $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());

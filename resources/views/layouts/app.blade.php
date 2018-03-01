@@ -17,7 +17,7 @@
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-link" href="{{ url('/') }}"><img src="{{ asset('Logo.png') }}" id="logo"/></a>
         <div class="container collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -95,7 +95,7 @@
     <div class="contenido">
         @yield('content')
     </div>
-    <footer class="footer text-info">aas</footer>
+    <footer class="footer text-info bg-white">aas</footer>
 </div>
 
 <!-- Scripts -->

@@ -11,7 +11,6 @@
 #logo {
     height: 40px;
     width: 40px;
-    margin-left: 40px;
 }
 
 ul.navbar-nav a, a.navbar-brand {
@@ -43,14 +42,13 @@ ul.navbar-nav a, a.navbar-brand {
     font-size: 17px;
 }
 
-footer {
-    margin-top: 20px;
+nav, ul.navbar-nav, li.nav-item a, .fondoNav {
+    background-color: white;
 }
 
 body {
     background: #00b7ea;
     background: linear-gradient(to bottom, #00b7ea 0%,#51c7e8 99%);
-    background-size: cover;
 }
 
 .pagination {
@@ -100,9 +98,6 @@ body {
     width: 100%;
 }
 
-.datos {
-    justify-content: space-between;
-}
 
 
 .scrollHorizontal {
@@ -122,8 +117,8 @@ body {
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     background-color: #0CB1C4;
     animation-name: spin;
     animation-duration: 1000ms;

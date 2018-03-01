@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://certese.test/events/create -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Zend Z-Ray header -->
+<script type="text/javascript">(function(){function gl(href){var match=href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)(\/[^?#]*)(\?[^#]*|)(#.*|)$/);return match&&{host:match[2]}}var po=new gl(document.URL);var srh=XMLHttpRequest.prototype.setRequestHeader;XMLHttpRequest.prototype.setRequestHeader=function(header,value){srh.call(this,header,value);if(!this.headers){this.headers={}}if(!this.headers[header]){this.headers[header]=[]}this.headers[header].push(value)};var o=XMLHttpRequest.prototype.open;var reloadData=false;XMLHttpRequest.prototype.open=function(method,url,async,user,pass){if(typeof async === 'undefined'){async = true;}o.call(this,method,url,async,user,pass);var p=new gl(url);if(url.indexOf('ZRayDisable=1')<0){if(p.host==undefined||p.host==po.host){if(typeof this.headers==='undefined'||typeof this.headers['ZRAY-ID']==='undefined'){this.setRequestHeader('ZRAY-ID','5@5450@1519749693@0')}reloadData=true}}};var s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.send=function(data){var orsc=this.onreadystatechange;this.onreadystatechange=function(){if(typeof orsc=='function'){orsc(this)}if(this.readyState==4&&reloadData){reloadData=false;if(document.addEventListener){var e=document.createEvent('HTMLEvents');e.initEvent('ReloadDevBar',true,true);document.dispatchEvent(e)}}};s.call(this,data)}})();</script>
+<!-- Zend Z-Ray header end -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="MNIKtNR9NP7VSbueF8DZsUPcS35b7LS7F4hp4N0g">
+    <title>CerteSE</title>
+    <link href="./CerteSE_files/app.css" rel="stylesheet">
+    <link href="./CerteSE_files/home.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CerteSE_files/leaflet.css">
+    <link href="./CerteSE_files/iziModal.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CerteSE_files/jquery-ui.css">
+    <link rel="stylesheet" href="./CerteSE_files/style.css">
+<link href="./CerteSE_files/mapbox-gl.css" rel="stylesheet"><script src="./CerteSE_files/leaflet.js.descarga"></script><style></style><style type="text/css"></style></head>
+
+
+<body style="padding-bottom: 32px;">
+<div id="app"><nav class="navbar navbar-expand-lg navbar-light"><div class="container collapse navbar-collapse"><ul class="navbar-nav mr-auto"><li class="nav-item"><a href="http://certese.test/" class="navbar-brand"><img src="./CerteSE_files/Logo.png" id="logo"></a></li> <li class="nav-item"><a href="http://certese.test/" class="navbar-brand text-info">
+                        CerteSE
+                    </a></li> <li class="nav-brand dropdown"><a href="http://certese.test/events/create#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="navbar-brand text-info dropdown-toggle">Eventos</a> <div aria-labelledby="navbarDropdown" class="dropdown-menu"><a href="http://certese.test/events/" class="dropdown-item text-info">Ver</a> <a href="http://certese.test/events/create" class="dropdown-item text-info">Crear</a></div></li> <li class="nav-brand dropdown"><a href="http://certese.test/events/create#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="navbar-brand text-info dropdown-toggle">Lugares</a> <div aria-labelledby="navbarDropdown" class="dropdown-menu"><a href="http://certese.test/places/" class="dropdown-item text-info">Ver</a> <a href="http://certese.test/places/create" class="dropdown-item text-info">Crear</a></div></li></ul> <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button> <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end"><ul class="navbar-nav"><li class="nav-item dropdown"><a href="http://certese.test/events/create#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-info">
+                                Dr. Sergio Mota
+                            </a> <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu dropdown-menu-right"><a href="http://certese.test/profile" class="dropdown-item nav-brand text-info">Perfil</a> <a href="http://certese.test/logout" onclick="event.preventDefault();document.getElementById(&#39;logout-form&#39;).submit();" class="dropdown-item nav-brand text-info">
+                                    Logout
+                                </a> <form id="logout-form" action="http://certese.test/logout" method="POST" style="display: none;"><input type="hidden" name="_token" value="MNIKtNR9NP7VSbueF8DZsUPcS35b7LS7F4hp4N0g"></form></div></li></ul></div></div></nav> <div class="contenido"><div class="container"><div class="row justify-content-md-center mt-5"><div class="col-md-8"><div class="card"><div class="card-header">Añadir evento</div> <div class="card-body"><form action="http://certese.test/events/create" method="post" class="form-horizontal"><input type="hidden" name="_token" value="MNIKtNR9NP7VSbueF8DZsUPcS35b7LS7F4hp4N0g"> <div class="form-group"><label for="name" class="col-md-4 control-label">Nombre de evento</label> <input id="name" type="text" name="name" value="" autofocus="autofocus" class="form-control"></div> <div class="form-group"><label for="image" class="col-md-4 control-label">Foto del evento</label> <input id="image" type="text" name="image" value="" autofocus="autofocus" class="form-control"></div> <div class="form-group"><label for="place" class="col-md-4 control-label">Lugar</label> <select name="place" id="place" class="custom-select mb-2 mr-sm-2 mb-sm-0"><option selected="selected">Selecciona</option> <option value="1">Illum reiciendis ut consequatur.</option> <option value="2">Et distinctio in aliquam.</option> <option value="3">Quos neque occaecati eius est.</option> <option value="4">Consequatur non quia consectetur exercitationem.</option> <option value="5">Aliquam nisi vitae modi.</option> <option value="6">Enim eos aspernatur.</option> <option value="7">Ut nam reiciendis accusantium.</option> <option value="8">Quae maxime et.</option> <option value="9">Qui nemo non provident cum.</option> <option value="10">Explicabo consectetur fugiat qui.</option> <option value="11">Rerum labore molestiae quas sunt.</option> <option value="12">Eaque sint earum.</option> <option value="13">Accusantium ut ut vero.</option> <option value="14">Et eligendi consequuntur.</option> <option value="15">Sit eos et tempore.</option> <option value="16">Aspernatur nesciunt rerum porro.</option> <option value="17">Autem vel reiciendis similique.</option> <option value="18">Nostrum autem rerum.</option> <option value="19">In reprehenderit aliquid et.</option> <option value="20">Ea veritatis.</option></select></div> <div class="form-group"><label for="subject" class="col-md-4 control-label">Tema</label> <input id="subject" type="text" name="subject" value="" autofocus="autofocus" class="form-control"></div> <div class="form-group"><label for="date" class="col-md-4 control-label">Fecha evento</label> <input id="date" type="text" name="date" value="" autofocus="autofocus" class="form-control hasDatepicker" maxlength="10"></div> <div class="form-group"><label for="duration" class="col-md-4 control-label">Duracion evento</label> <input id="duration" type="time" name="duration" value="" autofocus="autofocus" class="form-control"></div> <div class="form-group"><label for="cost" class="col-md-4 control-label">Precio entrada</label> <input id="cost" type="number" name="cost" value="" autofocus="autofocus" class="form-control" maxlength="2"></div> <div class="form-group"><label for="agemin" class="col-md-4 control-label">Edad minima</label> <input id="agemin" type="number" min="0" max="100" name="agemin" value="" autofocus="autofocus" class="form-control" maxlength="2"></div> <div class="form-group"><label for="organizer" class="col-md-4 control-label">Organizador</label> <input id="organizer" type="text" name="organizer" value="" autofocus="autofocus" class="form-control"></div> <div class="form-group"><label for="commentarys" class="mr-sm-2">¿Quieres comentarios?</label> <select name="commentarys" id="commentarys" class="custom-select mb-2 mr-sm-2 mb-sm-0"><option selected="selected">Selecciona</option> <option value="1">Si</option> <option value="0">No</option></select></div> <div class="form-group"><button type="submit" class="btn btn-info text-light">
+                                    Añadir evento
+                                </button></div></form></div></div></div></div></div></div></div>
+
+<!-- Scripts -->
+<script src="./CerteSE_files/app.js.descarga"></script>
+<script src="./CerteSE_files/leaflet.js.descarga" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+<script src="./CerteSE_files/jquery-3.2.1.slim.min.js.descarga" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="./CerteSE_files/spin.min.js.descarga"></script>
+<script src="./CerteSE_files/map.js.descarga"></script>
+<script src="./CerteSE_files/iziModal.js.descarga" defer=""></script>
+<script src="./CerteSE_files/jquery-1.12.4.js.descarga"></script>
+<script src="./CerteSE_files/jquery-ui.js.descarga"></script>
+<script src="./CerteSE_files/popper.min.js.descarga" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="./CerteSE_files/jquery.mask.js.descarga" type="text/javascript"></script>
+    <script src="./CerteSE_files/datetime.js.descarga"></script>
+<!-- START Zend Z-Ray footer -->
+
+<style type="text/css" media="all">#zend-dev-bar-iframe,#zend-dev-bar-iframe iframe{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline}#zend-dev-bar-iframe{width:100%;border:0;padding:0;margin:0;position:fixed;bottom:0;left:0;z-index:2147483600;visibility:visible;overflow:visible;}#zend-dev-bar-iframe iframe{width:100%;height:33px;position:absolute;bottom:0;left:0}#zend-dev-bar a,#zend-dev-bar body,#zend-dev-bar div,#zend-dev-bar html,#zend-dev-bar span{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}#zend-dev-bar{left:0;bottom:0;width:100%;height:31px;color:#000;z-index:2147483600;position:fixed;border-top:1px solid #666;visibility:visible;background:#fff;background:-moz-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fff),color-stop(1%,#f8f8f8),color-stop(100%,#d9d9d9));background:-webkit-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:-o-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:-ms-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:linear-gradient(to bottom,#fff 0,#f8f8f8 1%,#d9d9d9 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#d9d9d9', GradientType=0);-webkit-box-shadow:rgba(0,0,0,.35)0 0 9px;box-shadow:rgba(0,0,0,.35)0 0 9px;font:400 12px/31px 'Open Sans',sans-serif;direction:ltr}#zend-dev-bar.zdb-collapsed{visibility:hidden}#zend-dev-bar div.zdb-collapsed-group.zdb-toolbar-group-serverinfo{width:202px;float:right;-moz-border-radius:6px 0 0;-webkit-border-radius:6px 0 0;-khtml-border-radius:6px 0 0;border-radius:6px 0 0}#zend-dev-bar div.zdb-collapsed-group{background:#fff;background:-moz-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fff),color-stop(1%,#f8f8f8),color-stop(100%,#d9d9d9));background:-webkit-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:-o-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:-ms-linear-gradient(top,#fff 0,#f8f8f8 1%,#d9d9d9 100%);background:linear-gradient(to bottom,#fff 0,#f8f8f8 1%,#d9d9d9 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#d9d9d9', GradientType=0);-webkit-box-shadow:rgba(0,0,0,.35)0 0 9px;box-shadow:rgba(0,0,0,.35)0 0 9px;border-top:1px solid #666;border-left:1px solid #666;visibility:visible;height:32px}#zend-dev-bar a{color:#006f9d;text-decoration:none}#zend-dev-bar a:hover{text-decoration:underline}#zend-dev-bar .zdb-toolbar-entry{float:left;display:block;background:0 0}#zend-dev-bar .zdb-toolbar-detail .zdb-toolbar-info{clear:both;display:block;white-space:normal}#zend-dev-bar .zdb-toolbar-entry .zdb-toolbar-detail,#zend-dev-bar .zdb-toolbar-entry .zdb-toolbar-info{font-size:11px}#zend-dev-bar .zdb-toolbar-detail-redundant{display:none;opacity:0}#zend-dev-bar .zdb-toolbar-detail{bottom:40px;display:none;line-height:20px;padding:7px 10px;position:absolute;float:left;background:0 0}#zend-dev-bar .zdb-align-right{float:right}#zend-dev-bar .zdb-toolbar-info{vertical-align:middle}#zend-dev-bar .zdb-toolbar-preview img{border:0;width:auto;display:inline;margin-right:5px;vertical-align:middle}#zend-dev-bar .zdf-toolbar-hide-button{top:5px;right:14px;color:#bebebe;display:block;cursor:pointer;position:absolute;text-decoration:none;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAwCAMAAAA8VkqRAAAAh1BMVEUAAAD///////////////////////////8UFBQeHh4UYov///8ea5P///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8UcaEUFBRuD4SgAAAAK3RSTlMAk1l8VS+8LM/Y9hf5DAZYToSSGTVfMG4ne08dKS5IDoatu1Q3G0sEChQIN29UTwAAAHpJREFUeF7t0TUOA0EMQNENDsIyMwfuf740Hq3rNNFIeaV/Ycn2XETfCD2CYDgwoW2IYt+cgfHjSDu6Iy+z4gKKrMx3G7qqbm6gqatu++Kqf/yF8CMQiYMkyoY0CcITCIMkVY7uaPthvINx6NuHDcu8TlcwrfPy9H7sAwwtIdgF0+00AAAAAElFTkSuQmCC);height:24px;width:24px}#zend-dev-bar .zdf-toolbar-hide-button:hover{color:#eb4a4a;text-decoration:none}@media screen and (max-width:780px){#zend-dev-bar .zdb-toolbar-preview .zdb-toolbar-extra-info{display:none}#zend-dev-bar .zdb-toolbar-entry:hover .zdb-toolbar-extra-info-redundant{display:block}#zend-dev-bar .zdb-toolbar-preview .zdb-toolbar-spacing{margin:0}}#zend-dev-bar-padding{height:33px;width:100%;display:block}#zend-dev-bar-iframe.zdb-iframe-collapsed {width: 255px;left: auto;right: 0;}</style>
+<script type="text/javascript" src="./CerteSE_files/easyXDM.min.js.descarga"></script>
+<script type="text/javascript">document.cookie = "ZendDebuggerCookie=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+document.body.appendChild(document.getElementById("zend-dev-bar"));
+document.body.appendChild(document.getElementById("zend-dev-bar-iframe"));
+var zendDevBar = null;
+var inIframe = 0;
+if (window != window.top) {
+    inIframe = 1;
+} else {
+    document.body.style.paddingBottom = parseInt(window.getComputedStyle(document.body, null).getPropertyValue("padding-bottom")) + 32 + "px";
+}
+(function() {
+    function loadDevBar() {
+        zendDevBar = new function() {
+            this.updateRequestsList = function(requestsInfo) {
+                socket.postMessage(JSON.stringify({
+                    "action": "updateRequestsList",
+                    "value": requestsInfo
+                }))
+            };
+            this.loadRequestsList = function() {
+                socket.postMessage(JSON.stringify({
+                    "action": "loadRequestsList",
+                    "value": ""
+                }))
+            };
+            this.collapse = function() {
+                socket.postMessage(JSON.stringify({
+                    "action": "collapse",
+                    "value": ""
+                }))
+            }
+        };
+        var socket = new zdbEasyXDM.Socket({
+            remote: "http://certese.test:80/ZendServer/Z-Ray/iframe?ZRayDisable=1&pageId=5@5450@1519749693@0&token=&url=" + encodeURIComponent("http://certese.test:80/ZendServer") + "&host=" + encodeURIComponent(window.location.host) + "&iframe=" + inIframe + "&disable_debug=1",
+            container: document.getElementById("zend-dev-bar-iframe"),
+            onMessage: function(message, origin) {
+                var msg = JSON.parse(message);
+                if (msg.action == "loaded" || msg.action == "resize" || msg.action == "resizeEnd") {
+                    if (msg.action == "loaded") {
+                        document.getElementById("zend-dev-bar-iframe").style.display = "block";
+                        var element = document.getElementById("zend-dev-bar");
+                        element.parentNode.removeChild(element)
+                    }
+                    if (document.querySelector("#zend-developer-toolbar") != null) document.querySelector("#zend-developer-toolbar").style.bottom = "32px";
+                    if (document.querySelector(".sf-toolbar") != null) document.querySelector(".sf-toolbarreset").style.bottom = "32px";
+                    this.container.getElementsByTagName("iframe")[0].style.height = msg.value + "px"
+                } else if (msg.action == "error") {
+                    document.getElementById("zdb-loading-message").innerHTML = msg.value;
+                    var element = document.getElementById("zend-dev-bar-iframe");
+                    element.parentNode.removeChild(element)
+                } else if (msg.action == "resizeStart") this.container.getElementsByTagName("iframe")[0].style.height = window.innerHeight + "px";
+                else if (msg.action == "updateRequestsList") {
+                    if (parent.zendDevBar) parent.zendDevBar.updateRequestsList(msg.value)
+                } else if (msg.action == "collapse") {
+                    document.cookie = "ZSDEVBAR=%7B%22collapsed%22%3Atrue%7D; expires=0; path=/";
+                    document.getElementById("zend-dev-bar-iframe").className = "zdb-iframe-collapsed"
+                } else if (msg.action == "expand") {
+                    document.cookie = "ZSDEVBAR=%7B7D; expires=0; path=/";
+                    document.getElementById("zend-dev-bar-iframe").className = ""
+                } else if (msg.action == "debug") {
+                    msg.value.forEach(function(cookie) {
+                        document.cookie = cookie.key + "=" + cookie.value + "; " + cookie.options
+                    });
+                    var t = new Date;
+                    t.setSeconds(t.getSeconds() + 2);
+                    document.cookie = "original_url=" + window.location.href + "; expires=" + t.toGMTString() + ";";
+                    window.location.reload()
+                } else if (msg.action == "debugnext") {
+                    msg.value.forEach(function(cookie) {
+                        document.cookie = cookie.key + "=" + cookie.value + "; path=/;"
+                    });
+                    document.cookie = "original_url=" + window.location.href + "; path=/;"
+                } else if (msg.action == "cleardebug") {
+                    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;";
+                    msg.value.forEach(function(cookie) {
+                        document.cookie = cookie.key + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;"
+                    });
+                    document.cookie = "original_url=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;";
+                    document.cookie = "ZendDebuggerCookie=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;"
+                } else if (msg.action == "closeZRay") {
+                    document.cookie = "ZRayDisable=1; path=/;";
+                    document.getElementById("zend-dev-bar-iframe").style.display = "none";
+                    document.body.style.paddingBottom = parseInt(document.body.style.paddingBottom) - 32 + "px"
+                } else if (msg.action == "runAction") {
+                    var getQueryString = function(obj) {
+                        var queryStrings = [];
+                        for (var k in obj) obj.hasOwnProperty(k) && queryStrings.push("[object Object]" != Object.prototype.toString.call(obj[k]) ? k + "=" + obj[k] : d(obj[k]));
+                        return queryStrings.join("&")
+                    };
+                    var http = new XMLHttpRequest;
+                    http.open("POST", msg.value.url, !0);
+                    http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    http.onreadystatechange = function() {
+                        if(http.readyState == 4 && http.status == 200) {
+                            socket.postMessage(JSON.stringify({
+                                "action": "runAction",
+                                "value": http.responseText,
+                                "id": msg.value.extension + ":" + msg.value.action
+                            }));
+                        }
+                    };
+                    var params = '';
+                    if (typeof msg.value.params != 'undefined') {
+                        params = '&' + getQueryString(msg.value.params);
+                    }
+                    http.send('ZRayAction=' + msg.value.action + params);
+                } else if (msg.action == "reload") window.location.reload();
+                else if (msg.action == "shortcuts") zdbShortcut.add(msg.value, function() {
+                    zendDevBar.collapse()
+                })
+            }
+        });
+        document.addEventListener("ReloadDevBar", function() {
+            zendDevBar.loadRequestsList()
+        }, true);
+        zdbShortcut.add("Ctrl+A", function() {
+            document.getElementById("zend-dev-bar-iframe").style.display = "none";
+            setTimeout(function() {
+                document.getElementById("zend-dev-bar-iframe").style.display = "block"
+            }, 50)
+        }, {
+            propagate: true
+        })
+    }
+    if (typeof zdbShortcut == "undefined") {
+        if ("http://certese.test:80/ZendServer".indexOf("https://") == 0) document.getElementById("zdb-loading-message").innerHTML = 'Failed to communicate with Zend Server. You may need to accept Zend Server\'s security certificate first. <a href="http://certese.test:80/ZendServer/Z-Ray/SSLTest" target="_blank">Accept certificate</a> or go to <a href="http://www.zend.com/azure/redirect/helplink/troubleshooting" target="_blank">Online Help</a> for a different solution.';
+        else document.getElementById("zdb-loading-message").innerHTML = 'Failed to communicate with Zend Server. <a href="http://www.zend.com/azure/redirect/helplink/troubleshooting" target="_blank">See why...</a>';
+        if (document.getElementById("zend-dev-bar") != null) document.getElementById("zend-dev-bar").style.display = "block"
+    } else {
+        if (location.href == top.location.href)
+            if (document.getElementById("zend-dev-bar") != null) {
+                document.getElementById("zend-dev-bar").style.display = "block";
+                if (document.cookie.indexOf("ZSDEVBAR") >= 0 && document.cookie.indexOf("collapsed%22%3Atrue") >= 0) {
+                    document.getElementById("zend-dev-bar").className = "zdb-collapsed";
+                    if (document.getElementById("zdb-toolbar-group-serverinfo") != null) document.getElementById("zdb-toolbar-group-serverinfo").className = "zdb-toolbar-group zdb-toolbar-group-serverinfo zdb-collapsed-group"
+                }
+            }
+        setTimeout(function() {
+            if (document.getElementById("zend-dev-bar") != null) {
+                document.getElementById("zend-dev-bar").style.display = "block";
+                if (document.cookie.indexOf("ZSDEVBAR") >= 0 && document.cookie.indexOf("collapsed%22%3Atrue") >= 0) {
+                    document.getElementById("zend-dev-bar").className = "zdb-collapsed";
+                    if (document.getElementById("zdb-toolbar-group-serverinfo") != null) document.getElementById("zdb-toolbar-group-serverinfo").className = "zdb-toolbar-group zdb-toolbar-group-serverinfo zdb-collapsed-group"
+                }
+            }
+        }, 2E3);
+        loadDevBar()
+    }
+})();</script><div id="zend-dev-bar" style="display: block;"><div id="zdb-toolbar-group-serverinfo" class="zdb-toolbar-group zdb-toolbar-group-serverinfo"><div class="zdb-toolbar-entry zdb-server-info zdb-align-right zdb-toolbar-button" style="margin-right: 50px;"><div class="zdb-toolbar-preview" title="Zend Server"><a href="http://certese.test/ZendServer" target="_blank"><img alt="Zend Server" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAWCAYAAABpNXSSAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH3wgGCA0DGBNuCAAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAADDklEQVRYhdWXP2jUUBzHP1cKup5cQB3TwamCXEcX4UoRoricQ5AsSgsZFJrBbm7SG+IYaEC0gUbobZJB7I0uQm/QxUF6UBeHFAMFN+Uc8kvvNZfcPx3OLzyO3/v93nu/7/v9ybtKbXP3LXCHyfEudq3bAIZpHwF+FHotw7SbQBOoAzqQAC1F11B0VdF3gY7skRim3QAO5JyVKPS6ZU4Ypr0DrAPdSm1ztwZ8Aq5OQOAEuB671nfZqA/0RKcX2Ldk/BizbwKsRqHXlYvRhdhGCYEqcER6Ga2F2LVOgJvArZLhKusfZgQU6KQ3eh9YAS4pw49CLwF80S/l9KuytgrsyH6+/DZHkG7IGgC/0u/3Sy01J7gCfAZqgB+71rmbkUhAeoudEYeWwjDtOnAo4hJpVLLIFe5rmPaBEOlEobe6MIJABXglBL4Cm7M4OQ6S94mIukSuLfJ63l5SqSFiC2BxxP6PgTXgF2DGrvXzXzgtTmT1Uy0x80nTqWGYdlWIZcjSrJdFqZCE5gTLCEvgWexah0V2UzheB55yPpdLEYVexzDtLmk3azKoExhE52xuiITmBBeBPeAC8IEBmZkg7XVfxKylJoqM6PPk2uRIGKaty1ymLyYBbAPLwCnwIHat339BQO06rSj0tkbY5eEj0TNMW49Cr8cgldoiA3CusDUnWAOeiGjHrnU8KwFBncENTxXRXIFnzg+lEigkNCeoAa9FfBO71t40h07o1LQ4+2ZIXekoBZ1BjcRL4DLwDbBncbQAZyGXfJ4K0n6zAt+WaT9vtwigOcEGcFfm3gP3NCco2vdL7Fofp3Cip3SZfcO0txgUc9bvG2XrFad3FLthEpoTXANeKHOPZBThVHOCG7Fr9Ur0RdggfdTVGTzu8uhQTqZNGoUqaUEPpeUC8ByIgeMJRiL2GcaSkZRYIi3sLAqJOL4lusKHnqxPlHOGogAw8u00D1Ce570o9JaKbErfTnOEwraqYq5JSEfLvhH/JwnSLzaUFHSGuSUhT5GxUYA5JkFaC1WgO+4P1zyTmCgKAH8ApuIcehsRVZ8AAAAASUVORK5CYII=" style="width: 49px;margin-top: 10px;"></a><span class="zdb-toolbar-info">&nbsp;</span></div><div class="zdb-toolbar-detail zdb-toolbar-detail-redundant"></div></div><div class="zdb-toolbar-entry zdb-toolbar-button" id="zdb-loading-entry" style="margin-left: 20px;"><div class="zdb-toolbar-preview" style="opacity: 1;"><span class="zdb-toolbar-info" id="zdb-loading-message">Failed to communicate with Zend Server. <a href="http://www.zend.com/azure/redirect/helplink/troubleshooting" target="_blank">See why...</a></span></div></div><a class="zdf-toolbar-hide-button" title="Close Toolbar" onclick="this.parentNode.parentNode.style.display = &#39;none&#39;;document.body.style.paddingBottom = (parseInt(document.body.style.paddingBottom) - 32) + &#39;px&#39;;"></a></div></div><div id="zend-dev-bar-iframe" style="display: none;"></div>
+<!-- END Zend Z-Ray footer -->
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top: 606.766px; left: 350.5px; z-index: 1; display: none;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all ui-state-disabled" title="Prev"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="Next"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></a><div class="ui-datepicker-title"><span class="ui-datepicker-month">February</span>&nbsp;<span class="ui-datepicker-year">2018</span></div></div><table class="ui-datepicker-calendar"><thead><tr><th scope="col" class="ui-datepicker-week-end"><span title="Sunday">Su</span></th><th scope="col"><span title="Monday">Mo</span></th><th scope="col"><span title="Tuesday">Tu</span></th><th scope="col"><span title="Wednesday">We</span></th><th scope="col"><span title="Thursday">Th</span></th><th scope="col"><span title="Friday">Fr</span></th><th scope="col" class="ui-datepicker-week-end"><span title="Saturday">Sa</span></th></tr></thead><tbody><tr><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">1</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">2</span></td><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">3</span></td></tr><tr><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">4</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">5</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">6</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">7</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">8</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">9</span></td><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">10</span></td></tr><tr><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">11</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">12</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">13</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">14</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">15</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">16</span></td><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">17</span></td></tr><tr><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">18</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">19</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">20</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">21</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">22</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">23</span></td><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">24</span></td></tr><tr><td class=" ui-datepicker-week-end ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">25</span></td><td class=" ui-datepicker-unselectable ui-state-disabled "><span class="ui-state-default">26</span></td><td class=" ui-datepicker-unselectable ui-state-disabled  ui-datepicker-today"><span class="ui-state-default">27</span></td><td class=" ui-datepicker-days-cell-over  ui-datepicker-current-day" data-handler="selectDay" data-event="click" data-month="1" data-year="2018"><a class="ui-state-default ui-state-active ui-state-hover" href="http://certese.test/events/create#">28</a></td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div></body></html>

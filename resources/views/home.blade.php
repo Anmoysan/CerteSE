@@ -4,11 +4,6 @@
     <div class="container card">
         <div class="row card-group">
             <div id="carousel" class="carousel slide w-100 m-auto" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
-                </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
                         <img class="d-block img-fluid" src="{{ asset('carousel1.jpg') }}" alt="Primera imagen">
@@ -35,30 +30,44 @@
             <div></div>
             <div class="scrollHorizontal">
                 <div class="row text-center">
-                    @forelse($events as $event)
+                    @if(count($events) > 0)
+                        @foreach($events as $event)
+                            <div class="col-xl-4 col-md-6 col-sm-12 eventoScroll">
+                                <div class="card-block">
+                                    <h4 class="card-title"><a href="/events/{{ $event['id'] }}">{{ $event['name'] }}</a>
+                                    </h4>
+                                </div>
+                                <hr>
+
+                                <div class="card-block">
+                                    <a href="/events/{{ $event['id'] }}"><img
+                                                class="card-img-top img-princ imagenevent img-responsive"
+                                                src="{{ $event['image'] }}" alt="Foto de {{ $event['name'] }}"></a>
+                                </div>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Votacion:
+                                        <strong>{{ number_format($event->votesMean(), 2, '.', '') }} / 5</strong></li>
+                                    <li class="list-group-item">Precio: <strong>{{ $event['cost'] }}</strong></li>
+                                    <li class="list-group-item">Fecha: <strong>{{ $event['date'] }}</strong></li>
+                                </ul>
+                            </div>
+                        @endforeach
+
                         <div class="col-xl-4 col-md-6 col-sm-12 eventoScroll">
                             <div class="card-block">
-                                <h4 class="card-title"><a href="/events/{{ $event['id'] }}">{{ $event['name'] }}</a>
-                                </h4>
+                                <a href="{{ url('/') }}/events/">
+                                    <img class="card-img-top img-princ imagenevent img-responsive"
+                                         src="{{ asset('registro.jpg') }}">
+                                    <h3>Ver más eventos</h3>
+                                </a>
                             </div>
-                            <hr>
-
-                            <div class="card-block">
-                                <a href="/events/{{ $event['id'] }}"><img
-                                            class="card-img-top img-princ imagenevent img-responsive"
-                                            src="{{ $event['image'] }}" alt="Foto de {{ $event['name'] }}"></a>
-                            </div>
-
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Votacion:
-                                    <strong>{{ number_format($event->votesMean(), 2, '.', '') }} / 5</strong></li>
-                                <li class="list-group-item">Precio: <strong>{{ $event['cost'] }}</strong></li>
-                                <li class="list-group-item">Fecha: <strong>{{ $event['date'] }}</strong></li>
-                            </ul>
                         </div>
-                    @empty
+
+
+                    @else
                         <h1>No hay eventos programados todavia</h1>
-                    @endforelse
+                    @endif
                 </div>
             </div>
         </div>
