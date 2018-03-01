@@ -3,7 +3,7 @@
 @section('content')
     <div class="container perfil card">
         <div class="card-group row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-12">
                 <img src="{{$user->avatar }}" id="avatar" alt="Foto del usuario">
             </div>
             <div class="col-lg-8">

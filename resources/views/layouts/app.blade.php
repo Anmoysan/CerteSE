@@ -18,15 +18,11 @@
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container collapse navbar-collapse">
+        <a class="navbar-link" href="{{ url('/') }}"><img src="{{ asset('Logo.png') }}" id="logo"/></a>
+        <div class="container collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="navbar-brand"
-                       href="{{ url('/') }}"><img
-                                src="{{ asset('Logo.png') }}" id="logo"/></a>
-                </li>
-                <li class="nav-item">
-                    <a class="navbar-brand text-info"
+                    <a class="navbar-link text-info"
                        href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
@@ -34,26 +30,26 @@
 
 
                 <li class="nav-brand dropdown">
-                    <a class="navbar-brand text-info dropdown-toggle" href="#" role="button"
+                    <a class="navbar-link text-info dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Eventos</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-info" href="{{ url('/') }}/events/">Ver</a>
+                        <a class="navbar-link dropdown-item text-info" href="{{ url('/') }}/events/">Ver</a>
 
                         @if(Auth::check() && App\Place::count() > 0)
-                            <a class="dropdown-item text-info" href="{{ url('/') }}/events/create">Crear</a>
+                            <a class="navbar-link dropdown-item text-info" href="{{ url('/') }}/events/create">Crear</a>
                         @endif
                     </div>
                 </li>
 
                 <li class="nav-brand dropdown">
-                    <a class="navbar-brand text-info dropdown-toggle" href="#" role="button"
+                    <a class="navbar-link text-info dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Lugares</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-info" href="{{ url('/') }}/places/">Ver</a>
+                        <a class="navbar-link dropdown-item text-info" href="{{ url('/') }}/places/">Ver</a>
                         @if( Auth::check())
-                            <a class="dropdown-item text-info" href="{{ url('/') }}/places/create">Crear</a>
+                            <a class="navbar-link dropdown-item text-info" href="{{ url('/') }}/places/create">Crear</a>
                         @endif
                     </div>
                 </li>
@@ -64,7 +60,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
                     @if (Auth::guest())
                         <li class="nav-brand"><a href="{{ route('login') }}" class="nav-link text-info">Login</a>
@@ -99,6 +95,7 @@
     <div class="contenido">
         @yield('content')
     </div>
+    <footer class="footer text-info">aas</footer>
 </div>
 
 <!-- Scripts -->
@@ -114,7 +111,9 @@
 <script src="{{ asset('js/iziModal.js') }}" defer></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.13/jquery.mask.js" type="text/javascript"></script>
 @stack('scripts')
 </body>

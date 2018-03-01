@@ -25,7 +25,6 @@ class CreateEventRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:30',
-            'image' => 'required|string|max:255',
             'place' => 'required|numeric|min:1',
             'subject' => 'required|string|max:100',
             'date' => 'required|date',
@@ -50,9 +49,6 @@ class CreateEventRequest extends FormRequest
             'name.required' => 'Es necesario completar el campo nombre',
             'name.max' => 'Has sobrepasado los 30 caracteres disponibles para el nombre',
             'name.string' => 'El nombre debe contener caracteres',
-            'image.required' => 'Es necesario completar el campo imagen',
-            'image.max' => 'Has sobrepasado los 255 caracteres disponibles para el imagen',
-            'image.string' => 'La imagen debe contener caracteres',
             'place.required' => 'Es necesario completar el campo lugar',
             'place.numeric' => 'Debe seleccionar un lugar',
             'place.min' => 'El valor minimo es 0 para precio',

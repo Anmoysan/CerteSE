@@ -6,9 +6,14 @@ $(function () {
 
 function coment() {
     $("#content").on({
-        keyup: function () {
+        keypress: function () {
+            if (event.keyCode == 13) {
                 comentar($("#content").val(), $("#event_id").val());
-        },
+            }
+        }
+        /*keyup: function () {
+                comentar($("#content").val(), $("#event_id").val());
+        },*/
     });
 }
 
@@ -16,14 +21,18 @@ function modal() {
     $("#reserva").iziModal({
         width: 750,
         zindex: 999,
+
+        onClosed: function () {
+            $("#mapLugar").show(100, function () {});
+        },
     });
 
-
-    $("#abrirReserva").on('click', function () {
-        event.preventDefault();
-        $("#reserva").iziModal('open');
-        $("#mapLugar").hide(1000, function () {
-        });
+    $("#abrirReserva").on({
+        click: function () {
+            event.preventDefault();
+            $("#reserva").iziModal('open');
+            $("#mapLugar").hide(100, function () {});
+        }
     });
 
     $("#unidad").on({
@@ -227,9 +236,9 @@ function gestionarErrores(input, errores) {
 function validateTarget(target) {
     let formData = new FormData();
     formData.append(target.id, target.value);
-    $(target).parent().addClass("spinner");
+    $(target).prev().addClass("spinner");
     axios.post('/reservar', formData).then(function (response) {
-        $(target).parent().removeClass("spinner");
+        $(target).prev().removeClass("spinner");
         gestionarErrores(target, response.data.place);
         gestionarErrores(target, response.data.fecha);
         gestionarErrores(target, response.data.cost);

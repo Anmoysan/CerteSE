@@ -53,20 +53,11 @@
                                 @endif
                             </div>
 
-                            <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
-                                <div class="input-group mb-2">
-                                    <label for="latitud" class="col-lg-6 control-label">Latitud</label>
-                                    <label for="longitud" class="col-lg-6 control-label">Longitud</label>
-                                </div>
-                                <div class="input-group mb-2">
-                                    <input id="latitud" type="text" class="form-control" name="latitud"
-                                           value="{{ explode(",", old('place'))[0] }}">
-
-                                    <input id="longitud" type="text" class="form-control" name="longitud"
-                                           value="{{ explode(",", old('place'))[0] }}">
-
-                                </div>
-                                <div>
+                            <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }} datos input-group">
+                                <div class="col-xl-6">
+                                    <label for="latitud" class="col-xl-12 control-label">Latitud</label>
+                                    <input id="latitud" type="text" class="form-control col-xl-12" name="latitud"
+                                           value="{{ explode(", ", old('place'))[0] }}">
                                     @if($errors->has('latitud'))
                                         @foreach($errors->get('latitud') as $message)
                                             <div class="alert alert-danger" role="alert">
@@ -74,7 +65,11 @@
                                             </div>
                                         @endforeach
                                     @endif
-
+                                </div>
+                                <div class="col-xl-6">
+                                    <label for="longitud" class="col-xl-12 control-label">Longitud</label>
+                                    <input id="longitud" type="text" class="form-control col-xl-12" name="longitud"
+                                           value="{{ explode(", ", old('place'))[0] }}">
                                     @if($errors->has('longitud'))
                                         @foreach($errors->get('longitud') as $message)
                                             <div class="alert alert-danger" role="alert">
@@ -84,8 +79,6 @@
                                     @endif
                                 </div>
                             </div>
-
-
                             <div class="form-group">
                                 <button type="submit" class="btn btn-info text-light
 ">

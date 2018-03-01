@@ -20,9 +20,9 @@
                     <p>Precio: <strong>{{ $event['cost'] }}</strong></p>
                     <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
                     @if(Auth::check())
-                        <button @if(Auth::user()->ReserveEvent($event)) id="reserva_Factura" @else id="abrirReserva"
-                                @endif class="btn btn-outline-info">@if(Auth::user()->ReserveEvent($event)) Descargar
-                            Factura @else Reservar @endif</button>@endif
+                        <button @if(Auth::user()->ReserveEvent($event)) id="reserva_Factura" class="btn btn-outline-info disabled"> @else id="abrirReserva" class="btn btn-outline-info">@endif
+                            @if(Auth::user()->ReserveEvent($event)) Descargar Factura @else Reservar @endif</button>
+                    @endif
                     <div class="iziModal">
                         <div id="reserva" class="row justify-content-md-center mt-5">
                             <div class="col-md-12">
@@ -51,8 +51,10 @@
 
                                             <div class="form-group{{ $errors->has('units') ? ' has-error' : '' }}">
                                                 <label for="unidad" class="col-md-4 control-label">Unidades</label>
+                                                <div></div>
                                                 <input id="unidad" type="text" class="form-control" name="unidad"
                                                        value="{{ old('units') }}">
+
                                                 @if($errors->has('units'))
                                                     @foreach($errors->get('units') as $message)
                                                         <div class="alert alert-danger" role="alert">

@@ -13,25 +13,10 @@
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">Nombre de evento</label>
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
-                                       autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
 
                                 @if($errors->has('name'))
                                     @foreach($errors->get('name') as $message)
-                                        <div class="alert alert-danger" role="alert">
-                                            {{ $message }}
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
-
-                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                <label for="image" class="col-md-4 control-label">Foto del evento</label>
-                                <input id="image" type="text" class="form-control" name="image"
-                                       value="{{ old('image') }}" autofocus>
-
-                                @if($errors->has('image'))
-                                    @foreach($errors->get('image') as $message)
                                         <div class="alert alert-danger" role="alert">
                                             {{ $message }}
                                         </div>
@@ -57,24 +42,10 @@
                                 @endif
                             </div>
 
-                            <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
-                                <label for="subject" class="col-md-4 control-label">Tema</label>
-                                <input id="subject" type="text" class="form-control" name="subject"
-                                       value="{{ old('subject') }}" autofocus>
-
-                                @if($errors->has('subject'))
-                                    @foreach($errors->get('subject') as $message)
-                                        <div class="alert alert-danger" role="alert">
-                                            {{ $message }}
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
-
                             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                                 <label for="date" class="col-md-4 control-label">Fecha evento</label>
                                 <input id="date" type="text" class="form-control" name="date"
-                                       value="{{ old('date') }}" autofocus>
+                                       value="{{ old('date') }}">
 
                                 @if($errors->has('date'))
                                     @foreach($errors->get('date') as $message)
@@ -88,7 +59,7 @@
                             <div class="form-group{{ $errors->has('duration') ? ' has-error' : '' }}">
                                 <label for="duration" class="col-md-4 control-label">Duracion evento</label>
                                 <input id="duration" type="time" class="form-control" name="duration"
-                                       value="{{ old('duration') }}" autofocus>
+                                       value="{{ old('duration') }}">
 
                                 @if($errors->has('duration'))
                                     @foreach($errors->get('duration') as $message)
@@ -102,7 +73,7 @@
                             <div class="form-group{{ $errors->has('cost') ? ' has-error' : '' }}">
                                 <label for="cost" class="col-md-4 control-label">Precio entrada</label>
                                 <input id="cost" type="number" class="form-control" name="cost"
-                                       value="{{ old('cost') }}" autofocus>
+                                       value="{{ old('cost') }}">
 
                                 @if($errors->has('cost'))
                                     @foreach($errors->get('cost') as $message)
@@ -116,7 +87,7 @@
                             <div class="form-group{{ $errors->has('agemin') ? ' has-error' : '' }}">
                                 <label for="agemin" class="col-md-4 control-label">Edad minima</label>
                                 <input id="agemin" type="number" min="0" max="100" class="form-control"
-                                       name="agemin" value="{{ old('agemin') }}" autofocus>
+                                       name="agemin" value="{{ old('agemin') }}">
 
                                 @if($errors->has('agemin'))
                                     @foreach($errors->get('agemin') as $message)
@@ -130,7 +101,7 @@
                             <div class="form-group{{ $errors->has('organizer') ? ' has-error' : '' }}">
                                 <label for="organizer" class="col-md-4 control-label">Organizador</label>
                                 <input id="organizer" type="text" class="form-control" name="organizer"
-                                       value="{{ old('organizer') }}" autofocus>
+                                       value="{{ old('organizer') }}">
 
                                 @if($errors->has('organizer'))
                                     @foreach($errors->get('organizer') as $message)
