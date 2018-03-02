@@ -6,8 +6,9 @@ $(function () {
 
 function coment() {
     $("#content").on({
-        keypress: function () {
-            if (event.keyCode == 13) {
+        keypress: function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
                 comentar($("#content").val(), $("#event_id").val());
             }
         }
