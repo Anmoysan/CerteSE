@@ -17,6 +17,7 @@ Route::get('/giveEvents/', 'EventsController@givePageEvents');
 Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
 Route::post('/votar', 'VotesController@votar')->middleware('auth');
 Route::post('/comentar', 'CommentarysController@comentar')->middleware('auth');
+Route::post('/allcomments', 'CommentarysController@allcoments')->middleware('auth');
 Route::post('/reservar', 'ReservesController@validacionAjax')->middleware('auth');
 
 //Rutas de eventos

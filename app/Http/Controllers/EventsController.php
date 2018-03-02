@@ -6,6 +6,7 @@ use App\Place;
 use App\Event;
 use App\Http\Requests\CreateEventRequest;
 use App\Vote;
+use App\Commentary;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,7 @@ class EventsController extends Controller
         $user = Auth::user();
         $event = Event::where('id', $event->id)->first();
         $place = Place::where('id', $event->place_id)->first();
-        $commentarys = $event->commentaries;
+        $commentarys = Commentary::where('event_id', $event->id)->orderBy('created_at', 'desc')->paginate(10);//$event->commentaries
         $votesTotal = $event->votesMean();
 
         return view('events.cargeshow', [

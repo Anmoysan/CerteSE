@@ -2,6 +2,7 @@ $(function () {
     votes();
     modal();
     coment();
+    allcomments();
 });
 
 function coment() {
@@ -12,9 +13,15 @@ function coment() {
                 comentar($("#content").val(), $("#event_id").val());
             }
         }
-        /*keyup: function () {
-                comentar($("#content").val(), $("#event_id").val());
-        },*/
+    });
+}
+
+function allcomments() {
+    $("#allcommentarys").on({
+        click: function (e) {
+            e.preventDefault();
+            todoscomentarios($("#event_id").val());
+        }
     });
 }
 
@@ -24,7 +31,8 @@ function modal() {
         zindex: 999,
 
         onClosed: function () {
-            $("#mapLugar").show(100, function () {});
+            $("#mapLugar").show(100, function () {
+            });
         },
     });
 
@@ -32,7 +40,8 @@ function modal() {
         click: function () {
             event.preventDefault();
             $("#reserva").iziModal('open');
-            $("#mapLugar").hide(100, function () {});
+            $("#mapLugar").hide(100, function () {
+            });
         }
     });
 
@@ -192,9 +201,27 @@ function votar(valor, evento) {
         votes();
         modal();
         coment();
+        allcomments();
     }).catch(function (error) {
         console.log(error);
     });
+}
+
+function todoscomentarios(evento) {
+
+    $(event.target).addClass("active");
+    axios.post('/allcomments', {
+        event_id: evento
+    }).then(function (response) {
+        $("#contenedor").html(response.data);
+        votes();
+        modal();
+        coment();
+        allcomments();
+    }).catch(function (error) {
+        console.log(error);
+    });
+    window.scrollTo($("#logo").left,$("#logo").top);
 }
 
 function comentar(content, evento) {
@@ -207,6 +234,7 @@ function comentar(content, evento) {
         votes();
         modal();
         coment();
+        allcomments();
     }).catch(function (error) {
         console.log(error);
     });

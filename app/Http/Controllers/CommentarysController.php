@@ -154,16 +154,44 @@ class CommentarysController extends Controller
         if (request()->ajax()) {
             $data = json_decode(file_get_contents("php://input"), true);
             $event_id = $data['event_id'];
-            $content = $data['content'];
+            $commentarys = $data['comments'];
             $event = Event::where('id', $event_id)->first();
             $place = Place::where('id', $event->place_id)->first();
 
-            $this->store($request, $event, $content);
+            $this->store($request, $event);
 
+            $votesTotal = $event->votesMean();
+            if ($commentarys <= 10) {
+                $commentarys = Commentary::where('event_id', $event->id)->orderBy('created_at', 'desc')->paginate(10);
+            } else {
+                $commentarys = $event->commentaries;
+            }
+
+            return View::make('events.show', [
+                'event' => $event,
+                'place' => $place,
+                'commentarys' => $commentarys,
+                'votesTotal' => $votesTotal
+            ])->render();
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function allcoments()
+    {
+        if (request()->ajax()) {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $event_id = $data['event_id'];
+
+            $user = Auth::user();
+            $event = Event::where('id', $event_id)->first();
+            $place = Place::where('id', $event->place_id)->first();
             $votesTotal = $event->votesMean();
             $commentarys = $event->commentaries;
 
             return View::make('events.show', [
+                'user' => $user,
                 'event' => $event,
                 'place' => $place,
                 'commentarys' => $commentarys,
