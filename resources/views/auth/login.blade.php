@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Login</li>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-md-center mt-5">
@@ -40,7 +45,7 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox"
-                                               name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                               name="remember" {{ old('remember') ? 'checked' : '' }}> Recuerdame
                                     </label>
                                 </div>
 
@@ -49,7 +54,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    ¿No recuerda su contraseña?
                                 </a>
                             </div>
                         </form>

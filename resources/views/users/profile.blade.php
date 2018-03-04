@@ -1,36 +1,56 @@
 @extends('layouts.app')
 
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+@endsection
+
 @section('content')
-    <div class="container perfil card">
-        <div class="card-group row">
-            <div class="col-md-4 col-xs-12">
-                <img src="{{$user->avatar }}" id="avatar" alt="Foto del usuario">
-            </div>
-            <div class="col-lg-8">
-                <h1>{{$user->username }}</h1>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Nombre: <strong>{{$user->name }}</strong></p>
-                        <p>Apellidos: <strong>{{$user->lastname }}</strong></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p>Email: <strong>{{$user->email }}</strong></p>
-                        <p>Movil: <strong>{{$user->mobile }}</strong></p>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <p>Temas que sigues: <strong>{{$user->subject }}</strong></p>
-                </div>
-
-                <div class="col-md-12">
-                    <p>Web: <strong><a href="{{$user->website }}">{{$user->website }}</a></strong></p>
-                </div>
-            </div>
+    <div>
+        <div class="btn-group container d-flex justify-content-between" role="group">
+            <button type="button" id="infoUser" class="btn btn-primary text-white col-md-4" data-toggle="tooltip" data-placement="bottom" title="Datos personales del usuario">Informacion</button>
+            <button type="button" id="eventsUser" class="btn btn-primary text-white col-md-4" data-toggle="tooltip" data-placement="bottom" title="Eventos creados por el usuario">Eventos creados</button>
+            <button type="button" id="invoicesUser" class="btn btn-primary text-white col-md-4" data-toggle="tooltip" data-placement="bottom" title="Facturas de las diferentes reservas del usuario">Facturas</button>
         </div>
-        <div class="card-group row">
-            <p>Biografia: <strong>{{$user->biography }}</strong></p>
+
+        <div id="dateProfile" class="container perfil card">
+            <div class="card-group row">
+                <div class="col-md-4 col-xs-12 d-flex justify-content-center">
+                    <img src="{{$user->avatar }}" id="avatar" alt="Foto del usuario">
+                </div>
+                <div class="col-lg-8">
+                    <div class="row col-lg-12 d-flex justify-content-center">
+                        <h1 class="col-xs-12 col-md-10">{{$user->username }}</h1>
+                        <div class="btn-group col-xs-12 col-md-2 d-flex justify-content-center" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-info disabled" data-toggle="tooltip" data-placement="top" title="Editar datos del usuario">Editar</button>
+                            <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="top" title="Borrar al usuario">Eliminar</button>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Nombre: <strong>{{$user->name }}</strong></p>
+                            <p>Apellidos: <strong>{{$user->lastname }}</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Email: <strong>{{$user->email }}</strong></p>
+                            <p>Movil: <strong>{{$user->mobile }}</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <p>Temas que sigues: <strong>{{$user->subject }}</strong></p>
+                    </div>
+
+                    <div class="col-md-12">
+                        <p>Web: <strong><a href="{{$user->website }}">{{$user->website }}</a></strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-group row">
+                <p>Biografia: <strong>{{$user->biography }}</strong></p>
+            </div>
         </div>
     </div>
 @endsection

@@ -21,8 +21,8 @@
                     <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
                     @if(Auth::check())
                         <button @if(Auth::user()->ReserveEvent($event)) id="reserva_Factura"
-                                class="btn btn-outline-info disabled"> @else id="abrirReserva" class="btn
-                            btn-outline-info">@endif
+                                class="btn btn-outline-info disabled" data-toggle="tooltip" data-placement="top" title="Descargar pdf de factura de la reserva"> @else id="abrirReserva" class="btn
+                            btn-outline-info" data-toggle="tooltip" data-placement="top" title="Reservar unas plazas para el evento">@endif
                             @if(Auth::user()->ReserveEvent($event)) Descargar Factura @else Reservar @endif</button>
                     @endif
                     <div class="iziModal">

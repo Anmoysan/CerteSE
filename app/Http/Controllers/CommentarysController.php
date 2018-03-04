@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\View;
 
 class CommentarysController extends Controller
 {
+
+    private $showAllComments = true;
+
     /**
      * Display a listing of the resource.
      *
@@ -154,15 +157,15 @@ class CommentarysController extends Controller
         if (request()->ajax()) {
             $data = json_decode(file_get_contents("php://input"), true);
             $event_id = $data['event_id'];
-            $commentarys = $data['comments'];
             $event = Event::where('id', $event_id)->first();
             $place = Place::where('id', $event->place_id)->first();
 
             $this->store($request, $event);
 
             $votesTotal = $event->votesMean();
-            if ($commentarys <= 10) {
-                $commentarys = Commentary::where('event_id', $event->id)->orderBy('created_at', 'desc')->paginate(10);
+
+            if ($this->showAllComments == true) {
+                $commentarys = Commentary::where('event_id', $event_id)->orderBy('created_at', 'desc')->paginate(10);
             } else {
                 $commentarys = $event->commentaries;
             }
@@ -181,6 +184,7 @@ class CommentarysController extends Controller
     public function allcoments()
     {
         if (request()->ajax()) {
+            $this->showAllComments = false;
             $data = json_decode(file_get_contents("php://input"), true);
             $event_id = $data['event_id'];
 

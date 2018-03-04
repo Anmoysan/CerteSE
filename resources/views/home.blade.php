@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('breadcrumb')
+    <li class="breadcrumb-item active" aria-current="page">Inicio</li>
+@endsection
+
 @section('content')
     <div class="container card">
         <div class="row card-group">
