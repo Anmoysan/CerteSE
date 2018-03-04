@@ -17,7 +17,7 @@
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 <body>
 <div id="app">
-    <navbar class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-link" href="{{ url('/') }}"><img src="{{ asset('Logo.png') }}" id="logo"/></a>
         <div class="container collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -91,8 +91,8 @@
                 </ul>
             </div>
         </div>
-    </navbar>
-    <div id="conten" class="contenido">
+    </nav>
+    <div class="contenido">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb container">
                 @yield('breadcrumb')

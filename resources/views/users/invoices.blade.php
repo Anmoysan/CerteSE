@@ -1,10 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>{{ $user['username'] }}</h1>
-        </div>
         @foreach($invoices as $indice=>$invoice)
-            <div class="col-md-6">
+            <div class="col-xs-12 col-md-6 imagenevent">
                 <a href="/profile/invoices/{{ $indice }}">
                     @include('invoices.invoice')
                 </a>

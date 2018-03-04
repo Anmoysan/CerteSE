@@ -117,6 +117,19 @@ class UsersController extends Controller
         ]);
     }
 
+    public function eventsProfile()
+    {
+        $user = Auth::user();
+        $events = $user->events()->paginate(10);
+
+        //dd(Event::whereIn('id', $reserves)->paginate(10));
+
+        return view('users.eventsProfile', [
+            'user'      => $user,
+            'events' => $events,
+        ]);
+    }
+
 
     public function eventsUser()
     {
