@@ -20,6 +20,7 @@ Route::post('/comentar', 'CommentarysController@comentar')->middleware('auth');
 Route::post('/allcomments', 'CommentarysController@allcoments');
 Route::post('/reservar', 'ReservesController@validacionAjax')->middleware('auth');
 Route::get('/profile/events', 'UsersController@eventsUser')->middleware('auth');
+Route::get('/profile/info', 'UsersController@profileInfo')->middleware('auth');
 
 //Rutas de eventos
 Route::get('/events/', 'EventsController@index');

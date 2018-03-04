@@ -100,13 +100,23 @@ class UsersController extends Controller
      */
     public function profile()
     {
-
         $user = Auth::user();
 
         return view('users.profile', [
             'user' => $user,
         ]);
     }
+
+    public function profileInfo()
+    {
+
+        $user = Auth::user();
+
+        return view('users.infoUser', [
+            'user' => $user,
+        ]);
+    }
+
 
     public function eventsUser()
     {

@@ -1,5 +1,6 @@
 $(function () {
     datesUser();
+    info();
 });
 
 function datesUser() {
@@ -29,8 +30,8 @@ function datesUser() {
 function info() {
 
     $(event.target).addClass("active");
-    axios.get('/profile').then(function (response) {
-        $("#conten").html(response.data);
+    axios.get('/profile/info').then(function (response) {
+        $("#dateProfile").html(response.data);
         datesUser();
     }).catch(function (error) {
         console.log(error);
@@ -53,7 +54,7 @@ function events(content, evento) {
 function invoice(content, evento) {
 
     $(event.target).addClass("active");
-    axios.post('/profile/invoices').then(function (response) {
+    axios.get('/profile/invoices').then(function (response) {
         $("#dateProfile").html(response.data);
         datesUser();
     }).catch(function (error) {
