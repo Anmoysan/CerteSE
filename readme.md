@@ -26,6 +26,8 @@ Una vez el proyecto instalado correctamente deberas crear un .env con tus datos 
 
 ![.env](https://imgur.com/1TeLbPv.png)
 
+Ir al archivo `php.ini` situado en nuestra carpeta de php y quitar el comentario con ; delante a la linea `extensión=php_gd2.dll` para usar dompdf y descargar nuestras facturas.
+
 En la terminal de la aplicacion se debe ejecutar el comando `composer install` para poder empezar a usar la aplicacion
 
 
