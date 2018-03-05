@@ -32,7 +32,7 @@ function info() {
     $(event.target).addClass("active");
     axios.get('/profile/info').then(function (response) {
         $("#dateProfile").html(response.data);
-        datesUser();
+        //datesUser();
     }).catch(function (error) {
         console.log(error);
     });
@@ -44,7 +44,7 @@ function events(content, evento) {
     $(event.target).addClass("active");
     axios.get('/profile/events').then(function (response) {
         $("#dateProfile").html(response.data);
-        datesUser();
+        //datesUser();
     }).catch(function (error) {
         console.log(error);
     });
@@ -56,7 +56,7 @@ function invoice(content, evento) {
     $(event.target).addClass("active");
     axios.get('/profile/invoices').then(function (response) {
         $("#dateProfile").html(response.data);
-        datesUser();
+        //datesUser();
     }).catch(function (error) {
         console.log(error);
     });
