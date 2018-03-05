@@ -39,7 +39,7 @@ function info() {
     window.scrollTo($("#logo").left, $("#logo").top);
 }
 
-function events(content, evento) {
+function events() {
 
     $(event.target).addClass("active");
     axios.get('/profile/events').then(function (response) {
@@ -51,7 +51,7 @@ function events(content, evento) {
     window.scrollTo($("#logo").left, $("#logo").top);
 }
 
-function invoice(content, evento) {
+function invoice() {
 
     $(event.target).addClass("active");
     axios.get('/profile/invoices').then(function (response) {

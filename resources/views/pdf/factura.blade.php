@@ -17,7 +17,7 @@
     <p><strong>Evento reservado: </strong>{{ $event->name }}</p>
     <p><strong>Fecha del evento: </strong>{{ $event->date }}</p>
     <p><strong>Duración del evento: </strong>{{ $event->duration }}</p>
-    <p><strong>Precio de la entrada al evento: </strong>{{ $event->cost }}</p>
+    <p><strong>Precio de la entrada al evento: </strong>{{ $event->cost }} </p>
     <p><strong>Edad minima del evento: </strong>{{ $event->agemin }}</p>
     <p><strong>Lugar del evento: </strong>{{ \App\Reserve::where('user_id', $user->id)->where('event_id', $event->id)->first()->place }}</p>
     <p><strong>Organizadores del evento: </strong>{{ $event->organizer }}</p>
