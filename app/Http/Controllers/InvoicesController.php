@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Invoice;
@@ -9,6 +10,7 @@ use App\Reserve;
 use App\Http\Requests\CreateInvoiceRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class InvoicesController extends Controller
 {
@@ -132,5 +134,16 @@ class InvoicesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function factura(Request $request)
+    {
+        $user = Auth::user();
+        $event_id = $request->input('event_id');
+        $event = Event::where('id', $event_id)->first();
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML(view('pdf.factura', ['user' => $user, 'event' => $event])->render());
+        return $pdf->download();
     }
 }

@@ -20,10 +20,23 @@
                     <p>Precio: <strong>{{ $event['cost'] }}</strong></p>
                     <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
                     @if(Auth::check())
-                        <button @if(Auth::user()->ReserveEvent($event)) id="reserva_Factura"
-                                class="btn btn-outline-info disabled" data-toggle="tooltip" data-placement="top" title="Descargar pdf de factura de la reserva"> @else id="abrirReserva" class="btn
-                            btn-outline-info" data-toggle="tooltip" data-placement="top" title="Reservar unas plazas para el evento">@endif
-                            @if(Auth::user()->ReserveEvent($event)) Descargar Factura @else Reservar @endif</button>
+                        @if(Auth::user()->ReserveEvent($event))
+                            <form action="{{ url('/') }}/factura" method="post">
+                                {{ csrf_field() }}
+
+                                <input id="event_id" type="hidden" name="event_id"
+                                       value="{{ $event['id'] }}">
+                                <button id="reserva_Factura" class="btn btn-outline-info" data-toggle="tooltip"
+                                        data-placement="top" title="Descargar pdf de factura de la reserva">
+                                    Descargar Factura
+                                </button>
+                            </form>
+                        @else
+                            <button id="abrirReserva" class="btn btn-outline-info" data-toggle="tooltip"
+                                    data-placement="top" title="Reservar unas plazas para el evento">
+                                Reservar
+                            </button>
+                        @endif
                     @endif
                     <div class="iziModal">
                         <div id="reserva" class="row justify-content-md-center mt-5">
@@ -40,21 +53,25 @@
                                                    value="{{ $event['id'] }}">
 
                                             <div class="form-group">
-                                                <label for="place" class="col-md-4 control-label">Lugar evento</label>
+                                                <label for="place" class="col-md-4 control-label">Lugar
+                                                    evento</label>
                                                 <input class="form-control" name="place" id="place"
                                                        value="{{ $place['name'] }}" readonly>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="fecha" class="col-md-4 control-label">Fecha evento</label>
+                                                <label for="fecha" class="col-md-4 control-label">Fecha
+                                                    evento</label>
                                                 <input class="form-control" name="fecha" id="fecha"
                                                        value="{{ $event['date'] }}" readonly>
                                             </div>
 
                                             <div class="form-group{{ $errors->has('units') ? ' has-error' : '' }}">
-                                                <label for="unidad" class="col-md-4 control-label">Unidades</label>
+                                                <label for="unidad"
+                                                       class="col-md-4 control-label">Unidades</label>
                                                 <div></div>
-                                                <input id="unidad" type="text" class="form-control" name="unidad"
+                                                <input id="unidad" type="text" class="form-control"
+                                                       name="unidad"
                                                        value="{{ old('units') }}">
 
                                                 @if($errors->has('units'))
@@ -67,7 +84,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="cost" class="col-md-4 control-label">Precio entrada</label>
+                                                <label for="cost" class="col-md-4 control-label">Precio
+                                                    entrada</label>
                                                 <input id="cost" class="form-control" name="cost" readonly>
                                             </div>
 

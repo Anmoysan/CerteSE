@@ -49,6 +49,8 @@ footer {
 
 body {
     background: #00b7ea;
+    background: linear-gradient(to bottom, #00b7ea 0%,#51c7e8 99%);
+    background-size: cover;
 }
 
 .factura {
@@ -92,6 +94,11 @@ body {
 .imagecomment {
     width: 50px;
     height: 60px;
+}
+
+.imageinvoice {
+    width: 100px;
+    height: 100px;
 }
 
 .votos {
