@@ -43,14 +43,15 @@ ul.navbar-nav a, a.navbar-brand {
     font-size: 17px;
 }
 
-footer {
-    margin-top: 20px;
-}
-
 body {
     background: #00b7ea;
     background: linear-gradient(to bottom, #00b7ea 0%,#51c7e8 99%);
     background-size: cover;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
 }
 
 .factura {

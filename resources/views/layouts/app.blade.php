@@ -100,7 +100,6 @@
         </nav>
         @yield('content')
     </div>
-    <footer class="footer text-info bg-white">aas</footer>
 </div>
 
 <!-- Scripts -->

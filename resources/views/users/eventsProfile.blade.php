@@ -1,9 +1,9 @@
 <div class="container">
     <div id="listado">
-    @include('events.listaevents')
+        @include('events.listaevents')
     </div>
-    </div>
+</div>
 
 @push('scripts')
-<script src="{{ asset('js/paginationMyEvents.js') }}" defer></script>
+    <script src="{{ asset('js/paginationMyEvents.js') }}" defer></script>
 @endpush
