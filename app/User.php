@@ -78,6 +78,16 @@ class User extends Authenticatable
         return $this->hasMany(Reserve::class)->latest();
     }
 
+    /**
+     * Un usuario tiene interes en varios temas (subject)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
 
     public function VoteEvent(Event $event)
     {
@@ -92,5 +102,10 @@ class User extends Authenticatable
     public function ReserveEvent(Event $event)
     {
         return $this->reserves->contains('event_id', $event->id);
+    }
+
+    public function SubjectUser()
+    {
+        return $this->subjects->pluck('tag');
     }
 }

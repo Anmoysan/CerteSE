@@ -29,7 +29,24 @@
         </div>
 
         <div class="col-md-12">
-            <p>Temas que sigues: <strong>{{$user->subject }}</strong></p>
+            <p>Temas que sigues:
+                <strong>
+                    @forelse($user->SubjectUser() as $subject)
+                        <a href="#" class="badge badge-info text-white">{{ $subject }}</a>
+                    @empty
+                        <h3>No hay sigue ningun tema</h3>
+                    @endforelse
+
+                    @if(count($user->SubjectUser()) < 8)
+                        <form>
+                            <button id="abrirReserva" class="btn btn-outline-info" data-toggle="tooltip"
+                                    data-placement="top" title="Añade o crea un tema nuevo al usuario">
+                                Añadir tema
+                            </button>
+                        </form>
+                    @endif
+                </strong>
+            </p>
         </div>
 
         <div class="col-md-12">

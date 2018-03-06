@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar');
             $table->text('biography')->nullable();
-            $table->string('subject')->nullable();
             $table->string('website')->nullable();
             $table->string('mobile')->nullable();
             $table->boolean('ban');

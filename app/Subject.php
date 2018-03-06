@@ -17,4 +17,14 @@ class Subject extends Model
     {
         return $this->belongsToMany(Event::class);
     }
+
+    /**
+     * Un tema puede ser interes de varios usuarios (user)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

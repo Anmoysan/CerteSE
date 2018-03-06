@@ -113,4 +113,9 @@ class Event extends Model
 
         return $votesTotal;
     }
+
+    public function SubjectEvent()
+    {
+        return $this->subjects->pluck('tag');
+    }
 }

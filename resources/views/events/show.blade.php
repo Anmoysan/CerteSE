@@ -19,7 +19,7 @@
                            readonly>
                     <p>Precio: <strong>{{ $event['cost'] }}</strong></p>
                     <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
-                    @if(Auth::check())
+                    @if(Auth::check() && Auth::check() && !Auth::user()->isMyEvent($event))
                         @if(Auth::user()->ReserveEvent($event))
                             <form action="{{ url('/') }}/factura" method="post">
                                 {{ csrf_field() }}
@@ -101,6 +101,26 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-12">
+                    <p>Temas del evento:
+                        <strong>
+                            @forelse($event->SubjectEvent() as $subject)
+                                <a href="{{ url('/') }}/subjects/{{ $subject }}" class="badge badge-info text-white">{{ $subject }}</a>
+                            @empty
+                                <h3>No hay tiene ningun tema</h3>
+                            @endforelse
+
+                            @if(count($event->SubjectEvent()) < 8 && Auth::check() && Auth::user()->isMyEvent($event) )
+                                <form>
+                                    <button id="abrirReserva" class="btn btn-outline-info" data-toggle="tooltip"
+                                            data-placement="top" title="Añade o crea un tema nuevo al usuario">
+                                        Añadir tema
+                                    </button>
+                                </form>
+                            @endif
+                        </strong>
+                    </p>
                 </div>
 
                 <div class="row col-md-12">

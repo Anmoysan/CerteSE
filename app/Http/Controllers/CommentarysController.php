@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\View;
 class CommentarysController extends Controller
 {
 
-    private $showAllComments = true;
-
     /**
      * Display a listing of the resource.
      *

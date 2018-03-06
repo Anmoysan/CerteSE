@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
 
         $users->each(function (App\User $user) use ($users, $places, $subjects) {
             $place = App\Place::where('id', rand(1,20))->first();
+            $user->subjects()->sync(
+                $subjects->random(mt_rand(2, 8))
+            );
             $events = factory(App\Event::class, 20)->create([
                 'user_id' => $user->id,
                 'place_id' => $place->id

@@ -42,8 +42,6 @@ Route::post('/events/{event}/votes/create', 'VotesController@createOrEdit')->mid
 Route::get('/profile/votes', 'VotesController@index')->middleware('auth');
 
 //Rutas de facturas
-Route::get('/events/{event}/reserves/{reserve}/invoices/create', 'InvoicesController@create')->middleware('auth');
-Route::post('/events/{event}/reserves/{reserve}/invoices/create', 'InvoicesController@store')->middleware('auth');
 Route::get('/profile/invoices', 'InvoicesController@index')->middleware('auth');
 Route::get('/profile/invoices/{invoice}', 'InvoicesController@show')->middleware('auth');
 
@@ -59,6 +57,11 @@ Route::get('/events/{event}/commentarys/{commentary}', 'CommentarysController@sh
 Route::post('/events/{user}/commentarys/create', 'CommentarysController@store')->middleware('auth');
 Route::get('/profile/commentarys', 'CommentarysController@index')->middleware('auth');
 Route::get('/profile/commentarys/{commentary}', 'EventsController@usercommentary')->middleware('auth');
+
+//Rutas de temas
+Route::get('/subjects/{subject}', 'SubjectsController@index')->middleware('auth');
+Route::get('/events/{event}/subjects/create', 'SubjectsController@store')->middleware('auth');
+Route::post('/profile/subjects/create', 'SubjectsController@create')->middleware('auth');
 
 //Rutas de usuario
 Route::get('/profile', 'UsersController@profile')->middleware('auth');
