@@ -18,7 +18,7 @@ class SubjectsController extends Controller
 
         $events = $subject->events()->paginate(10);
 
-        return view('hashtag.index', [
+        return view('events.allevents', [
             'subject' => $subject,
             'events'=> $events
         ]);
