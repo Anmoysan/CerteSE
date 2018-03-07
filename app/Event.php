@@ -9,6 +9,11 @@ class Event extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    public function scopeSubject($query, $user)
+    {
+        return $query->where(array_intersect($this->SubjectEvent()->toArray(), $user->SubjectUser()->toArray()));
+    }
+
     /**
      * Un evento puede tener varios usuarios (users)
      *
