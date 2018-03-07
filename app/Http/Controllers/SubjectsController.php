@@ -17,10 +17,12 @@ class SubjectsController extends Controller
         $subject = Subject::where('tag', $subject)->first();
 
         $events = $subject->events()->paginate(10);
+        $titulo = "Eventos que tengan el tema ".$subject->tag;
 
         return view('events.allevents', [
-            'subject' => $subject,
-            'events'=> $events
+            'titulo' => $titulo,
+            'events'=> $events,
+
         ]);
     }
 

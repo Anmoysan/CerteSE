@@ -9,8 +9,8 @@
         <h1>CerteSE<img src="{{ asset('Logo.png') }}" id="logo"/></h1>
     </div>
     <h2>Detalles de la reserva</h2>
-    <p><strong>Fecha de la reserva: </strong>{{ date_format(\App\Reserve::where('user_id', $user->id)->where('event_id', $event->id)->first()->created_at, 'H:i d-m-Y') }}</p>
-    <p><strong>Plazas reservadas: </strong>{{ \App\Reserve::where('user_id', $user->id)->where('event_id', $event->id)->first()->units }}</p>
+    <p><strong>Fecha de la reserva: </strong>{{ date_format($user->ReserveInvoiceUser($event, "created_at"), 'H:i d-m-Y') }}</p>
+    <p><strong>Plazas reservadas: </strong>{{ $user->ReserveInvoiceUser($event, "units") }}</p>
     <hr>
 
     <h2>Detalles del evento</h2>
@@ -19,7 +19,7 @@
     <p><strong>Duración del evento: </strong>{{ $event->duration }}</p>
     <p><strong>Precio de la entrada al evento: </strong>{{ $event->cost }} </p>
     <p><strong>Edad minima del evento: </strong>{{ $event->agemin }}</p>
-    <p><strong>Lugar del evento: </strong>{{ \App\Reserve::where('user_id', $user->id)->where('event_id', $event->id)->first()->place }}</p>
+    <p><strong>Lugar del evento: </strong>{{ $user->ReserveInvoiceUser($event, "place") }}</p>
     <p><strong>Organizadores del evento: </strong>{{ $event->organizer }}</p>
     <hr>
 

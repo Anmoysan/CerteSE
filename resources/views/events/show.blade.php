@@ -19,7 +19,7 @@
                            readonly>
                     <p>Precio: <strong>{{ $event['cost'] }}</strong></p>
                     <p>Organizador: <strong>{{ $event['organizer'] }}</strong></p>
-                    @if(Auth::check() && Auth::check() && !Auth::user()->isMyEvent($event))
+                    @if(Auth::check() && !Auth::user()->isMyEvent($event))
                         @if(Auth::user()->ReserveEvent($event))
                             <form action="{{ url('/') }}/factura" method="post">
                                 {{ csrf_field() }}

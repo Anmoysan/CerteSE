@@ -108,4 +108,9 @@ class User extends Authenticatable
     {
         return $this->subjects->pluck('tag');
     }
+
+    public function ReserveInvoiceUser($event, $valor)
+    {
+        return Reserve::where('user_id', $this->id)->where('event_id', $event->id)->first()->$valor;
+    }
 }

@@ -28,4 +28,9 @@ class Commentary extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function DateUserWithComment()
+    {
+        return User::where('id', $this['user_id'])->first();
+    }
 }

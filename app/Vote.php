@@ -28,4 +28,9 @@ class Vote extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function DateUserWithVote()
+    {
+        return User::where('id', $this['user_id'])->first();
+    }
 }

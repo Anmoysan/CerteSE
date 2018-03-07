@@ -1,10 +1,10 @@
 <div class="col-md-12 izq row card-group">
     <div class="col-md-2 col-xl-1">
-        <a href="/user/{{ App\User::where('id', $commentary['user_id'])->first()->username }}"><img class="imagecomment" src="{{ App\User::where('id', $commentary['user_id'])->first()->avatar }}"></a>
+        <a href="/user/{{ $commentary->DateUserWithComment()->username }}"><img class="imagecomment" src="{{ $commentary->DateUserWithComment()->avatar }}"></a>
     </div>
     <div class="col-md-10 col-xl-11">
         <div>
-            <a href="/user/{{ App\User::where('id', $commentary['user_id'])->first()->username }}">{{ App\User::where('id', $commentary['user_id'])->first()->username }}</a>
+            <a href="/user/{{ $commentary->DateUserWithComment()->username }}">{{ $commentary->DateUserWithComment()->username }}</a>
         </div>
         <div>
             <strong>

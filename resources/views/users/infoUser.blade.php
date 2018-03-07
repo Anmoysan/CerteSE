@@ -32,7 +32,7 @@
             <p>Temas que sigues:
                 <strong>
                     @forelse($user->SubjectUser() as $subject)
-                        <a href="#" class="badge badge-info text-white">{{ $subject }}</a>
+                        <a href="{{ url('/') }}/subjects/{{ $subject }}" class="badge badge-info text-white">{{ $subject }}</a>
                     @empty
                         <h3>No hay sigue ningun tema</h3>
                     @endforelse
