@@ -1,4 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/iziModal.js": "/js/iziModal.js",
+    "/js/profile.js": "/js/profile.js",
+    "/js/paginationMyEvents.js": "/js/paginationMyEvents.js",
+    "/js/paginationEvents.js": "/js/paginationEvents.js",
+    "/js/loading.js": "/js/loading.js",
+    "/js/datetime.js": "/js/datetime.js",
+    "/js/carousel.js": "/js/carousel.js",
+    "/js/show.js": "/js/show.js"
 }

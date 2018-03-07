@@ -202,6 +202,7 @@ function votar(valor, evento) {
         modal();
         coment();
         allcomments();
+        maps();
     }).catch(function (error) {
         console.log(error);
     });
@@ -218,6 +219,7 @@ function todoscomentarios(evento) {
         modal();
         coment();
         allcomments();
+        maps();
     }).catch(function (error) {
         console.log(error);
     });
@@ -235,6 +237,7 @@ function comentar(content, evento) {
         modal();
         coment();
         allcomments();
+        maps();
     }).catch(function (error) {
         console.log(error);
     });
@@ -275,4 +278,14 @@ function validateTarget(target) {
     }).catch(function (error) {
         console.log(error);
     });
+}
+
+function maps(lat, long, name){
+
+    let map = L.map('map').setView([lat, long], 10);
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18
+    }).addTo(map);
+    L.marker([lat, long],{draggable: true}).addTo(map).bindPopup(name).openPopup();
+
 }

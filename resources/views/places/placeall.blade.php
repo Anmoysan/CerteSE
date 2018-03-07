@@ -26,6 +26,7 @@
 
 
 @push('scripts')
+    <script src="{{ asset('js/show.js') }}" defer></script>
     <script >
         $(function(){
             maps('{{ explode(", ", $place['coordinate'])[0] }}', '{{ explode(", ", $place['coordinate'])[1] }}', '{{ $place['name'] }}');
