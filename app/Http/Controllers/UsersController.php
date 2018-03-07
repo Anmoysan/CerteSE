@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Subject;
 use App\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -17,12 +19,12 @@ class UsersController extends Controller
      */
     public function index($name)
     {
-        $user = User::where('username',$name)->first();
+        $user = User::where('username', $name)->first();
         $events = $user->events()->latest()->paginate(10);
 
         return view('users.eventsUser', [
             'userSearch' => $user,
-            'user'      => $user,
+            'user' => $user,
             'events' => $events,
         ]);
     }
@@ -40,7 +42,7 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,7 +53,7 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,7 +64,7 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -73,8 +75,8 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -85,7 +87,7 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy()
@@ -127,7 +129,7 @@ class UsersController extends Controller
         //dd(Event::whereIn('id', $reserves)->paginate(10));
 
         return view('users.eventsProfile', [
-            'user'      => $user,
+            'user' => $user,
             'events' => $events,
         ]);
     }
@@ -137,16 +139,25 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function subjectsUser(){
+    public function subjectsUser()
+    {
 
-        //$events = [];
+        $events = null;
         $user = Auth::user();
-        $events = Event::subject($user)->orderBy('date', 'asc')->where('date', '>', now())->get();
-        /*foreach ($eventsFirst as $event) {
-            if (array_intersect($event->SubjectEvent()->toArray(), $user->SubjectUser()->toArray()) != []) {
-                array_push($events, $event);
+        $subjects = $user->subjects()->get();
+        //$events = Event::subject($user)->orderBy('date', 'asc')->where('date', '>', now())->get();
+        foreach ($subjects as $subject) {
+            $eventos = $subject->events()->get();
+            if($events === null){
+                $events = $eventos;
+            }else{
+                $events = $events->union($eventos);
+                $events->all();
             }
-        }*/
+            //dd($subject->events()->get());
+
+        }
+        //dd($events);
         //$events = $eventsFirst;
         $titulo = "Eventos que te pueden interesar";
 
@@ -164,7 +175,7 @@ class UsersController extends Controller
         //dd(Event::whereIn('id', $reserves)->paginate(10));
 
         return view('users.eventsUser', [
-            'user'      => $user,
+            'user' => $user,
             'events' => $events,
         ]);
     }
