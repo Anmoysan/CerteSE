@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <h1 class="page-header titulo">Proximos eventos</h1>
+                <h1 class="page-header titulo">{{$titulo}}</h1>
                 <div id="listado">
                     @include('events.listaevents')
                 </div>

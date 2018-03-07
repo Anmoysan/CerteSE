@@ -23,8 +23,10 @@ class EventsController extends Controller
     public function index(){
 
         $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
+        $titulo = "Proximos eventos";
 
         return view('events.allevents', [
+            'titulo' => $titulo,
             'events' => $events
         ]);
     }

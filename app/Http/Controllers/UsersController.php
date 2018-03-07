@@ -132,6 +132,29 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * Metodo que muestra todos los eventos
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function subjectsUser(){
+
+        $events = [];
+        $user = Auth::user();
+        $eventsFirst = Event::orderBy('date', 'asc')->where('date', '>', now())->get();
+        foreach ($eventsFirst as $event) {
+            if (array_intersect($event->SubjectEvent()->toArray(), $user->SubjectUser()->toArray()) != []) {
+                array_push($events, $event);
+            }
+        }
+        $events = $eventsFirst;
+        $titulo = "Eventos que te pueden interesar";
+
+        return view('events.allevents', [
+            'titulo' => $titulo,
+            'events' => $events
+        ]);
+    }
 
     public function eventsUser()
     {

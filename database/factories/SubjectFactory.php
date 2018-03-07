@@ -5,7 +5,7 @@ use \Carbon\Carbon;
 
 $factory->define(App\Subject::class, function (Faker $faker) {
 
-    $tag = str_random(10);
+    $tag =  $faker->word;
     $time1 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
     $time2 = Carbon::createFromTimestamp($faker->dateTimeThisDecade()->getTimestamp());
 
