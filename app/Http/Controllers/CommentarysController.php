@@ -162,11 +162,8 @@ class CommentarysController extends Controller
 
             $votesTotal = $event->votesMean();
 
-            if ($this->showAllComments == true) {
+
                 $commentarys = Commentary::where('event_id', $event_id)->orderBy('created_at', 'desc')->paginate(10);
-            } else {
-                $commentarys = $event->commentaries;
-            }
 
             return View::make('events.show', [
                 'event' => $event,

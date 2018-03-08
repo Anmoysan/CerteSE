@@ -11,7 +11,12 @@ class Event extends Model
 
     public function scopeSubject($query, $user)
     {
-        return $query->where(array_intersect($this->SubjectEvent()->toArray(), $user->SubjectUser()->toArray()));
+        $valido = false;
+        if($this->SubjectEvent()->intersect($user->SubjectUser())->isNotEmpty()) {
+            $valido = true;
+        }
+        //dd($this->SubjectEvent()->intersect($user->SubjectUser())->isNotEmpty());
+        return $query->where($valido, true);
     }
 
     /**

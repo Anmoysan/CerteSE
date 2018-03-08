@@ -5,6 +5,14 @@ $(function () {
     allcomments();
 });
 
+function functionsAgain() {
+    votes();
+    modal();
+    coment();
+    allcomments();
+    maps(lat, long, name);
+}
+
 function coment() {
     $("#content").on({
         keypress: function (e) {
@@ -198,11 +206,7 @@ function votar(valor, evento) {
         event_id: evento, vote: valor
     }).then(function (response) {
         $("#contenedor").html(response.data);
-        votes();
-        modal();
-        coment();
-        allcomments();
-        maps();
+        functionsAgain();
     }).catch(function (error) {
         console.log(error);
     });
@@ -215,11 +219,7 @@ function todoscomentarios(evento) {
         event_id: evento, comments
     }).then(function (response) {
         $("#contenedor").html(response.data);
-        votes();
-        modal();
-        coment();
-        allcomments();
-        maps();
+        functionsAgain();
     }).catch(function (error) {
         console.log(error);
     });
@@ -233,11 +233,7 @@ function comentar(content, evento) {
         event_id: evento, content: content
     }).then(function (response) {
         $("#contenedor").html(response.data);
-        votes();
-        modal();
-        coment();
-        allcomments();
-        maps();
+        functionsAgain();
     }).catch(function (error) {
         console.log(error);
     });

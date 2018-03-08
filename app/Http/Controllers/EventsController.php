@@ -24,6 +24,7 @@ class EventsController extends Controller
 
         $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
         $titulo = "Proximos eventos";
+        //dd($events);
 
         return view('events.allevents', [
             'titulo' => $titulo,
