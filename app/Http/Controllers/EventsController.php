@@ -16,7 +16,7 @@ class EventsController extends Controller
 {
 
     /**
-     * Metodo que muestra todos los eventos
+     * Metodo que muestra todos los eventos con fecha despues de la de hoy
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -33,8 +33,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Método que muestra la información de un mensaje. Utiliza Route Binding
-     * para coneguir el Event facilitado por el parámetro.
+     * Método que muestra la información de un evento y todos su votos, lugar y comentarios
      *
      * @param Event $event
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -44,7 +43,7 @@ class EventsController extends Controller
         $user = Auth::user();
         $event = Event::where('id', $event->id)->first();
         $place = Place::where('id', $event->place_id)->first();
-        $commentarys = Commentary::where('event_id', $event->id)->orderBy('created_at', 'desc')->paginate(10);//$event->commentaries
+        $commentarys = Commentary::where('event_id', $event->id)->orderBy('created_at', 'desc')->paginate(10);
         $votesTotal = $event->votesMean();
 
         return view('events.cargeshow', [
@@ -57,7 +56,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Método para mostrar el formulario de alta de una nuevo mensaje Event.
+     * Método para mostrar el formulario crear un nuevo evento
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -71,8 +70,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Guarda en la base de datos la información facilitada para un nuevo mensaje.
-     * Utiliza la definición personalizada de un Request para validar los datos.
+     * Crea un objeto evento
      *
      * @param CreateEventRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -102,6 +100,11 @@ class EventsController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Funcion asincrona que permite usar el pagination asincronamente
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function givePageEvents(){
         if (request()->ajax()){
             $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);

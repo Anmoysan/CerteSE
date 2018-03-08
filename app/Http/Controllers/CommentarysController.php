@@ -14,7 +14,7 @@ class CommentarysController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Muestra todos los comentarios realizados por el usuario loggueado
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,8 @@ class CommentarysController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Devuelve la vista de formulario para crear un comentario.
+     * Actualmente en deshuso ya que se crea a traves de la funcion asincrona comentar y se ejecuta en la vista show del evento
      *
      * @return \Illuminate\Http\Response
      */
@@ -44,8 +45,7 @@ class CommentarysController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     * Error al crear un comentario por evento que es nulo
+     * Permite crear un comentario, es necesario pasarle un evento con el que estara relacionado
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -65,7 +65,7 @@ class CommentarysController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra un comentario en especifico de un evento
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -125,7 +125,7 @@ class CommentarysController extends Controller
     }
 
     /**
-     * Muestra un comentario en especifico de un usuario
+     * Muestra un comentario en especifico del usuario loggueado
      *
      * @param Commentary $commentary
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -150,6 +150,12 @@ class CommentarysController extends Controller
         ]);
     }
 
+    /**
+     * Funcion que permite la creacion de comentario, pero los datos se pasan a traves de funcion asincrona
+     *
+     * @param CreateCommentaryRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function comentar(CreateCommentaryRequest $request)
     {
         if (request()->ajax()) {
@@ -176,6 +182,11 @@ class CommentarysController extends Controller
         }
     }
 
+    /**
+     * Funcion asincrona que devulve todos los comentarios
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function allcoments()
     {
         if (request()->ajax()) {
