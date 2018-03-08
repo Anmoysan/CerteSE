@@ -142,11 +142,12 @@ class UsersController extends Controller
     public function subjectsUser()
     {
 
-        //$events = null;
+        $eventsFull = null;
         $user = Auth::user();
-        //$subjects = $user->subjects()->get();
-        $events = Event::subject($user)->where('date', '>', now())->paginate(10);
-        /*foreach ($subjects as $subject) {
+        $subjects = $user->subjects()->get();
+        //dd(Event::subject($user)->get());
+        //$events = Event::subject($user)->where('date', '>', now())->paginate(10);
+        foreach ($subjects as $subject) {
             $eventos = $subject->events()->get();
             if($eventsFull === null){
                 $eventsFull = $eventos;
@@ -156,8 +157,8 @@ class UsersController extends Controller
             }
             //dd($subject->events()->get());
 
-        }*/
-        //$events = $eventsFull->forPage(1, 10);
+        }
+        $events = $eventsFull->forPage(1, 10);
         dd($events);
         //$events = $eventsFirst;
         $titulo = "Eventos que te pueden interesar";
