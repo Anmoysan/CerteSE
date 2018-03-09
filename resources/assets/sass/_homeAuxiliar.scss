@@ -3,8 +3,11 @@ $gradienteFondo: #51c7e8;
 $fondoSecunadrio: #fff;
 $negro: #000;
 $rojo: #ff3c3f;
+$gris: #888;
 
-$listaTamaño: ((), (), ());
+$listaTamaño: (".img-princ":(200px, 200px), "#avatar":(300px, 300px), "#logo":(200px, 200px), ".mapsmall":(300px, 200px),
+        ".mapfull":(100%, 300px), ".estrella":(15px, 15px), ".votar":(30px, 30px), ".imagecomment":(50px, 60px),
+        ".imageinvoice":(100px, 100px), ".spinner":(50px, 50px), );
 
 $interpolacion: "a";
 
