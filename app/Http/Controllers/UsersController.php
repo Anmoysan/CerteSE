@@ -7,6 +7,8 @@ use App\Subject;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
@@ -148,25 +150,36 @@ class UsersController extends Controller
         //dd(Event::subject($user)->get());
         //$events = Event::subject($user)->where('date', '>', now())->paginate(10);
         foreach ($subjects as $subject) {
-            $eventos = $subject->events()->get();
+            $eventos = $subject->events()->where('date', '>', now())->get();
             if($eventsFull === null){
                 $eventsFull = $eventos;
             }else{
                 $eventsFull = $eventsFull->union($eventos);
                 $eventsFull->all();
             }
-            //dd($subject->events()->get());
-
         }
-        $events = $eventsFull->forPage(1, 10);
-        dd($events);
+        $events = $this->paginate($eventsFull, 10);
+        //$events = $eventsFull->forPage(1, 10)->get();
+        //dd($events);
         //$events = $eventsFirst;
-        $titulo = "Eventos que te pueden interesar";
 
-        return view('events.allevents', [
-            'titulo' => $titulo,
+        return view('users.eventsSubjectUser', [
             'events' => $events
         ]);
+    }
+
+    public function paginate($items, $perPage)
+    {
+        if(is_array($items)){
+            $items = collect($items);
+        }
+
+        return new LengthAwarePaginator(
+            $items->forPage(Paginator::resolveCurrentPage() , $perPage),
+            $items->count(), $perPage,
+            Paginator::resolveCurrentPage(),
+            ['path' => Paginator::resolveCurrentPath()]
+        );
     }
 
     public function eventsUser()
@@ -189,6 +202,32 @@ class UsersController extends Controller
             $events = $user->events()->paginate(10);
 
             //dd(Event::whereIn('id', $reserves)->paginate(10));
+
+            return View::make('events.listaevents', array('events' => $events))->render();
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function givePageSubjectEvents()
+    {
+        if (request()->ajax()) {
+            $eventsFull = null;
+            $user = Auth::user();
+            $subjects = $user->subjects()->get();
+            //dd(Event::subject($user)->get());
+            //$events = Event::subject($user)->where('date', '>', now())->paginate(10);
+            foreach ($subjects as $subject) {
+                $eventos = $subject->events()->where('date', '>', now())->get();
+                if($eventsFull === null){
+                    $eventsFull = $eventos;
+                }else{
+                    $eventsFull = $eventsFull->union($eventos);
+                    $eventsFull->all();
+                }
+            }
+            $events = $this->paginate($eventsFull, 10);
+
 
             return View::make('events.listaevents', array('events' => $events))->render();
         } else {

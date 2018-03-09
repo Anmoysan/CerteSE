@@ -16,6 +16,7 @@ Route::get('/', 'PagesController@home')->name('inicioNoLogin')->middleware('gues
 //Rutas asincronas
 Route::get('/giveEvents/', 'EventsController@givePageEvents');
 Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
+Route::get('/giveEventsMySubject/', 'UsersController@givePageSubjectEvents');
 Route::post('/allcomments', 'CommentarysController@allcoments');
 
 //Rutas de eventos
