@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Rutas de votos
     Route::get('/events/{event}/votes/create', 'VotesController@create');
-    Route::post('/events/{event}/votes/create', 'VotesController@createOrEdit');
+    Route::post('/events/{event}/votes/create', 'VotesController@store');
     Route::get('/profile/votes', 'VotesController@index');
 
     //Rutas de facturas

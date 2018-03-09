@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\View;
 class VotesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra las votaciones del usuario logueado
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,21 +29,17 @@ class VotesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     *
      *
      * @return \Illuminate\Http\Response
      */
     public function create(Event $event)
     {
-        $event = Event::where('id', $event->id)->first();
-
-        return view('votes.create', [
-            'event' => $event
-        ]);
+        //
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Crea un voto
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -61,7 +57,7 @@ class VotesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra los votos de un evento. Por ahora en deshuso, más adelante solo accedera el creador del evento
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -89,7 +85,7 @@ class VotesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza un voto ya existente
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -118,18 +114,12 @@ class VotesController extends Controller
         //
     }
 
-    public function createOrEdit(CreateVoteRequest $request, Event $event)
-    {
-
-        if (!Auth::user()->VoteEvent($event)) {
-            $this->store($request, $event);
-        } else {
-            $this->update($request, $event);
-        }
-
-        return redirect("/events/$event->id");
-    }
-
+    /**
+     * Funcion asincrona que automatiza si el voto se ha creado llama a store y si ya se ce creo a update para modificar el valor
+     *
+     * @param CreateVoteRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function votar(CreateVoteRequest $request)
     {
         if (request()->ajax()) {

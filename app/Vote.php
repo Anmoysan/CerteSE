@@ -29,6 +29,11 @@ class Vote extends Model
         return $this->belongsTo(Event::class);
     }
 
+    /**
+     * Devuelve al usuario que creo un voto
+     *
+     * @return mixed
+     */
     public function DateUserWithVote()
     {
         return User::where('id', $this['user_id'])->first();

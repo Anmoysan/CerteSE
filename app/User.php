@@ -88,27 +88,56 @@ class User extends Authenticatable
         return $this->belongsToMany(Subject::class);
     }
 
-
+    /**
+     * Confirma si un usuario voto a un evento o no
+     *
+     * @param Event $event
+     * @return mixed
+     */
     public function VoteEvent(Event $event)
     {
         return $this->votes->contains('event_id', $event->id);
     }
 
+    /**
+     * Devuelve si un evento es del usuario logueado o no
+     *
+     * @param Event $event
+     * @return bool
+     */
     public function isMyEvent(Event $event)
     {
         return $this->id == $event->user_id;
     }
 
+    /**
+     * Dice si el usuario logueado hizo una reserva en un evento o no
+     *
+     * @param Event $event
+     * @return mixed
+     */
     public function ReserveEvent(Event $event)
     {
         return $this->reserves->contains('event_id', $event->id);
     }
 
+    /**
+     * Devuelve los tags de los temas que le interesa al usuario
+     *
+     * @return mixed
+     */
     public function SubjectUser()
     {
         return $this->subjects->pluck('tag');
     }
 
+    /**
+     * Devuelve la reserva de un usuario a un evento
+     *
+     * @param $event
+     * @param $valor
+     * @return mixed
+     */
     public function ReserveInvoiceUser($event, $valor)
     {
         return Reserve::where('user_id', $this->id)->where('event_id', $event->id)->first()->$valor;

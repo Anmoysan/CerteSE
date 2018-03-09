@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\View;
 class UsersController extends Controller
 {
     /**
-     * Muestra los eventos creados por los usuarios
+     * Muestra los eventos creados por el usuario
      *
      * @return \Illuminate\Http\Response
      */
@@ -87,7 +87,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina al usuario con el que estas logueado
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -100,7 +100,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Muestra el perfil del usuario
+     * Muestra el perfil del usuario, pero los datos son mostrados con asincronia por lo que si lo tienes desactivado no podras usarlo adecuadamente
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -113,6 +113,11 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * Funcion asincrona que da la informacion del usuario logueado
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function profileInfo()
     {
 
@@ -123,6 +128,11 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * Funcion asincrona que da los eventos del usuario logueado
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function eventsProfile()
     {
         $user = Auth::user();
@@ -137,7 +147,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Metodo que muestra todos los eventos
+     * Metodo que muestra todos los eventos con algun tema en comun al del usuario
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -168,6 +178,14 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * Funcion que se usa para convertir una collection a Pagination, permitiendo asi usar pagination en la pagina
+     * El pagination del html funciona con asincronismo
+     *
+     * @param $items
+     * @param $perPage
+     * @return LengthAwarePaginator
+     */
     public function paginate($items, $perPage)
     {
         if(is_array($items)){
@@ -182,19 +200,11 @@ class UsersController extends Controller
         );
     }
 
-    public function eventsUser()
-    {
-        $user = Auth::user();
-        $events = $user->events()->paginate(10);
-
-        //dd(Event::whereIn('id', $reserves)->paginate(10));
-
-        return view('users.eventsUser', [
-            'user' => $user,
-            'events' => $events,
-        ]);
-    }
-
+    /**
+     * Funcion asincrona que carga mas eventos del usuario logueado
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function givePageMyEvents()
     {
         if (request()->ajax()) {
@@ -209,6 +219,10 @@ class UsersController extends Controller
         }
     }
 
+    /**
+     * Funcion asincrona que carga mas eventos con algun tema igual al del usuario logueado
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function givePageSubjectEvents()
     {
         if (request()->ajax()) {

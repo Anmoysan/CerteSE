@@ -29,6 +29,11 @@ class Commentary extends Model
         return $this->belongsTo(Event::class);
     }
 
+    /**
+     * Devuelve al usuario que creo un comentario
+     *
+     * @return mixed
+     */
     public function DateUserWithComment()
     {
         return User::where('id', $this['user_id'])->first();

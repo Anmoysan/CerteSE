@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class ReservesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra todas las reservas de un evento. Por ahora en deshuso, más adelante solo accedera el creador del evento
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class ReservesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Funcion que lanza el formulario de reserva. No se usa, ya que se lanza el formulario de forma asincrona
      *
      * @return \Illuminate\Http\Response
      */
@@ -46,7 +46,7 @@ class ReservesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Permite crear tanto reservas como factura para asi automatizar la creacion de factura cuando alguien haga una reserva
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -81,7 +81,7 @@ class ReservesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra una reserva en concreto de un evento. Por ahora en deshuso, más adelante solo accedera el creador del evento
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -133,6 +133,12 @@ class ReservesController extends Controller
         //
     }
 
+    /**
+     * Funcion asincrona que valida el formulario de reserva
+     *
+     * @param CreateReserveFormAjaxRequest $request
+     * @return array
+     */
     protected function validacionAjax(CreateReserveFormAjaxRequest $request){
         //Obtenermos todos los valores y devolvemos un array vacio
         return array();

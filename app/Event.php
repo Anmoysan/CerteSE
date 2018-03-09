@@ -9,17 +9,6 @@ class Event extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function scopeSubject($query, $user)
-    {
-        /*$valido = false;
-        if($this->SubjectEvent()->intersect($user->SubjectUser())->isNotEmpty()) {
-            $valido = true;
-        }
-        dd($this->SubjectEvent()->intersect($user->SubjectUser())->isNotEmpty());
-        dd($valido);*/
-        return $query->where($this->SubjectEvent()->intersect($user->SubjectUser())->isNotEmpty());
-    }
-
     /**
      * Un evento puede tener varios usuarios (users)
      *
@@ -81,7 +70,7 @@ class Event extends Model
     }
 
     /**
-     * Permite obtener la media de un evento
+     * Permite obtener la media de votos de un evento
      *
      * @return int
      */
@@ -104,6 +93,12 @@ class Event extends Model
         return $votesTotal;
     }
 
+    /**
+     * Permite obtener el procentaje de votos de un evento
+     *
+     * @param $num
+     * @return int
+     */
     public function votesCalculator($num)
     {
         $votes = $this->votes;
@@ -125,6 +120,11 @@ class Event extends Model
         return $votesTotal;
     }
 
+    /**
+     * Devuelve los tag de los temas que tiene un evento
+     *
+     * @return mixed
+     */
     public function SubjectEvent()
     {
         return $this->subjects->pluck('tag');

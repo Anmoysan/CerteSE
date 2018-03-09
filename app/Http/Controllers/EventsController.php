@@ -101,7 +101,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Funcion asincrona que permite usar el pagination asincronamente
+     * Funcion asincrona que permite
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

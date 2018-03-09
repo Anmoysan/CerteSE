@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PlacesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra todos los lugares que existen en la aplicacion
      *
      * @return \Illuminate\Http\Response
      */
@@ -24,7 +24,7 @@ class PlacesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Envia al formulario de creacion de un lugar
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,8 +36,7 @@ class PlacesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     * Error al crear un nuevo lugar por la description
+     * Crea un lugar
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -55,7 +54,7 @@ class PlacesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra los datos de un lugar creado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

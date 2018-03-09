@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SubjectsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Funcion que muestra todos los eventos que tengan un tema en concreto
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,7 +27,7 @@ class SubjectsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un tema. No usado, ya que se hacer de forma asincrona
      *
      * @return \Illuminate\Http\Response
      */
@@ -37,7 +37,7 @@ class SubjectsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Crea un tema nuevo
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

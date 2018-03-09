@@ -15,7 +15,7 @@ use Illuminate\View\View;
 class InvoicesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra las facturas del usuario logueado
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,7 +31,7 @@ class InvoicesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario de creacion de factura. No usada ya que se crea automaticamente cuando se crea una reserva
      *
      * @return \Illuminate\Http\Response
      */
@@ -56,7 +56,7 @@ class InvoicesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Crea una factura. No usada como create
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -80,7 +80,7 @@ class InvoicesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra una factura en concreto del usuario logueado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -136,6 +136,12 @@ class InvoicesController extends Controller
         //
     }
 
+    /**
+     * Funcion asincrona que descarga un pdf de la factura del usuario logueado sobre un evento reservado
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function factura(Request $request)
     {
         $user = Auth::user();
