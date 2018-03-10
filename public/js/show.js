@@ -216,7 +216,7 @@ function todoscomentarios(evento) {
 
     $(event.target).addClass("active");
     axios.post('/allcomments', {
-        event_id: evento, comments
+        event_id: evento
     }).then(function (response) {
         $("#contenedor").html(response.data);
         functionsAgain();
