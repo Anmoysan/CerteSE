@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('timeban');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

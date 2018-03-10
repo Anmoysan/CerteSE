@@ -26,6 +26,7 @@ class CreateEventsTable extends Migration
             $table->string('organizer');
             $table->boolean('commentarys');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

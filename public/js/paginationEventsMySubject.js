@@ -60,85 +60,45 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 60);
+/******/ 	return __webpack_require__(__webpack_require__.s = 58);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 60:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(61);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
 
-/***/ 61:
+/***/ 59:
 /***/ (function(module, exports) {
 
+function giveMyDatesEvent() {
+    event.preventDefault();
+
+    var enlace = $(event.target);
+    var valor = parseInt(enlace.text());
+
+    $(event.target).addClass("active");
+    axios.get('/giveEventsMySubject?page=' + valor).then(function (response) {
+        $("#listado").html(response.data);
+        asociarMisEventosAsincrono();
+    }).catch(function (error) {
+        console.log(error);
+    });
+    window.scrollTo($("#logo").left, $("#logo").top);
+}
+
+function asociarMisEventosAsincrono() {
+    $(".pagination > li > a").on("click", giveMyDatesEvent);
+}
+
 $(function () {
-    datesUser();
-    info();
+    asociarMisEventosAsincrono();
 });
-
-function datesUser() {
-    $("#infoUser").on({
-        click: function click(e) {
-            e.preventDefault();
-            info();
-        }
-    });
-
-    $("#eventsUser").on({
-        click: function click(e) {
-            e.preventDefault();
-            events();
-        }
-    });
-
-    $("#invoicesUser").on({
-        click: function click(e) {
-            e.preventDefault();
-            invoice();
-        }
-    });
-}
-
-function info() {
-
-    $(event.target).addClass("active");
-    axios.get('/profile/info').then(function (response) {
-        $("#dateProfile").html(response.data);
-        //datesUser();
-    }).catch(function (error) {
-        console.log(error);
-    });
-    window.scrollTo($("#logo").left, $("#logo").top);
-}
-
-function events() {
-
-    $(event.target).addClass("active");
-    axios.get('/profile/events').then(function (response) {
-        $("#dateProfile").html(response.data);
-        //datesUser();
-    }).catch(function (error) {
-        console.log(error);
-    });
-    window.scrollTo($("#logo").left, $("#logo").top);
-}
-
-function invoice() {
-
-    $(event.target).addClass("active");
-    axios.get('/profile/invoices').then(function (response) {
-        $("#dateProfile").html(response.data);
-        //datesUser();
-    }).catch(function (error) {
-        console.log(error);
-    });
-    window.scrollTo($("#logo").left, $("#logo").top);
-}
 
 /***/ })
 

@@ -101,6 +101,19 @@ class EventsController extends Controller
     }
 
     /**
+     * Funcion que elimina un evento creado
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($id)
+    {
+        Event::where('id', $id)->delete();
+
+        return redirect('/');
+    }
+
+    /**
      * Funcion asincrona que permite
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

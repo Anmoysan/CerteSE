@@ -20,6 +20,7 @@ class CreatePlacesTable extends Migration
             $table->text('description');
             $table->string('coordinate');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

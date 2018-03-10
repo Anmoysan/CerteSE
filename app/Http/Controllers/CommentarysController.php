@@ -121,7 +121,9 @@ class CommentarysController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Commentary::where('id', $id)->delete();
+
+        return redirect('/');
     }
 
     /**

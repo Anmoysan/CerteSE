@@ -6,6 +6,7 @@ use App\Event;
 use App\Place;
 use App\Http\Requests\CreatePlaceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class PlacesController extends Controller
 {
@@ -92,14 +93,16 @@ class PlacesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Permite eliminar un lugar existente
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        Place::where('id', $id)->delete();
+
+        return redirect('/');
     }
 
     /**

@@ -19,5 +19,6 @@ mix.scripts(['resources/assets/js/cargaShow.js', 'resources/assets/js/map.js'], 
     .js('resources/assets/js/loading.js', 'public/js')
     .js('resources/assets/js/paginationEvents.js', 'public/js')
     .js('resources/assets/js/paginationMyEvents.js', 'public/js')
+    .js('resources/assets/js/paginationEventsMySubject.js', 'public/js')
     .js('resources/assets/js/profile.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css');

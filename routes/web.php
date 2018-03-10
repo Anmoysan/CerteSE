@@ -54,12 +54,14 @@ Route::group(['middleware' => 'auth'], function () {
     //Rutas de eventos
     Route::get('/events/create', 'EventsController@create');
     Route::post('/events/create', 'EventsController@store');
+    Route::delete('/events/{event}/delete', 'EventsController@destroy');
 
     //Rutas de reservas
     Route::get('/events/{event}/reserves', 'ReservesController@index');
     Route::get('/events/{event}/reserves/create', 'ReservesController@create');
     Route::get('/events/{event}/reserves/{reserve}', 'ReservesController@show');
     Route::post('/events/{event}/reserves/create', 'ReservesController@store');
+    Route::delete('/reserves/{reserve}/delete', 'ReservesController@destroy');
 
     //Rutas de votos
     Route::get('/events/{event}/votes/create', 'VotesController@create');
@@ -73,12 +75,14 @@ Route::group(['middleware' => 'auth'], function () {
     //Rutas de lugares
     Route::get('/places/create', 'PlacesController@create');
     Route::post('/places/create', 'PlacesController@store');
+    Route::delete('/places/{place}/delete', 'PlacesController@destroy');
 
     //Rutas de comentarios
     Route::get('/events/{event}/commentarys/create', 'CommentarysController@create');
     Route::post('/events/{user}/commentarys/create', 'CommentarysController@store');
     Route::get('/profile/commentarys', 'CommentarysController@index')->middleware('auth');
     Route::get('/profile/commentarys/{commentary}', 'EventsController@usercommentary');
+    Route::delete('/commentarys/{commentary}/delete', 'CommentarysController@destroy');
 
     //Rutas de temas
     Route::get('/subjects/{subject}', 'SubjectsController@index');
@@ -87,4 +91,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Rutas de usuario
     Route::get('/profile', 'UsersController@profile');
+    Route::delete('/profile/delete', 'UsersController@destroy');
 });

@@ -96,7 +96,7 @@ class UsersController extends Controller
     {
         $this->user->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('/');
     }
 
     /**
@@ -120,7 +120,6 @@ class UsersController extends Controller
      */
     public function profileInfo()
     {
-
         $user = Auth::user();
 
         return view('users.infoUser', [
@@ -213,7 +212,7 @@ class UsersController extends Controller
 
             //dd(Event::whereIn('id', $reserves)->paginate(10));
 
-            return View::make('events.listaevents', array('events' => $events))->render();
+            return View::make('users.eventsProfile', array('events' => $events, 'user' => $user))->render();
         } else {
             return redirect('/');
         }

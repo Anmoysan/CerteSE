@@ -123,14 +123,19 @@ class ReservesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Funcion que elimina tanto una reserva como dicha factura
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        $reserve = Reserve::where('id', $id);
+        Invoice::where('user_id', $user->id)->where('reserve_id', $reserve->id)->delete();
+        Reserve::where('id', $id)->delete();
+
+        return redirect('/');
     }
 
     /**

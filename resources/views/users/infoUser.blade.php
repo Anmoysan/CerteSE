@@ -10,9 +10,16 @@
                 <button type="button" class="btn btn-outline-info disabled" data-toggle="tooltip" data-placement="top"
                         title="Editar datos del usuario">Editar
                 </button>
-                <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="top"
-                        title="Borrar al usuario">Eliminar
-                </button>
+                <form action="" method="POST" id="chusqer-actions-buttons">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+
+                    <button type="submit" class="btn btn-outline-info" data-toggle="tooltip" data-placement="top"
+                            title="Borrar al usuario">Eliminar
+                    </button>
+
+                </form>
+
             </div>
         </div>
 
