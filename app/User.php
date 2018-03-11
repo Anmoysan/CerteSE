@@ -114,6 +114,27 @@ class User extends Authenticatable
     }
 
     /**
+     * Devuelve si un comentario es del usuario logueado o no
+     *
+     * @param Event $event
+     * @return bool
+     */
+    public function isMyCommentary(Commentary $commentary)
+    {
+        return $this->id == $commentary->user_id;
+    }
+
+    /**
+     * Devuelve si un lugar es del usuario admin anmoysan o no. Se hace esto ya que el usuario seria el admin y el unico que puede meter lugares
+     *
+     * @return bool
+     */
+    public function isMyPlace()
+    {
+        return $this->username == "anmoysan";
+    }
+
+    /**
      * Dice si el usuario logueado hizo una reserva en un evento o no
      *
      * @param Event $event

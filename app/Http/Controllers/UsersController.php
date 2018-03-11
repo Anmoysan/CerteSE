@@ -7,9 +7,11 @@ use App\Subject;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 
 class UsersController extends Controller
@@ -64,26 +66,61 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Lanza uno de los formularios que tu seleccionas
      *
-     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el usuario con una de la funciones que has solucionado
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request)
     {
-        //
+        $path = $request->path();
+        $user = Auth::user();
+
+
+        if (strpos($path, 'account')) {
+            $data = array_filter($request->all());
+
+            $user = User::findOrFail(Auth::user()->id);
+
+            $user->fill($data);
+        } elseif (strpos($path, 'password')) {
+
+            if (!Hash::check($request->get('current_password'), $user->password)) {
+                return redirect()->back()->with('error', 'La contraseña actual no es correcta');
+            }
+
+            if (strcmp($request->get('current_password'), $request->get('password')) == 0) {
+                return redirect()->back()->with('error', 'La nueva contraseña debe ser diferente de la antigua.');
+            }
+
+            $user->password = bcrypt($request->get('password'));
+        } elseif (strpos($path, 'avatar')) {
+
+            $avatar = $request->file('avatar');
+
+            $url = $avatar->store('image', 'public');
+
+            $user = User::findOrFail(Auth::user()->id);
+
+            $user->avatar = $url;
+        }
+
+        $user->save();
+
+        return redirect()
+            ->back()
+            ->with('exito', 'Datos actualizados');
     }
 
     /**
@@ -94,9 +131,9 @@ class UsersController extends Controller
      */
     public function destroy()
     {
-        $this->user->delete();
+        Auth::user()->delete();
 
-        return redirect()->route('/');
+        return redirect('/');
     }
 
     /**
@@ -111,6 +148,16 @@ class UsersController extends Controller
         return view('users.profile', [
             'user' => $user,
         ]);
+    }
+
+    /**
+     * Muestra la configuracion del perfil
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function configuration()
+    {
+        return view('users.edit');
     }
 
     /**

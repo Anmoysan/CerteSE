@@ -24,7 +24,7 @@ class CommentarysController extends Controller
         $commentarys = $user->commentaries;
 
         return view('users.commentarys', [
-            'user'      => $user,
+            'user' => $user,
             'commentarys' => $commentarys,
         ]);
     }
@@ -47,7 +47,7 @@ class CommentarysController extends Controller
     /**
      * Permite crear un comentario, es necesario pasarle un evento con el que estara relacionado
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateCommentaryRequest $request, Event $event)
@@ -56,18 +56,18 @@ class CommentarysController extends Controller
         $event = Event::where('id', $event->id)->first();
 
         Commentary::create([
-            'user_id'   => $user->id,
-            'event_id'   => $event->id,
-            'content' =>  $request->input('content'),
+            'user_id' => $user->id,
+            'event_id' => $event->id,
+            'content' => $request->input('content'),
         ]);
 
-        return redirect("/events/".$request->input('event_id'));
+        return redirect("/events/" . $request->input('event_id'));
     }
 
     /**
      * Muestra un comentario en especifico de un evento
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Event $event, Commentary $commentary)
@@ -76,7 +76,7 @@ class CommentarysController extends Controller
         $commentarys = $event->commentaries;
         $posicion = 0;
 
-        foreach ($commentarys as $indice=>$commentar) {
+        foreach ($commentarys as $indice => $commentar) {
             if ($commentar->id == $commentary->id) {
                 $commentary = $commentar;
                 $posicion = $indice;
@@ -91,39 +91,52 @@ class CommentarysController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Funcion que mostrara un input con los datos. En deshuso ya que se hara de forma asincrona
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $commentary = Commentary::where('id', $id)->first();
+        $event = $commentary->event;
+
+        return view('commentarys.edit', ['event' => $event, 'commentary' => $commentary]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Modifica el comentario seleccionado
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = array_filter($request->all());
+        $commentary = Commentary::findOrFail($id);
+        $commentary->fill($data);
+
+        $commentary->save();
+
+        return redirect()
+            ->back()
+            ->with('exito', 'Datos actualizados');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Commentary::where('id', $id)->delete();
+        $commentary = Commentary::where('id', $id)->first();
+        $event = $commentary->event;
+        $commentary->delete();
 
-        return redirect('/');
+        return redirect("/events/".$event->id);
     }
 
     /**
@@ -138,7 +151,7 @@ class CommentarysController extends Controller
         $commentarys = $user->commentaries;
         $posicion = 0;
 
-        foreach ($commentarys as $indice=>$commentar) {
+        foreach ($commentarys as $indice => $commentar) {
             if ($commentar->id == $commentary->id) {
                 $commentarys = $commentar;
                 $posicion = $indice;
@@ -146,7 +159,7 @@ class CommentarysController extends Controller
         }
 
         return view('users.commentarys', [
-            'user'      => $user,
+            'user' => $user,
             'commentarys' => $commentarys,
             'posicion' => $posicion
         ]);
@@ -169,9 +182,7 @@ class CommentarysController extends Controller
             $this->store($request, $event);
 
             $votesTotal = $event->votesMean();
-
-
-                $commentarys = Commentary::where('event_id', $event_id)->orderBy('created_at', 'desc')->paginate(10);
+            $commentarys = Commentary::where('event_id', $event->id)->orderBy('created_at', 'desc')->paginate(10);
 
             return View::make('events.show', [
                 'event' => $event,

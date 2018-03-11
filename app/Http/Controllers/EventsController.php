@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateEventRequest;
 use App\Place;
 use App\Event;
 use App\Http\Requests\CreateEventRequest;
@@ -20,7 +21,8 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
+    public function index()
+    {
 
         $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
         $titulo = "Proximos eventos";
@@ -75,7 +77,8 @@ class EventsController extends Controller
      * @param CreateEventRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(CreateEventRequest $request){
+    public function store(CreateEventRequest $request)
+    {
 
         $user = $request->user();
         $place = Place::where('id', $request->input('place'))->first();
@@ -83,9 +86,9 @@ class EventsController extends Controller
         $date->format('d-m-Y');
 
         Event::create([
-            'user_id'   => $user->id,
-            'place_id'   => $place->id,
-            'name' =>  $request->input('name'),
+            'user_id' => $user->id,
+            'place_id' => $place->id,
+            'name' => $request->input('name'),
             'image' => $request->input('image'),
             'place' => $place->name,
             'subject' => $request->input('subject'),
@@ -94,10 +97,44 @@ class EventsController extends Controller
             'cost' => $request->input('cost'),
             'agemin' => $request->input('agemin'),
             'organizer' => $request->input('organizer'),
-            'commentarys' => $request->input('commentarys')==1 ? true : false
+            'commentarys' => $request->input('commentarys') == 1 ? true : false
         ]);
 
         return redirect('/');
+    }
+
+    /**
+     * Reenvia al formulario de edicion de evento
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $places = Place::all();
+        $event = Event::where('id', $id)->first();
+
+        return view('events.edit', ['event' => $event, 'places' => $places]);
+    }
+
+    /**
+     * Actualiza los datos del usuario especificado
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateEventRequest $request, $id)
+    {
+        $data = array_filter($request->all());
+        $event = Event::findOrFail($id);
+        $event->fill($data);
+
+        $event->save();
+
+        return redirect()
+            ->back()
+            ->with('exito', 'Datos actualizados');
     }
 
     /**
@@ -118,12 +155,13 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function givePageEvents(){
-        if (request()->ajax()){
+    public function givePageEvents()
+    {
+        if (request()->ajax()) {
             $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
 
             return View::make('events.listaevents', array('events' => $events))->render();
-        }else{
+        } else {
             return redirect('/');
         }
     }

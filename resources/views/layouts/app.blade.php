@@ -76,6 +76,8 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a href="{{ url('/') }}/profile" class="dropdown-item nav-brand text-info">Perfil</a>
+                                <a href="{{ url('/') }}/profile/configuration"
+                                   class="dropdown-item nav-brand text-info">Configurar Perfil</a>
                                 <a href="{{ route('logout') }}" class="dropdown-item nav-brand text-info"
                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     Logout

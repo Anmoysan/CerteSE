@@ -2,7 +2,23 @@
     <div class="row">
         <div class="card col-md-12 col-xl-8">
             <div class="row">
-                <h1>{{ $event['name'] }}</h1>
+                <h1 class="col-xs-10 col-md-9 col-sm-12 col-xs-12">{{ $event['name'] }}</h1>
+                @if($user->isMyEvent($event))
+                    <div class="col-xl-2 col-md-3 col-sm-12 col-xs-12 d-flex justify-content-center"
+                         role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-info col-12" href="{{ url('/') }}/events/{{$event['id']}}/edit"
+                           data-toggle="tooltip" data-placement="top" title="Editar datos del usuario">Editar evento</a>
+                        <form class="col-12" action="{{route('event.delete',array('id' => $event['id']))}}"
+                              method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+
+                            <button type="submit" class="btn btn-outline-info" data-toggle="tooltip"
+                                    data-placement="top" title="Borrar al usuario">Eliminar evento
+                            </button>
+                        </form>
+                    </div>
+                @endif
             </div>
 
             <div class="row">
@@ -29,6 +45,18 @@
                                 <button id="reserva_Factura" class="btn btn-outline-info" data-toggle="tooltip"
                                         data-placement="top" title="Descargar pdf de factura de la reserva">
                                     Descargar Factura
+                                </button>
+                            </form>
+                            <a class="btn btn-outline-info" href="{{ url('/') }}/reserves/{{$event->ReserveEventUser()->id}}/edit" data-toggle="tooltip" data-placement="top"
+                               title="Editar datos del usuario">Editar Reserva</a>
+                            <form action="{{route('reserve.delete',array('id' => $event['id']))}}"
+                                  method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                                <button type="submit" class="btn btn-outline-info" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Borrar al usuario">Eliminar Reserva
                                 </button>
                             </form>
                         @else
@@ -106,7 +134,8 @@
                     <p>Temas del evento:
                         <strong>
                             @forelse($event->SubjectEvent() as $subject)
-                                <a href="{{ url('/') }}/subjects/{{ $subject }}" class="badge badge-info text-white">{{ $subject }}</a>
+                                <a href="{{ url('/') }}/subjects/{{ $subject }}"
+                                   class="badge badge-info text-white">{{ $subject }}</a>
                             @empty
                                 <h3>No hay tiene ningun tema</h3>
                             @endforelse

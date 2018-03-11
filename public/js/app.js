@@ -29375,7 +29375,7 @@ function findIndex(arr, prop, value) {
 
 /**
  * Loop trough the list of modifiers and run them in order,
- * each of them will then edit the data object.
+ * each of them will then conf the data object.
  * @method
  * @memberof Popper.Utils
  * @param {dataObject} data
@@ -29432,7 +29432,7 @@ function update() {
   data.offsets.reference = getReferenceOffsets(this.state, this.popper, this.reference);
 
   // compute auto placement, store placement inside the data object,
-  // modifiers will be able to edit `placement` if needed
+  // modifiers will be able to conf `placement` if needed
   // and refer to originalPlacement to know the original value
   data.placement = computeAutoPlacement(this.options.placement, data.offsets.reference, this.popper, this.reference, this.options.modifiers.flip.boundariesElement, this.options.modifiers.flip.padding);
 
@@ -29700,7 +29700,7 @@ function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
   var referenceOffsets = getReferenceOffsets(state, popper, reference);
 
   // compute auto placement, store placement inside the data object,
-  // modifiers will be able to edit `placement` if needed
+  // modifiers will be able to conf `placement` if needed
   // and refer to originalPlacement to know the original value
   var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
 
@@ -43999,7 +43999,7 @@ function findIndex(arr, prop, value) {
 
 /**
  * Loop trough the list of modifiers and run them in order,
- * each of them will then edit the data object.
+ * each of them will then conf the data object.
  * @method
  * @memberof Popper.Utils
  * @param {dataObject} data
@@ -44056,7 +44056,7 @@ function update() {
   data.offsets.reference = getReferenceOffsets(this.state, this.popper, this.reference);
 
   // compute auto placement, store placement inside the data object,
-  // modifiers will be able to edit `placement` if needed
+  // modifiers will be able to conf `placement` if needed
   // and refer to originalPlacement to know the original value
   data.placement = computeAutoPlacement(this.options.placement, data.offsets.reference, this.popper, this.reference, this.options.modifiers.flip.boundariesElement, this.options.modifiers.flip.padding);
 
@@ -44324,7 +44324,7 @@ function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
   var referenceOffsets = getReferenceOffsets(state, popper, reference);
 
   // compute auto placement, store placement inside the data object,
-  // modifiers will be able to edit `placement` if needed
+  // modifiers will be able to conf `placement` if needed
   // and refer to originalPlacement to know the original value
   var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
 

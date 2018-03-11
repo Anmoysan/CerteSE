@@ -36,6 +36,7 @@ function allcomments() {
 function modal() {
     $("#reserva").iziModal({
         width: 750,
+        height: 750,
         zindex: 999,
 
         onClosed: function () {

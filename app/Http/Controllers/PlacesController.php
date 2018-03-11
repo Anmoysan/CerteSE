@@ -70,18 +70,20 @@ class PlacesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Funcion que lanza el formulario para actualizar el lugar
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $place = Place::where('id', $id)->first();
+
+        return view('places.edit', ['place' => $place]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el lugar indicado
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -89,7 +91,15 @@ class PlacesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = array_filter($request->all());
+        $place = Place::findOrFail($id);
+        $place->fill($data);
+
+        $place->save();
+
+        return redirect()
+            ->back()
+            ->with('exito', 'Datos actualizados');
     }
 
     /**
@@ -102,7 +112,7 @@ class PlacesController extends Controller
     {
         Place::where('id', $id)->delete();
 
-        return redirect('/');
+        return redirect('/places');
     }
 
     /**

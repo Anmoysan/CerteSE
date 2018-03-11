@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Event extends Model
 {
@@ -121,6 +122,14 @@ class Event extends Model
         }
 
         return $votesTotal;
+    }
+
+    public function ReserveEventUser()
+    {
+        $user = Auth::user();
+        $reserve = Reserve::where('event_id', $this->id)->where('user_id', $user->id)->first();
+
+        return $reserve;
     }
 
     /**

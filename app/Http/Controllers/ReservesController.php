@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateReserveAjaxRequest;
+use App\Http\Requests\UpdateReserveRequest;
 use App\Invoice;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
@@ -64,12 +65,11 @@ class ReservesController extends Controller
             'units' => (int)$request->input('unidad'),
         ]);
 
-
         $reserve = Reserve::where('user_id', $user->id)->where('event_id', $event->id)->first();
 
         Invoice::create([
             'user_id'   => $user->id,
-            'reserve_id'   => $event->id,
+            'reserve_id'   => $reserve->id,
             'buyer' => $user->username,
             'place'   => $request->input('place'),
             'date' => $request->input('fecha'),
@@ -100,26 +100,43 @@ class ReservesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Funcion que lanza el formulario de modificar reserva. Se hace a traves de modal y forma asincrona
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+
+        $reserve = Reserve::where('id', $id)->first();
+        $event = $reserve->event;
+        $places = Place::all();
+
+        return view('reserves.edit', ['event' => $event, 'reserve' => $reserve, 'places' => $places]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza la reserva y factura
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateReserveRequest $request, $id)
     {
-        //
+        $data = array_filter($request->all());
+        $reserve = Reserve::findOrFail($id);
+        $reserve->fill($data);
+        $reserve->save();
+
+        $invoice = Invoice::where('reserve_id', $id)->where('user_id', Auth::user()->id)->first();
+        $invoice->fill($data);
+        $invoice->save();
+
+
+        return redirect()
+            ->back()
+            ->with('exito', 'Datos actualizados');
     }
 
     /**
@@ -131,11 +148,14 @@ class ReservesController extends Controller
     public function destroy($id)
     {
         $user = Auth::user();
-        $reserve = Reserve::where('id', $id);
-        Invoice::where('user_id', $user->id)->where('reserve_id', $reserve->id)->delete();
-        Reserve::where('id', $id)->delete();
+        $event = Event::where('id', $id)->first();
+        $reserves = $event->reserves;
+        foreach ($reserves as $reserve) {
+            Invoice::where('reserve_id', $reserve->id)->first()->delete();
+            $reserve->delete();
+        }
 
-        return redirect('/');
+        return redirect("/events/".$id);
     }
 
     /**
