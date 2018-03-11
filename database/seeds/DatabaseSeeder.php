@@ -12,11 +12,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $users = factory(App\User::class, 20)->create();
-        $places = factory(App\Place::class, 20)->create();
         $subjects = factory(App\Subject::class, 20)->create();
 
-        $users->each(function (App\User $user) use ($users, $places, $subjects) {
-            $place = App\Place::where('id', rand(1,20))->first();
+        $users->each(function (App\User $user) use ($users, $subjects) {
+            factory(App\Place::class, 4)->create([
+                'user_id' => $user->id
+            ]);
+            $place = App\Place::inRandomOrder()->first();
+
             $user->subjects()->sync(
                 $subjects->random(mt_rand(2, 8))
             );

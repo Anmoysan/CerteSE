@@ -26,7 +26,6 @@ class EventsController extends Controller
 
         $events = Event::orderBy('date', 'asc')->where('date', '>', now())->paginate(10);
         $titulo = "Proximos eventos";
-        //dd($events);
 
         return view('events.allevents', [
             'titulo' => $titulo,
@@ -65,9 +64,11 @@ class EventsController extends Controller
     public function create()
     {
         $places = Place::all();
+        $user = Auth::user();
 
         return view('events.create', [
-            'places' => $places
+            'places' => $places,
+            'user' => $user
         ]);
     }
 

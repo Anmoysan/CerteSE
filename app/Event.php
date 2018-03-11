@@ -14,7 +14,7 @@ class Event extends Model
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
-     * Un evento puede tener varios usuarios (users)
+     * Un evento puede ser de un usuario (user)
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

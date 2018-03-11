@@ -6,6 +6,7 @@ use App\Event;
 use App\Place;
 use App\Http\Requests\CreatePlaceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\Paginator;
 
 class PlacesController extends Controller
@@ -31,8 +32,9 @@ class PlacesController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         return view('places.create', [
-
+            'user' => $user
         ]);
     }
 
@@ -44,7 +46,10 @@ class PlacesController extends Controller
      */
     public function store(CreatePlaceRequest $request)
     {
+        $user = Auth::user();
+
         Place::create([
+            'user_id' => $user->id,
             'name' =>  $request->input('name'),
             'image' => $request->input('image'),
             'description' => $request->input('description'),
@@ -62,10 +67,12 @@ class PlacesController extends Controller
      */
     public function show(Place $place)
     {
+        $user = Auth::user();
         $place = Place::where('id', $place->id)->first();
 
         return view('places.show', [
-            'place'      => $place
+            'place' => $place,
+            'user' => $user
         ]);
     }
 

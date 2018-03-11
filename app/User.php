@@ -35,10 +35,19 @@ class User extends Authenticatable
      *
      * @return $this
      */
-
     public function events()
     {
         return $this->hasMany(Event::class)->orderBy('date', 'asc');
+    }
+
+    /**
+     * Un usuario puede indicar varios lugares (places)
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function places()
+    {
+        return $this->hasMany(Place::class)->latest();
     }
 
     /**
@@ -125,13 +134,13 @@ class User extends Authenticatable
     }
 
     /**
-     * Devuelve si un lugar es del usuario admin anmoysan o no. Se hace esto ya que el usuario seria el admin y el unico que puede meter lugares
+     * Devuelve si un comentario es del usuario logueado o no
      *
      * @return bool
      */
-    public function isMyPlace()
+    public function isMyPlace(Place $place)
     {
-        return $this->username == "anmoysan";
+        return $this->id == $place->user_id;
     }
 
     /**

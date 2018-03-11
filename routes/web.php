@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@home')->name('inicioNoLogin')->middleware('guest');
+Route::get('/', 'HomeController@index')->name('inicioNoLogin')->middleware('guest');
 
 //Rutas asincronas
 Route::get('/giveEvents/', 'EventsController@givePageEvents');
@@ -20,6 +20,8 @@ Route::get('/giveEventsMySubject/', 'UsersController@givePageSubjectEvents');
 Route::post('/allcomments', 'CommentarysController@allcoments');
 
 //Rutas de eventos
+Route::get('/events/create', 'EventsController@create')->middleware('auth');
+Route::post('/events/create', 'EventsController@store')->middleware('auth');
 Route::get('/events/', 'EventsController@index');
 Route::get('/events/{event}', 'EventsController@show');
 
@@ -52,8 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/info', 'UsersController@profileInfo');
 
     //Rutas de eventos
-    Route::get('/events/create', 'EventsController@create');
-    Route::post('/events/create', 'EventsController@store');
     Route::get('/events/{event}/edit', 'EventsController@edit');
     Route::patch('/events/{event}/edit', 'EventsController@update');
     Route::delete('/events/{event}/delete', 'EventsController@destroy')->name('event.delete');

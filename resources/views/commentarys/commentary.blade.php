@@ -7,7 +7,7 @@
         <div>
             <a class="col-xs-10 col-md-9 col-sm-12 col-xs-12"
                href="/user/{{ $commentary->DateUserWithComment()->username }}">{{ $commentary->DateUserWithComment()->username }}</a>
-            @if($user->isMyCommentary($commentary))
+            @if(Auth::check() && $user->isMyCommentary($commentary))
                 <div class="btn-group col-xl-2 col-md-3 col-sm-12 col-xs-12 d-flex justify-content-center"
                      role="group"
                      aria-label="Basic example">

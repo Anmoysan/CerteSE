@@ -3,7 +3,7 @@
         <div class="card col-md-12 col-xl-8">
             <div class="row">
                 <h1 class="col-xs-10 col-md-9 col-sm-12 col-xs-12">{{ $event['name'] }}</h1>
-                @if($user->isMyEvent($event))
+                @if(Auth::check() && $user->isMyEvent($event))
                     <div class="col-xl-2 col-md-3 col-sm-12 col-xs-12 d-flex justify-content-center"
                          role="group" aria-label="Basic example">
                         <a class="btn btn-outline-info col-12" href="{{ url('/') }}/events/{{$event['id']}}/edit"

@@ -32,8 +32,8 @@
 
                             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="image" class="col-md-4 control-label">Foto del lugar</label>
-                                <input id="image" type="text" class="form-control" name="image"
-                                       value="{{ old('image') }}" autofocus>
+                                <input type="file" class="custom-file" name="image" id="image"
+                                       placeholder="{{ old('image') }}">
 
                                 @if($errors->has('image'))
                                     @foreach($errors->get('image') as $message)

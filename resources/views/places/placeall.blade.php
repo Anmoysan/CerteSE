@@ -5,21 +5,17 @@
                 <h3 class="col-xs-10 col-md-9 col-sm-12 col-xs-12">
                     {{ $place['name'] }}
                 </h3>
-                @if(Auth::user()->isMyPlace())
-                    <div class="btn-group col-xl-2 col-md-3 col-sm-12 col-xs-12 d-flex justify-content-center"
-                         role="group"
-                         aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-info disabled" data-toggle="tooltip"
-                                data-placement="top"
-                                title="Editar datos del usuario">Editar
-                        </button>
+                @if($user->isMyPlace($place))
+                    <div class="btn-group col-xl-2 col-md-3 col-sm-12 col-xs-12 d-flex justify-content-center container"
+                         role="group" aria-label="Basic example">
+                        <a class="btn btn-outline-info" href="{{ url('/') }}/places/{{$place['id']}}/edit"
+                           data-toggle="tooltip" data-placement="top" title="Editar datos del usuario">Editar lugar</a>
                         <form action="{{route('place.delete',array('id' => $place['id']))}}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
                             <button type="submit" class="btn btn-outline-info" data-toggle="tooltip"
-                                    data-placement="top"
-                                    title="Borrar al usuario">Eliminar
+                                    data-placement="top" title="Borrar al usuario">Eliminar lugar
                             </button>
                         </form>
                     </div>

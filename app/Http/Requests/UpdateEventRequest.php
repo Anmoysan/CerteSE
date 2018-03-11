@@ -25,7 +25,7 @@ class UpdateEventRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string|max:30',
-            'image' => 'nullable|image',
+            'image' => 'nullable',
             'place' => 'nullable|numeric|min:1',
             'date' => 'nullable|date',
             'duration' => 'nullable',
@@ -48,7 +48,6 @@ class UpdateEventRequest extends FormRequest
         return [
             'name.max' => 'Has sobrepasado los 30 caracteres disponibles para el nombre',
             'name.string' => 'El nombre debe contener caracteres',
-            'image.image' => 'La imagen debe contener una imagen',
             'place.numeric' => 'Debe seleccionar un lugar',
             'place.min' => 'El valor minimo es 0 para precio',
             'date.date' => 'La fecha deben ser formato fecha',

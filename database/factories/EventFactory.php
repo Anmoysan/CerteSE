@@ -25,7 +25,6 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'name' => $faker->sentence($nbWords = 3, $variableNbWords = true) ,
         'image'      => 'https://picsum.photos/150/150/?random',
         'place'      => $place,
-        'subject'     => $faker->word,
         'date' => $timeyear,
         'duration' => $faker->time('H:i'),
         'cost'    => $faker->randomFloat(2,0,50),

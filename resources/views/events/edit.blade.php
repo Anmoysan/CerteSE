@@ -46,7 +46,6 @@
                             <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
                                 <label for="place" class="col-md-4 control-label">Lugar</label>
                                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="place" id="place">
-                                    <option selected>Selecciona</option>
                                     @foreach($places as $place)
                                         <option value={{ $place['id'] }}>{{ $place['name'] }}</option>
                                     @endforeach

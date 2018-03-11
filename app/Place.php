@@ -21,4 +21,14 @@ class Place extends Model
     {
         return $this->hasMany(Event::class)->latest();
     }
+
+    /**
+     * Un lugar puede ser indicado por un usuario (user)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

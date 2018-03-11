@@ -44,9 +44,7 @@ class UpdatePlaceRequest extends FormRequest
         return [
             'name.max' => 'Has sobrepasado los 60 caracteres disponibles para el nombre',
             'name.string' => 'El nombre debe contener caracteres',
-            'image.image' => 'El campo imagen debe contener un archivo de tipo .jpg, jpeg, png, bmp, gif, o svg',
-            'image.max' => 'Has sobrepasado los 255 caracteres disponibles para el imagen',
-            'image.string' => 'La imagen debe contener caracteres',
+            'image.image' => 'El campo imagen debe contener una extension valida',
             'description.min' => 'No has sobrepasado los 10 caracteres disponibles para la descripcion',
             'description.max' => 'Has sobrepasado los 255 caracteres disponibles para la descripcion',
             'description.string' => 'La descripcion debe contener caracteres',
