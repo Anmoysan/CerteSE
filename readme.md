@@ -18,7 +18,7 @@ Se debe rellenar sites y databases igual que aparece aqui, sino se ha modificado
 Tambien se deberá modificar el archivo host ubicado en Windows en `C:\Windows\System32\drivers\etc`. Este archivo debe modificarse fuera de esa carpeta y despues pegarla dentro o editarla con permisos de administrador. Al final del archivo se debera ingresar esta linea
 
 > 192.168.10.10 certese.test
-![Archivo Hosts](https://imgur.com/a/ps34Q.png)
+![Archivo Hosts](https://imgur.com/SzAcYud)
 
 
 Una vez el proyecto instalado correctamente deberas crear un .env con tus datos corresposdientes a partir de .env.example y poner los datos como muestra la imagen
