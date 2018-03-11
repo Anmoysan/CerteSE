@@ -50,9 +50,9 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        /*if (!$this->isHttpException($exception)) {
+        if (!$this->isHttpException($exception)) {
             $exception = new HttpException(500);
-        }*/
+        }
 
         return parent::render($request, $exception);
     }

@@ -15,7 +15,7 @@ class AddReserveIdToInvoiceTable extends Migration
     {
         Schema::table('invoices', function (Blueprint $table) {
             $table->integer('reserve_id')->unsigned()->after('id');
-            $table->foreign('reserve_id')->references('id')->on('reserves');
+            $table->foreign('reserve_id')->references('id')->on('reserves')->onDelete('cascade');
         });
     }
 

@@ -15,7 +15,7 @@ class AddEventIdToReserveTable extends Migration
     {
         Schema::table('reserves', function (Blueprint $table) {
             $table->integer('event_id')->unsigned()->after('id');
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 
