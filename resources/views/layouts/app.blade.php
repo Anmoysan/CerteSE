@@ -120,6 +120,7 @@
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.13/jquery.mask.js" type="text/javascript"></script>
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 @stack('scripts')
 </body>
 </html>
