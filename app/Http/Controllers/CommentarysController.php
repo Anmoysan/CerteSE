@@ -168,10 +168,9 @@ class CommentarysController extends Controller
     /**
      * Funcion que permite la creacion de comentario, pero los datos se pasan a traves de funcion asincrona
      *
-     * @param CreateCommentaryRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroycomment(CreateCommentaryRequest $request)
+    public function destroycomment()
     {
         if (request()->ajax()) {
             $data = json_decode(file_get_contents("php://input"), true);

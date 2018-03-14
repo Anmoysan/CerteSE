@@ -7,12 +7,18 @@ $(function () {
 });
 
 function functionsAgain() {
+    carga();
     votes();
     modal();
     coment();
     deletecoment();
     allcomments();
     maps($("#latitud").val(), $("#longitud").val(), $("#place").val());
+}
+
+function carga() {
+    $('#conten').before(`<div class="alert alert-success fade show container" role="alert">Se ha cargado perfectamente lo asincrono
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>`);
 }
 
 function coment() {
