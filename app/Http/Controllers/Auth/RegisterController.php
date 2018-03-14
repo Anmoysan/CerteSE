@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'username.max' => 'El nick puede tener 30 caracteres como maximo',
             'username.unique' => 'El nick ya existe.',
             'email.required' => 'El email es obligatorio.',
-            'email.string' => 'El email debe ser una cadena de caracteres',
+            'email.email' => 'El email debe ser una cadena de caracteres',
             'email.max' => 'El email tener tener 255 caracteres como maximo',
             'password.required' => 'La contraseña es obligatorio.',
             'password.string' => 'La contraseña debe ser una cadena de caracteres',
@@ -75,6 +75,15 @@ class RegisterController extends Controller
             'password.min' => 'La contraseña debe tener 8 caracteres como minimo',
             'password.confirmed' => 'Las contraseñas no coinciden',
         ]);
+    }
+
+    /** Validacion por Ajax con FormRquest
+     * @param CreateUserAjaxFormRequest $request
+     * @return array
+     */
+    protected function validacionAjax(CreateUserAjaxFormRequest $request){
+        //Obtenermos todos los valores y devolvemos un array vacio
+        return array();
     }
 
     /**

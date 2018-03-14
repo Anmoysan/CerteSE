@@ -13,12 +13,13 @@
                     <div class="card-header">Registro</div>
 
                     <div class="card-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                        <form class="form-horizontal" id="formularioRegistro" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">Nombre</label>
 
+                                <div></div>
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
                                        autofocus>
 
@@ -34,6 +35,7 @@
                             <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
                                 <label for="lastname" class="col-md-4 control-label">Apellidos</label>
 
+                                <div></div>
                                 <input id="lastname" type="text" class="form-control" name="lastname"
                                        value="{{ old('lastname') }}">
 
@@ -49,6 +51,7 @@
                             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                 <label for="username" class="col-md-4 control-label">Nick</label>
 
+                                <div></div>
                                 <input id="username" type="text" class="form-control" name="username"
                                        value="{{ old('username') }}">
 
@@ -64,6 +67,7 @@
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-4 control-label">E-Mail</label>
 
+                                <div></div>
                                 <input id="email" type="email" class="form-control" name="email"
                                        value="{{ old('email') }}">
 
@@ -99,7 +103,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <button type="submit" class="btn btn-info text-light">Registrar</button>
+                                <button type="submit" id="registro" class="btn btn-info text-light">Registrar</button>
                             </div>
                         </form>
                     </div>
@@ -108,3 +112,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/validacionRegistro.js') }}"></script>
+@endpush

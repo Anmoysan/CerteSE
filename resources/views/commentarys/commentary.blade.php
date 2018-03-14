@@ -16,8 +16,9 @@
                     <form action="{{route('commentary.delete',array('id' => $commentary['id']))}}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
+                        <input id="commentid" type="hidden" value="{{$commentary['id']}}">
 
-                        <button type="submit" class="btn btn-outline-info icono-trash" data-toggle="tooltip"
+                        <button type="submit" id="eliminarComment" class="btn btn-outline-info icono-trash" data-toggle="tooltip"
                                 data-placement="top"
                                 title="Borrar comentario">Eliminar
                         </button>

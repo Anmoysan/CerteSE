@@ -171,6 +171,39 @@ class CommentarysController extends Controller
      * @param CreateCommentaryRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
+    public function destroycomment(CreateCommentaryRequest $request)
+    {
+        if (request()->ajax()) {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $event_id = $data['event_id'];
+            $comment_id = $data['comment_id'];
+            $user = Auth::user();
+            $event = Event::where('id', $event_id)->first();
+            $place = Place::where('id', $event->place_id)->first();
+
+            $this->destroy($comment_id);
+
+            $votesTotal = $event->votesMean();
+            $commentarys = Commentary::where('event_id', $event->id)->orderBy('created_at', 'desc')->paginate(10);
+
+            return View::make('events.show', [
+                'user' => $user,
+                'event' => $event,
+                'place' => $place,
+                'commentarys' => $commentarys,
+                'votesTotal' => $votesTotal
+            ])->render();
+        } else {
+            return redirect('/');
+        }
+    }
+
+    /**
+     * Funcion que permite la eliminacion de un comentario, pero los datos se pasan a traves de funcion asincrona
+     *
+     * @param CreateCommentaryRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function comentar(CreateCommentaryRequest $request)
     {
         if (request()->ajax()) {

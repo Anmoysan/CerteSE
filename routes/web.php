@@ -18,6 +18,7 @@ Route::get('/giveEvents/', 'EventsController@givePageEvents');
 Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
 Route::get('/giveEventsMySubject/', 'UsersController@givePageSubjectEvents');
 Route::post('/allcomments', 'CommentarysController@allcoments');
+Route::post('/registro', 'Auth\RegisterController@validacionAjax');
 
 //Rutas de eventos
 Route::get('/events/create', 'EventsController@create')->middleware('auth');
@@ -48,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Rutas asincronas
     Route::post('/votar', 'VotesController@votar');
     Route::post('/comentar', 'CommentarysController@comentar');
+    Route::post('/deletecomment', 'CommentarysController@destroycomment');
     Route::post('/reservar', 'ReservesController@validacionAjax');
     Route::post('/factura', 'InvoicesController@factura');
     Route::get('/profile/events', 'UsersController@eventsProfile');
