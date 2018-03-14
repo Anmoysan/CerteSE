@@ -18,10 +18,6 @@ Route::get('/giveEvents/', 'EventsController@givePageEvents');
 Route::get('/giveMyEvents/', 'UsersController@givePageMyEvents');
 Route::get('/giveEventsMySubject/', 'UsersController@givePageSubjectEvents');
 Route::post('/allcomments', 'CommentarysController@allcoments');
-Route::post('/votar', 'VotesController@votar')->middleware('auth');
-Route::post('/comentar', 'CommentarysController@comentar')->middleware('auth');
-Route::post('/reservar', 'ReservesController@validacionAjax')->middleware('auth');
-Route::post('/factura', 'InvoicesController@factura')->middleware('auth');
 
 //Rutas de eventos
 Route::get('/events/create', 'EventsController@create')->middleware('auth');
@@ -50,6 +46,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'UsersController@subjectsUser')->name('inicioLogin');
 
     //Rutas asincronas
+    Route::post('/votar', 'VotesController@votar');
+    Route::post('/comentar', 'CommentarysController@comentar');
+    Route::post('/reservar', 'ReservesController@validacionAjax');
+    Route::post('/factura', 'InvoicesController@factura');
     Route::get('/profile/events', 'UsersController@eventsProfile');
     Route::get('/profile/info', 'UsersController@profileInfo');
 

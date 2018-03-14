@@ -32,11 +32,11 @@
         <hr>
         <div class="col-xl-12">
             <div></div>
-            <div class="scrollHorizontal">
+            <div id="scrollHorizontal" class="scrollHorizontal">
                 <div class="row text-center">
                     @if(count($events) > 0)
                         @foreach($events as $event)
-                            <div data-sr class="col-xl-4 col-md-6 col-sm-12 eventoScroll">
+                            <div class="col-xl-4 col-md-6 col-sm-12 eventoScroll">
                                 <div class="card-block">
                                     <h4 class="card-title"><a href="/events/{{ $event['id'] }}">{{ $event['name'] }}</a>
                                     </h4>
@@ -86,5 +86,4 @@
 
 @push('scripts')
     <script src="{{ asset('js/home.js') }}" defer></script>
-    <script src="{{ asset('js/carousel.js') }}" defer></script>
 @endpush

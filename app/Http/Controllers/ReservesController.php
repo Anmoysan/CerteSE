@@ -165,7 +165,6 @@ class ReservesController extends Controller
      * @return array
      */
     protected function validacionAjax(CreateReserveFormAjaxRequest $request){
-        //Obtenermos todos los valores y devolvemos un array vacio
         return array();
     }
 }

@@ -254,6 +254,8 @@
                 <h1>Lugar</h1>
                 <div id="mapLugar" class="row">
                     <h2 class="col-md-4 col-xl-12">{{ $place['name'] }}</h2>
+                    <input id="latitud" type="hidden" value="{{explode(", ", $place['coordinate'])[0]}}">
+                    <input id="longitud" type="hidden" value="{{explode(", ", $place['coordinate'])[1]}}">
                     <div id="map" class="mapsmall col-md-8 col-xl-12"></div>
                 </div>
             </div>

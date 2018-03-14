@@ -11,15 +11,15 @@
                 <div class="btn-group col-xl-2 col-md-3 col-sm-12 col-xs-12 d-flex justify-content-center"
                      role="group"
                      aria-label="Basic example">
-                    <a class="btn btn-outline-info" href="{{ url('/') }}/commentarys/{{ $commentary['id'] }}/edit" data-toggle="tooltip" data-placement="top"
-                       title="Editar datos del usuario">Editar</a>
+                    <a class="btn btn-outline-info icono-keyboard" href="{{ url('/') }}/commentarys/{{ $commentary['id'] }}/edit" data-toggle="tooltip" data-placement="top"
+                       title="Editar comentario">Editar</a>
                     <form action="{{route('commentary.delete',array('id' => $commentary['id']))}}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
 
-                        <button type="submit" class="btn btn-outline-info" data-toggle="tooltip"
+                        <button type="submit" class="btn btn-outline-info icono-trash" data-toggle="tooltip"
                                 data-placement="top"
-                                title="Borrar al usuario">Eliminar
+                                title="Borrar comentario">Eliminar
                         </button>
                     </form>
                 </div>

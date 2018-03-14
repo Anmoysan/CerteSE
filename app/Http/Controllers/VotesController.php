@@ -126,6 +126,7 @@ class VotesController extends Controller
             $data = json_decode(file_get_contents("php://input"), true);
             $event_id = $data['event_id'];
             $vote = $data['vote'];
+            $user = Auth::user();
             $event = Event::where('id', $event_id)->first();
             $place = Place::where('id', $event->place_id)->first();
 
@@ -139,6 +140,7 @@ class VotesController extends Controller
             $votesTotal = $event->votesMean();
 
             return View::make('events.show', [
+                'user' => $user,
                 'event' => $event,
                 'place' => $place,
                 'commentarys' => $commentarys,

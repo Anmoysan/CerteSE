@@ -10,7 +10,7 @@ function functionsAgain() {
     modal();
     coment();
     allcomments();
-    maps(lat, long, name);
+    maps($("#latitud").val(), $("#longitud").val(), $("#place").val());
 }
 
 function coment() {
