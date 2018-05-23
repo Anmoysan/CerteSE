@@ -214,7 +214,13 @@ class UsersController extends Controller
                 $eventsFull->all();
             }
         }
-        $events = $this->paginate($eventsFull, 10);
+
+        if ($eventsFull != null) {
+            $events = $this->paginate($eventsFull, 10);
+        } else {
+            $events = $this->paginate([], 1);
+        }
+
         //$events = $eventsFull->forPage(1, 10)->get();
         //dd($events);
         //$events = $eventsFirst;

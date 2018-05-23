@@ -2,7 +2,6 @@ $(function () {
     votes();
     modal();
     coment();
-    deletecoment();
     allcomments();
 });
 
@@ -11,13 +10,12 @@ function functionsAgain() {
     votes();
     modal();
     coment();
-    deletecoment();
     allcomments();
     maps($("#latitud").val(), $("#longitud").val(), $("#place").val());
 }
 
 function carga() {
-    $('#conten').before(`<div class="alert alert-success fade show container" role="alert">Se ha cargado perfectamente lo asincrono
+    $('#conten').before(`<div class="alert alert-success fade show container" role="alert">Ha votado correctamente
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>`);
 }
 
@@ -28,15 +26,6 @@ function coment() {
                 e.preventDefault();
                 comentar($("#content").val(), $("#event_id").val());
             }
-        }
-    });
-}
-
-function deletecoment() {
-    $("#eliminarComment").on({
-        click: function (e) {
-            e.preventDefault();
-            eliminarcomentario($("#event_id").val(), $("#commentid").val());
         }
     });
 }
@@ -235,20 +224,6 @@ function todoscomentarios(evento) {
     $(event.target).addClass("active");
     axios.post('/allcomments', {
         event_id: evento
-    }).then(function (response) {
-        $("#contenedor").html(response.data);
-        functionsAgain();
-    }).catch(function (error) {
-        console.log(error);
-    });
-    window.scrollTo($("#logo").left,$("#logo").top);
-}
-
-function eliminarcomentario(evento) {
-
-    $(event.target).addClass("active");
-    axios.post('/deletecomment', {
-        event_id: evento, comment_id: commentid
     }).then(function (response) {
         $("#contenedor").html(response.data);
         functionsAgain();

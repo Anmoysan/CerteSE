@@ -70,7 +70,7 @@
 
 
                     @else
-                        <h1>No hay eventos programados todavia</h1>
+                        <h1 class="text-white">No hay eventos programados todavia</h1>
                     @endif
                 </div>
             </div>

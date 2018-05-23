@@ -112,7 +112,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('js/validacionRegistro.js') }}"></script>
-@endpush
