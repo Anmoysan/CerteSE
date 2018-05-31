@@ -31,6 +31,8 @@ Route::get('/events/{event}/votes', 'VotesController@show');
 
 //Rutas de lugares
 Route::get('/places', 'PlacesController@index');
+Route::get('/places/create', 'PlacesController@create')->middleware('auth');
+Route::post('/places/create', 'PlacesController@store')->middleware('auth');
 Route::get('/places/{place}', 'PlacesController@show');
 
 //Rutas de comentarios
@@ -79,8 +81,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/invoices/{invoice}', 'InvoicesController@show');
 
     //Rutas de lugares
-    Route::get('/places/create', 'PlacesController@create');
-    Route::post('/places/create', 'PlacesController@store');
     Route::get('/places/{place}/edit', 'PlacesController@edit');
     Route::patch('/places/{place}/edit', 'PlacesController@update');
     Route::delete('/places/{place}/delete', 'PlacesController@destroy')->name('place.delete');
