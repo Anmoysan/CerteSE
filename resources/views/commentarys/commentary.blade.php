@@ -1,6 +1,7 @@
 <div class="col-md-12 izq row card-group">
+    @if($commentary->DateUserWithComment() != null)
     <div class="col-md-2 col-xl-1">
-        <a href="/user/{{$commentary->DateUserWithComment()->username }}"><img class="imagecomment"
+        <a href="/user/{{ $commentary->DateUserWithComment()->username }}"><img class="imagecomment"
                                                                                 src="{{ $commentary->DateUserWithComment()->avatar }}"></a>
     </div>
     <div class="col-md-10 col-xl-11">
@@ -32,4 +33,5 @@
             </strong>
         </div>
     </div>
+        @endif
 </div>
