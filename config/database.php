@@ -49,7 +49,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', $host),
-            'database' => env('DB_HOST', $database),
+            'database' => env('DB_DATABASE', $database),
             'username'  => env('DB_USERNAME', $username),
             'password'  => env('DB_PASSWORD', $password),
             'charset' => 'utf8',
