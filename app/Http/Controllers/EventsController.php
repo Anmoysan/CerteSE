@@ -92,7 +92,7 @@ class EventsController extends Controller
             'name' => $request->input('name'),
             'image' => $request->input('image'),
             'place' => $place->name,
-            'subject' => $request->input('subject'),
+            'subject' => ""/*$request->input('subject')*/,
             'date' => $date,
             'duration' => $request->input('duration'),
             'cost' => $request->input('cost'),
