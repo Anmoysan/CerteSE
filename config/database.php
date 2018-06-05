@@ -4,7 +4,7 @@ $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $host = "us-cdbr-iron-east-04.cleardb.net";
 $username = "b6047efc34c4d2";
-$password = "a3843698";
+$password ="a3843698";
 $database = "heroku_5bf313447549a98";
 
 return [
@@ -57,7 +57,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
-        ],
+          ],
 
         'pgsql' => [
             'driver' => 'pgsql',
